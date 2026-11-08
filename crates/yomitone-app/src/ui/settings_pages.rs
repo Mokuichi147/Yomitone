@@ -1,20 +1,105 @@
-//! 「設定」の画面。接続先ごとに画面を分け、それぞれで疎通を確かめられるようにする
+//! 接続先ごとの設定画面。
 
-use std::cell::RefCell;
-use std::rc::Rc;
-
-use naui::{Orientation, Result, Sizing, Stack, TextColor, Ui};
+use naui::{NumberInput, Result, Stack, TextInput, Ui};
 use yomitone::adapters::wyoming::WyomingClient;
 use yomitone::application::ports::SpeechSynthesizer;
-use yomitone::diagnostics::{check_jev, check_llm, check_tts};
 use yomitone::setup::{self, DEFAULT_LLM_HOST, DEFAULT_LLM_MODEL, DEFAULT_LLM_PORT, MAX_TTS_PAUSE};
 
-use super::parts::{check_section, heading, note, number_field, page, secret_field, text_field, title, Form};
-use super::store::Store;
+use super::model::{AppModel, CheckTarget, Message, NumberField, TextField};
+use super::mvu::Dispatch;
+use super::parts::{
+    check_section, heading, note, number_field, page, secret_field, text_field, title, Form, SecretField,
+};
+use crate::credentials::ApiKey;
 use crate::settings::{AppSettings, SpeakerBackend, TtsBackendSetting};
-use crate::worker::describe_setup_error;
 
-pub(crate) fn llm(ui: &Ui, store: &Store) -> Result<Stack> {
+#[derive(Default)]
+pub(crate) struct SettingsViews {
+    texts: Vec<(TextField, TextInput)>,
+    numbers: Vec<(NumberField, NumberInput)>,
+    secrets: Vec<SecretField>,
+    checks: Vec<(CheckTarget, naui::Button)>,
+    voice_list: Option<VoiceListView>,
+}
+
+impl SettingsViews {
+    pub(crate) fn render(&self, model: &AppModel) {
+        for (field, input) in &self.texts {
+            input.set_text(field.value(&model.settings));
+        }
+        for (field, input) in &self.numbers {
+            input.set_value(field.value(&model.settings));
+        }
+        for secret in &self.secrets {
+            secret.render(model);
+        }
+        for (target, button) in &self.checks {
+            let checking = model.checking == Some(*target);
+            button.set_enabled(model.checking.is_none());
+            button.set_text(if checking { "確認中…" } else { "接続を確認" });
+        }
+        if let Some(voices) = &self.voice_list {
+            voices.fetch.set_enabled(!model.voice_fetching);
+            voices.fetch.set_text(if model.voice_fetching { "取得中…" } else { "音声一覧を取得" });
+            voices.apply.set_enabled(!model.fetched_voices.is_empty());
+            voices.result.set_text(&model.voice_list_text);
+        }
+    }
+}
+
+struct VoiceListView {
+    fetch: naui::Button,
+    apply: naui::Button,
+    result: naui::Label,
+}
+
+fn tracked_text(
+    ui: &Ui,
+    dispatch: &Dispatch<Message>,
+    views: &mut SettingsViews,
+    field: TextField,
+    placeholder: &str,
+) -> Result<TextInput> {
+    let input = text_field(ui, dispatch, field, placeholder)?;
+    views.texts.push((field, input.clone()));
+    Ok(input)
+}
+
+fn tracked_secret(
+    ui: &Ui,
+    dispatch: &Dispatch<Message>,
+    views: &mut SettingsViews,
+    key: ApiKey,
+    placeholder: &str,
+) -> Result<SecretField> {
+    let field = secret_field(ui, dispatch, key, placeholder)?;
+    views.secrets.push(field.clone());
+    Ok(field)
+}
+
+fn tracked_check(
+    ui: &Ui,
+    dispatch: &Dispatch<Message>,
+    views: &mut SettingsViews,
+    page: &Stack,
+    description: &str,
+    target: CheckTarget,
+) -> Result<()> {
+    let button = check_section(ui, dispatch, page, description, target)?;
+    views.checks.push((target, button));
+    Ok(())
+}
+
+pub(crate) fn build(ui: &Ui, dispatch: &Dispatch<Message>) -> Result<(Vec<Stack>, SettingsViews)> {
+    let mut views = SettingsViews::default();
+    let llm = llm(ui, dispatch, &mut views)?;
+    let jev = jev(ui, dispatch, &mut views)?;
+    let openai = tts(ui, dispatch, &mut views, TtsBackendSetting::Openai)?;
+    let wyoming = tts(ui, dispatch, &mut views, TtsBackendSetting::Wyoming)?;
+    Ok((vec![llm, jev, openai, wyoming], views))
+}
+
+fn llm(ui: &Ui, dispatch: &Dispatch<Message>, views: &mut SettingsViews) -> Result<Stack> {
     let page = page(ui)?;
     page.append(&title(ui, "LLM")?);
     page.append(&note(
@@ -23,27 +108,28 @@ pub(crate) fn llm(ui: &Ui, store: &Store) -> Result<Stack> {
          JSON Schema による構造化出力に対応したモデルが必要です。",
     )?);
     let form = Form::new(ui)?;
-    form.add(ui, "ホスト", &text_field(ui, store, |s| s.llm_host.clone(), |s, v| s.llm_host = v, DEFAULT_LLM_HOST)?)?;
-    form.add(ui, "ポート", &text_field(ui, store, |s| s.llm_port.clone(), |s, v| s.llm_port = v, DEFAULT_LLM_PORT)?)?;
+    let host = tracked_text(ui, dispatch, views, TextField::LlmHost, DEFAULT_LLM_HOST)?;
+    form.add(ui, "ホスト", &host)?;
+    let port = tracked_text(ui, dispatch, views, TextField::LlmPort, DEFAULT_LLM_PORT)?;
+    form.add(ui, "ポート", &port)?;
     form.note(ui, "http://<ホスト>:<ポート>/v1 に接続します。")?;
-    form.add(
-        ui,
-        "モデル名",
-        &text_field(ui, store, |s| s.llm_model.clone(), |s, v| s.llm_model = v, DEFAULT_LLM_MODEL)?,
-    )?;
+    let model = tracked_text(ui, dispatch, views, TextField::LlmModel, DEFAULT_LLM_MODEL)?;
+    form.add(ui, "モデル名", &model)?;
+    let api_key = tracked_secret(ui, dispatch, views, ApiKey::Llm, "未入力時は OPENAI_API_KEY")?;
+    form.add(ui, "API キー（任意）", &api_key.root)?;
     page.append(form.widget());
-
-    check_section(
+    tracked_check(
         ui,
-        store,
+        dispatch,
+        views,
         &page,
-        "サーバーのモデル一覧を取得し、モデル名がその中にあるかを確かめます。",
-        |settings| check_llm(&settings.llm_options()),
+        "サーバーのモデル一覧に、指定したモデルがあるか確認します。",
+        CheckTarget::Llm,
     )?;
     Ok(page)
 }
 
-pub(crate) fn jev(ui: &Ui, store: &Store) -> Result<Stack> {
+fn jev(ui: &Ui, dispatch: &Dispatch<Message>, views: &mut SettingsViews) -> Result<Stack> {
     let page = page(ui)?;
     page.append(&title(ui, SpeakerBackend::Jev.page_title())?);
     page.append(&note(
@@ -52,116 +138,62 @@ pub(crate) fn jev(ui: &Ui, store: &Store) -> Result<Stack> {
          登場人物の抽出には LLM を使います。",
     )?);
     let form = Form::new(ui)?;
-    let model = text_field(
-        ui,
-        store,
-        |s| s.jev_model.clone(),
-        |s, v| s.jev_model = v,
-        "未入力時は TYPESAFE_DEFAULT_MODEL または jev-latest",
-    )?;
+    let model =
+        tracked_text(ui, dispatch, views, TextField::JevModel, "未入力時は TYPESAFE_DEFAULT_MODEL または jev-latest")?;
     form.add(ui, "モデル名", &model)?;
-    let base_url = text_field(
+    let base_url = tracked_text(
         ui,
-        store,
-        |s| s.jev_base_url.clone(),
-        |s, v| s.jev_base_url = v,
+        dispatch,
+        views,
+        TextField::JevBaseUrl,
         "未入力時は TYPESAFE_BASE_URL または https://api.typesafe.ai",
     )?;
     form.add(ui, "URL", &base_url)?;
-    let api_key = secret_field(ui, store, |s, v| s.jev_api_key = v, "未入力時は環境変数 TYPESAFE_API_KEY")?;
-    form.add(ui, "API キー", &api_key)?;
-    form.note(ui, "API キーはファイルに保存しません。アプリを起動するたびに入力するか、環境変数を設定してください。")?;
+    let api_key = tracked_secret(ui, dispatch, views, ApiKey::Jev, "未入力時は TYPESAFE_API_KEY")?;
+    form.add(ui, "API キー（任意）", &api_key.root)?;
     page.append(form.widget());
-
-    check_section(
+    tracked_check(
         ui,
-        store,
+        dispatch,
+        views,
         &page,
-        "API キーでモデル一覧を取得し、モデル名がその中にあるかを確かめます。",
-        |settings| check_jev(&settings.jev_options()),
+        "サーバーのモデル一覧に、指定したモデルがあるか確認します。",
+        CheckTarget::Jev,
     )?;
     Ok(page)
 }
 
-/// サーバーから取得した音声一覧。取得できなければ理由
-type VoiceList = std::result::Result<Vec<String>, String>;
+pub(super) type VoiceList = std::result::Result<Vec<String>, String>;
 
-fn fetch_wyoming_voices(settings: &AppSettings) -> VoiceList {
+pub(super) fn fetch_wyoming_voices(settings: &AppSettings) -> VoiceList {
     let options = settings.wyoming_tts.options(TtsBackendSetting::Wyoming.backend());
     let client = WyomingClient::new(options.url(), options.timeout, Some(&options.language))
-        .map_err(|e| format!("Wyomingサーバー({})から音声一覧を取得できませんでした: {e}", options.url()))?;
+        .map_err(|error| format!("Wyomingサーバー({})から音声一覧を取得できませんでした: {error}", options.url()))?;
     Ok(client.list_voices())
 }
 
-/// Wyoming サーバーの音声一覧を取得し、使用する音声に設定するボタン
-fn wyoming_voice_list(ui: &Ui, store: &Store, page: &Stack, voices: naui::TextInput) -> Result<()> {
+fn wyoming_voice_list(ui: &Ui, dispatch: &Dispatch<Message>, views: &mut SettingsViews, page: &Stack) -> Result<()> {
     page.append(&note(ui, "サーバーから、言語に一致する音声の一覧を取得できます。")?);
-    let buttons = ui.stack(Orientation::Horizontal)?;
+    let buttons = ui.stack(naui::Orientation::Horizontal)?;
     buttons.set_spacing(8.0);
     let fetch = ui.button("音声一覧を取得")?;
     let apply = ui.button("使用する音声に設定")?;
     apply.set_enabled(false);
+    fetch.on_click(dispatch.to(|| Message::FetchVoices));
+    apply.on_click(dispatch.to(|| Message::ApplyVoices));
     buttons.append(&fetch);
     buttons.append(&apply);
     page.append(&buttons);
     let result = ui.label("")?;
     result.set_wrap(true);
     result.set_selectable(true);
-    result.set_sizing(Sizing::fill_width());
+    result.set_sizing(naui::Sizing::fill_width());
     page.append(&result);
-
-    let fetched: Rc<RefCell<Vec<String>>> = Rc::default();
-    fetch.on_click({
-        let ui = ui.clone();
-        let store = store.clone();
-        let (fetch, apply, result, fetched) = (fetch.clone(), apply.clone(), result.clone(), fetched.clone());
-        move || {
-            fetch.set_enabled(false);
-            apply.set_enabled(false);
-            result.set_text("取得しています…");
-            result.set_color(TextColor::Secondary);
-            let sender = ui.tasks().channel({
-                let (fetch, apply, result, fetched) = (fetch.clone(), apply.clone(), result.clone(), fetched.clone());
-                move |voices: VoiceList| {
-                    fetch.set_enabled(true);
-                    match voices {
-                        Ok(voices) if voices.is_empty() => {
-                            result.set_text("言語に一致する音声がありません。言語を確認してください");
-                            result.set_color(TextColor::Warning);
-                        }
-                        Ok(voices) => {
-                            result.set_text(&voices.join(", "));
-                            result.set_color(TextColor::Default);
-                            fetched.replace(voices);
-                            apply.set_enabled(true);
-                        }
-                        Err(error) => {
-                            result.set_text(&error);
-                            result.set_color(TextColor::Danger);
-                        }
-                    }
-                }
-            });
-            let settings = store.snapshot();
-            std::thread::spawn(move || {
-                let _ = sender.send(fetch_wyoming_voices(&settings));
-            });
-        }
-    });
-    apply.on_click({
-        let store = store.clone();
-        move || {
-            let text = fetched.borrow().join(", ");
-            // 入力欄の書き換えは通知されないので、設定もここで更新する
-            voices.set_text(&text);
-            store.update(|s| s.wyoming_tts.voices = text);
-        }
-    });
+    views.voice_list = Some(VoiceListView { fetch, apply, result });
     Ok(())
 }
 
-/// TTS サーバー 1 つ分の設定。接続・声の割り当て・合成の設定を持つ
-pub(crate) fn tts(ui: &Ui, store: &Store, backend: TtsBackendSetting) -> Result<Stack> {
+fn tts(ui: &Ui, dispatch: &Dispatch<Message>, views: &mut SettingsViews, backend: TtsBackendSetting) -> Result<Stack> {
     let page = page(ui)?;
     page.append(&title(ui, backend.page_title())?);
     page.append(&note(
@@ -179,37 +211,17 @@ pub(crate) fn tts(ui: &Ui, store: &Store, backend: TtsBackendSetting) -> Result<
     page.append(&heading(ui, "接続")?);
     let connection = Form::new(ui)?;
     let placeholder = format!("未入力時は {}", backend.backend().default_url());
-    let url = text_field(
-        ui,
-        store,
-        move |s| s.tts_server(backend).url.clone(),
-        move |s, v| s.tts_server_mut(backend).url = v,
-        &placeholder,
-    )?;
+    let url = tracked_text(ui, dispatch, views, TextField::TtsUrl(backend), &placeholder)?;
     connection.add(ui, "URL", &url)?;
     match backend {
         TtsBackendSetting::Openai => {
-            let model = text_field(
-                ui,
-                store,
-                |s| s.openai_tts.model.clone(),
-                |s, v| s.openai_tts.model = v,
-                setup::DEFAULT_OPENAI_TTS_MODEL,
-            )?;
+            let model = tracked_text(ui, dispatch, views, TextField::TtsModel, setup::DEFAULT_OPENAI_TTS_MODEL)?;
             connection.add(ui, "モデル名", &model)?;
-            let api_key =
-                secret_field(ui, store, |s, v| s.openai_tts.api_key = v, "未入力時は環境変数 OPENAI_API_KEY")?;
-            connection.add(ui, "API キー", &api_key)?;
-            connection.note(ui, "API キーはファイルに保存しません。")?;
+            let api_key = tracked_secret(ui, dispatch, views, ApiKey::Tts, "未入力時は OPENAI_API_KEY")?;
+            connection.add(ui, "API キー（任意）", &api_key.root)?;
         }
         TtsBackendSetting::Wyoming => {
-            let language = text_field(
-                ui,
-                store,
-                |s| s.wyoming_tts.language.clone(),
-                |s, v| s.wyoming_tts.language = v,
-                "空にすると絞り込みません",
-            )?;
+            let language = tracked_text(ui, dispatch, views, TextField::TtsLanguage, "空にすると絞り込みません")?;
             connection.add(ui, "言語", &language)?;
             connection.note(
                 ui,
@@ -217,11 +229,10 @@ pub(crate) fn tts(ui: &Ui, store: &Store, backend: TtsBackendSetting) -> Result<
             )?;
         }
     }
-    let timeout = number_field(ui, store.read(|s| s.tts_server(backend).timeout), (Some(1.0), None), 1.0, 0)?;
-    timeout.on_change({
-        let store = store.clone();
-        move |value| store.update(|s| s.tts_server_mut(backend).timeout = value)
-    });
+    let timeout_field = NumberField::Timeout(backend);
+    let timeout = number_field(ui, timeout_field.value(&AppSettings::default()), (Some(1.0), None), 1.0, 0)?;
+    timeout.on_change(dispatch.map(move |value| Message::NumberChanged(timeout_field, value)));
+    views.numbers.push((timeout_field, timeout.clone()));
     connection.add(ui, "タイムアウト(秒)", &timeout)?;
     page.append(connection.widget());
 
@@ -232,63 +243,42 @@ pub(crate) fn tts(ui: &Ui, store: &Store, backend: TtsBackendSetting) -> Result<
          後の章でも同じ人物には同じ音声を使います。複数の音声はカンマで区切ります。",
     )?);
     let assignment = Form::new(ui)?;
-    let voices = text_field(
+    let voices = tracked_text(
         ui,
-        store,
-        move |s| s.tts_server(backend).voices.clone(),
-        move |s, v| s.tts_server_mut(backend).voices = v,
+        dispatch,
+        views,
+        TextField::TtsVoices(backend),
         match backend {
             TtsBackendSetting::Openai => "必須",
             TtsBackendSetting::Wyoming => "空にするとサーバーの一覧(言語に一致する音声)",
         },
     )?;
     assignment.add(ui, "使用する音声", &voices)?;
-    let narrator = text_field(
-        ui,
-        store,
-        move |s| s.tts_server(backend).narrator_voice.clone(),
-        move |s, v| s.tts_server_mut(backend).narrator_voice = v,
-        "未入力時は使用する音声の先頭",
-    )?;
+    let narrator =
+        tracked_text(ui, dispatch, views, TextField::TtsNarratorVoice(backend), "未入力時は使用する音声の先頭")?;
     assignment.add(ui, "ナレーター", &narrator)?;
-    let male = text_field(
-        ui,
-        store,
-        move |s| s.tts_server(backend).male_voices.clone(),
-        move |s, v| s.tts_server_mut(backend).male_voices = v,
-        "",
-    )?;
+    let male = tracked_text(ui, dispatch, views, TextField::TtsMaleVoices(backend), "")?;
     assignment.add(ui, "男性に優先する音声", &male)?;
-    let female = text_field(
-        ui,
-        store,
-        move |s| s.tts_server(backend).female_voices.clone(),
-        move |s, v| s.tts_server_mut(backend).female_voices = v,
-        "",
-    )?;
+    let female = tracked_text(ui, dispatch, views, TextField::TtsFemaleVoices(backend), "")?;
     assignment.add(ui, "女性に優先する音声", &female)?;
     assignment.note(ui, "性別が分かっている登場人物には、この中から優先して割り当てます。")?;
     page.append(assignment.widget());
     if backend == TtsBackendSetting::Wyoming {
-        wyoming_voice_list(ui, store, &page, voices)?;
+        wyoming_voice_list(ui, dispatch, views, &page)?;
     }
 
     page.append(&heading(ui, "合成")?);
     let synthesis = Form::new(ui)?;
-    let max_chars =
-        number_field(ui, store.read(|s| s.tts_server(backend).max_chars) as f64, (Some(0.0), None), 10.0, 0)?;
-    max_chars.on_change({
-        let store = store.clone();
-        move |value| store.update(|s| s.tts_server_mut(backend).max_chars = value.max(0.0) as usize)
-    });
+    let max_chars_field = NumberField::MaxChars(backend);
+    let max_chars = number_field(ui, max_chars_field.value(&AppSettings::default()), (Some(0.0), None), 10.0, 0)?;
+    max_chars.on_change(dispatch.map(move |value| Message::NumberChanged(max_chars_field, value)));
+    views.numbers.push((max_chars_field, max_chars.clone()));
     synthesis.add(ui, "1回の最大文字数", &max_chars)?;
     synthesis.note(ui, "超える行は文末・読点・文字数の順で分割して合成します。0 で分割しません。")?;
-    let pause =
-        number_field(ui, store.read(|s| s.tts_server(backend).pause), (Some(0.0), Some(MAX_TTS_PAUSE)), 0.1, 1)?;
-    pause.on_change({
-        let store = store.clone();
-        move |value| store.update(|s| s.tts_server_mut(backend).pause = value)
-    });
+    let pause_field = NumberField::Pause(backend);
+    let pause = number_field(ui, pause_field.value(&AppSettings::default()), (Some(0.0), Some(MAX_TTS_PAUSE)), 0.1, 1)?;
+    pause.on_change(dispatch.map(move |value| Message::NumberChanged(pause_field, value)));
+    views.numbers.push((pause_field, pause.clone()));
     synthesis.add(ui, "行間の無音(秒)", &pause)?;
     page.append(synthesis.widget());
 
@@ -300,8 +290,6 @@ pub(crate) fn tts(ui: &Ui, store: &Store, backend: TtsBackendSetting) -> Result<
             "サーバーの音声一覧と照らして音声名を確かめ、ナレーターの音声で短い文を合成してみます。"
         }
     };
-    check_section(ui, store, &page, description, move |settings| {
-        check_tts(&settings.tts_server(backend).options(backend.backend()), |e| describe_setup_error(e, backend))
-    })?;
+    tracked_check(ui, dispatch, views, &page, description, CheckTarget::Tts(backend))?;
     Ok(page)
 }

@@ -1,37 +1,43 @@
-//! 「結果」の画面。登場人物と音声の割り当てを表に出す
+//! 「結果」画面のウィジェットと描画。
+
+use std::cell::RefCell;
 
 use naui::{Length, Result, Sizing, Stack, Table, TableColumn, TableRow, Ui};
 use yomitone::domain::character::Character;
 
 use super::parts::{heading, note, page, title};
 
-#[derive(Clone)]
 pub(crate) struct ResultsView {
     characters: Table,
     voices: Table,
+    shown_characters: RefCell<Vec<Character>>,
+    shown_voices: RefCell<Vec<(String, String)>>,
 }
 
 impl ResultsView {
-    pub(crate) fn set_characters(&self, characters: &[Character]) {
-        let rows: Vec<TableRow> = characters
-            .iter()
-            .map(|c| {
-                let gender = c.gender.map(|g| g.label()).unwrap_or("不明");
-                TableRow::new([c.name.clone(), gender.to_string(), c.aliases.join("、"), c.portrait.clone()])
-            })
-            .collect();
-        self.characters.set_rows(&rows);
-    }
-
-    pub(crate) fn set_voices(&self, voices: &[(String, String)]) {
-        let rows: Vec<TableRow> =
-            voices.iter().map(|(name, voice)| TableRow::new([name.as_str(), voice.as_str()])).collect();
-        self.voices.set_rows(&rows);
-    }
-
-    pub(crate) fn clear(&self) {
-        self.set_characters(&[]);
-        self.set_voices(&[]);
+    pub(crate) fn render(&self, characters: &[Character], voices: &[(String, String)]) {
+        if *self.shown_characters.borrow() != characters {
+            let rows: Vec<TableRow> = characters
+                .iter()
+                .map(|character| {
+                    let gender = character.gender.map(|gender| gender.label()).unwrap_or("不明");
+                    TableRow::new([
+                        character.name.clone(),
+                        gender.to_string(),
+                        character.aliases.join("、"),
+                        character.portrait.clone(),
+                    ])
+                })
+                .collect();
+            self.characters.set_rows(&rows);
+            *self.shown_characters.borrow_mut() = characters.to_vec();
+        }
+        if *self.shown_voices.borrow() != voices {
+            let rows: Vec<TableRow> =
+                voices.iter().map(|(name, voice)| TableRow::new([name.as_str(), voice.as_str()])).collect();
+            self.voices.set_rows(&rows);
+            *self.shown_voices.borrow_mut() = voices.to_vec();
+        }
     }
 }
 
@@ -58,5 +64,13 @@ pub(crate) fn build(ui: &Ui) -> Result<(Stack, ResultsView)> {
     voices.set_sizing(Sizing::new().width(Length::Fill).height(Length::Fixed(220.0)));
     page.append(&voices);
 
-    Ok((page, ResultsView { characters, voices }))
+    Ok((
+        page,
+        ResultsView {
+            characters,
+            voices,
+            shown_characters: RefCell::new(Vec::new()),
+            shown_voices: RefCell::new(Vec::new()),
+        },
+    ))
 }

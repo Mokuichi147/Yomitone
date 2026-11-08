@@ -34,13 +34,13 @@ cargo run --release -p yomitone-app
 
 ## デスクトップアプリ
 
-[naui](https://github.com/mokuichi147/naui) で各 OS のネイティブ UI(macOS は AppKit、Windows は WinUI 3、Linux は GTK4)を使います。左のサイドバーで画面を切り替え、コマンドのオプションと同じ項目をすべて画面から設定できます。
+[naui 0.16.x](https://github.com/mokuichi147/naui) で各 OS のネイティブ UI(macOS は AppKit、Windows は WinUI 3、Linux は GTK4)を使います。画面の状態をモデルにまとめ、UI 操作をメッセージとして更新・描画する MVU 構成です。左のサイドバーで画面を切り替え、コマンドのオプションと同じ項目をすべて画面から設定できます。
 
 | サイドバー | 内容 |
 | --- | --- |
 | 読み上げ | 入力フォルダと出力フォルダ、話者推測(LLM / Jev)と TTS(OpenAI 互換 API / Wyoming)を選んで開始・中止する。進捗と経過を表示する |
 | 結果 | 登場人物の一覧と、音声の割り当て |
-| 設定 › LLM | 登場人物の抽出と話者推測に使う LLM サーバー(`--host` / `--port` / `--model`) |
+| 設定 › LLM | 登場人物の抽出と話者推測に使う LLM サーバーとAPIキー(`--host` / `--port` / `--model` / `--llm-api-key`) |
 | 設定 › Jev | 話者推測に使う Jev 互換 API(`--jev-model` / `--jev-base-url` / `--jev-api-key`) |
 | 設定 › TTS（OpenAI互換API） | URL・モデル名・API キー・タイムアウト、使用する音声とナレーター・性別ごとの音声、1回の最大文字数・行間の無音 |
 | 設定 › TTS（Wyoming） | URL・言語・タイムアウト、使用する音声とナレーター・性別ごとの音声(サーバーから一覧を取得できる)、1回の最大文字数・行間の無音 |
@@ -48,7 +48,11 @@ cargo run --release -p yomitone-app
 - 設定の各画面の「接続を確認」で、設定した内容で使えるかを確かめられます。LLM と Jev はモデル一覧を取得してモデル名があるかを、TTS は設定した音声で短い文を実際に合成できるかを確かめます。
 - 音声名はサーバーごとに違うため、声の割り当てと合成の設定は TTS ごとに別々に保存します。
 - 設定は変えるたびに保存し、次に起動したときに引き継ぎます(macOS は `~/Library/Application Support/Yomitone/settings.json`)。
-- API キーはファイルに保存しません。起動するたびに入力するか、環境変数(`TYPESAFE_API_KEY` / `OPENAI_API_KEY`)を設定してください。
+- LLM・Jev・TTS の API キーはすべて任意です。認証が必要なサーバーだけ指定してください。入力値、環境変数(LLM・TTS は `OPENAI_API_KEY`、Jev は `TYPESAFE_API_KEY`)の順に使い、どちらもなければ認証ヘッダーを送信しません。
+- デスクトップアプリでは API キー欄の「保存」を押すと、macOS はキーチェーン、Windows は資格情報マネージャーに保存し、次回起動時に読み込みます。LLM・Jev・TTS のキーはそれぞれ個別に管理します。「削除」で保存済みのキーと入力欄を消せます（環境変数は引き続き使われます）。キーを編集しただけでは保存済みの値は変わりません。
+- macOS の起動時の読み込みでは認証画面を表示しません。アクセス許可が必要な場合は、API キー欄の「読み込む」を押してください。開発中にアプリを再ビルドすると、macOS がアクセス許可を再確認することがあります。
+- macOS は下記の署名付きビルドを使ってください。旧ビルドで保存したキーは、最初に読み込めたときに新しい署名の項目へ引き継ぎます。旧項目の読み込みでは移行時の一度だけ従来の認証が必要になる場合があります。
+- API キーは設定ファイルには保存しません。保存しない場合や macOS・Windows 以外では、起動ごとに入力するか環境変数を設定してください。CLI は引き続き引数または環境変数からキーを受け取ります。
 
 ## 使い方
 
@@ -74,8 +78,10 @@ yomitone --tts-output out/ --tts-backend wyoming --tts-url tcp://localhost:10200
 話者推測を Jev(TypeSafe System One API)互換モデルで行う場合は `--speaker-backend jev` を指定します(登場人物の抽出には引き続き LLM サーバーを使います)。
 
 ```bash
-yomitone --speaker-backend jev --jev-api-key <API キー> data/
+yomitone --speaker-backend jev data/
 ```
+
+Jev サーバーが認証を必要とする場合は、`--jev-api-key` または環境変数 `TYPESAFE_API_KEY` でキーを指定してください。
 
 ### 音声の割り当て
 
@@ -89,15 +95,16 @@ yomitone --speaker-backend jev --jev-api-key <API キー> data/
 | --- | --- | --- |
 | `--host` / `--port` | `localhost` / `1234` | LLM サーバー(`http://<host>:<port>/v1`) |
 | `--model` | `qwen3.8-flash-next-iq3_s` | LLM のモデル名 |
+| `--llm-api-key` | `OPENAI_API_KEY` | LLM サーバーのAPIキー。認証不要なら省略可 |
 | `--speaker-backend` | `llm` | 話者推測のバックエンド(`llm` / `jev`) |
 | `--jev-model` | `TYPESAFE_DEFAULT_MODEL` または `jev-latest` | Jev 互換モデル名 |
 | `--jev-base-url` | `TYPESAFE_BASE_URL` または `https://api.typesafe.ai` | Jev 互換 API の URL |
-| `--jev-api-key` | `TYPESAFE_API_KEY` | Jev 互換 API のキー |
+| `--jev-api-key` | `TYPESAFE_API_KEY` | Jev 互換 API のキー。認証不要なら省略可 |
 | `--tts-output` | なし | 音声の出力先フォルダ(指定時のみ音声合成) |
 | `--tts-backend` | `openai` | TTS のプロトコル(`openai` / `wyoming`) |
 | `--tts-url` | `http://localhost:8880/v1` / `tcp://localhost:10200` | TTS サーバーの URL |
 | `--tts-model` | `tts-1` | OpenAI 互換 API のモデル名 |
-| `--tts-api-key` | `OPENAI_API_KEY` | OpenAI 互換 API のキー |
+| `--tts-api-key` | `OPENAI_API_KEY` | OpenAI 互換 API のキー。認証不要なら省略可 |
 | `--tts-language` | `ja` | Wyoming で音声を絞り込む言語(空文字で絞り込まない) |
 | `--tts-voices` | Wyoming: サーバーの一覧 | 使用する音声(カンマ区切り) |
 | `--tts-narrator-voice` | 音声一覧の先頭 | ナレーターの音声 |
@@ -120,11 +127,20 @@ yomitone --speaker-backend jev --jev-api-key <API キー> data/
 
 ## 開発
 
+macOS では、同じコード署名証明書でアプリをビルドします。証明書が1つなら自動選択します。複数ある場合は `YOMITONE_SIGNING_IDENTITY` に証明書名かフィンガープリントを設定してください。
+
+```bash
+bash scripts/build-macos-app.sh
+open target/debug/Yomitone.app
+```
+
+`release` を引数に渡すとリリース版を作ります。通常の `cargo build` はアドホック署名に戻るため、キーチェーンのアクセス確認を安定させるには上記のスクリプトでビルドしてください。
+
 | クレート | 内容 |
 | --- | --- |
 | `crates/yomitone` | domain / application / adapters (コア機能) |
 | `crates/yomitone-cli` | コマンドライン引数から各層を組み立てて実行する |
-| `crates/yomitone-app` | naui のデスクトップアプリ |
+| `crates/yomitone-app` | naui 0.16.x の MVU 構成によるデスクトップアプリ |
 
 ```bash
 cargo test

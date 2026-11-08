@@ -1,18 +1,17 @@
-//! 画面の組み方をそろえるための部品
+//! 画面の組み方をそろえるための部品。
 
 use std::cell::Cell;
 
 use naui::{
     Align, FilePickerMode, Grid, GridCell, Label, Length, Orientation, Padding, PasswordInput, Result, Scroll,
-    ScrollPolicy, Sizing, Stack, TextColor, TextInput, TextStyle, Track, Ui, Widget,
+    ScrollPolicy, Sizing, Stack, TextColor, TextInput, TextStyle, Toast, Track, Ui, Widget,
 };
 
-use yomitone::diagnostics::CheckOutcome;
+use super::model::{AppModel, CheckTarget, Message, TextField};
+use super::mvu::Dispatch;
+use crate::credentials::{self, ApiKey};
 
-use super::store::Store;
-use crate::settings::AppSettings;
-
-/// 画面の土台。左端をそろえて上から積む
+/// 左端をそろえて上から積む画面の土台。
 pub(crate) fn page(ui: &Ui) -> Result<Stack> {
     let page = ui.stack(Orientation::Vertical)?;
     page.set_spacing(12.0);
@@ -22,7 +21,7 @@ pub(crate) fn page(ui: &Ui) -> Result<Stack> {
     Ok(page)
 }
 
-/// 画面をスクロールに載せる。横はウィンドウの幅に合わせ、縦だけを送る
+/// 横幅はウィンドウに合わせ、縦だけをスクロールする。
 pub(crate) fn scrollable(ui: &Ui, page: &dyn Widget) -> Result<Scroll> {
     let scroll = ui.scroll()?;
     scroll.set_policy(ScrollPolicy::Never, ScrollPolicy::Auto);
@@ -43,7 +42,7 @@ pub(crate) fn heading(ui: &Ui, text: &str) -> Result<Label> {
     Ok(label)
 }
 
-/// 説明の文。小さく淡い文字にして、窓を狭めても読めるよう折り返す
+/// 説明文。小さく淡い文字にして、窓を狭めても折り返す。
 pub(crate) fn note(ui: &Ui, text: &str) -> Result<Label> {
     let label = ui.label(text)?;
     label.set_style(TextStyle::Caption);
@@ -53,7 +52,13 @@ pub(crate) fn note(ui: &Ui, text: &str) -> Result<Label> {
     Ok(label)
 }
 
-/// 左に項目名、右に入力欄を並べる表
+pub(crate) fn feedback(toast: &Toast, message: &str) {
+    toast.set_message(message);
+    toast.set_timeout(6.0);
+    toast.show();
+}
+
+/// 左に項目名、右に入力欄を並べる表。
 pub(crate) struct Form {
     grid: Grid,
     rows: Cell<usize>,
@@ -86,7 +91,6 @@ impl Form {
         Ok(())
     }
 
-    /// 直前の項目の説明
     pub(crate) fn note(&self, ui: &Ui, text: &str) -> Result<()> {
         let row = self.next_row();
         self.grid.attach(&note(ui, text)?, GridCell::new(1, row));
@@ -94,65 +98,85 @@ impl Form {
     }
 }
 
-/// 設定の文字列を編集する入力欄。打つたびに保存する
 pub(crate) fn text_field(
     ui: &Ui,
-    store: &Store,
-    get: impl Fn(&AppSettings) -> String,
-    set: impl Fn(&mut AppSettings, String) + 'static,
+    dispatch: &Dispatch<Message>,
+    field: TextField,
     placeholder: &str,
 ) -> Result<TextInput> {
-    let input = ui.text_input(&store.read(get))?;
+    let input = ui.text_input("")?;
     input.set_placeholder(placeholder);
     input.set_sizing(Sizing::fill_width());
-    input.on_change({
-        let store = store.clone();
-        move |text| store.update(|s| set(s, text.to_string()))
-    });
+    input.on_change(dispatch.with(move |text: &str| Message::TextChanged(field, text.to_owned())));
     Ok(input)
 }
 
-/// API キーの入力欄。打った文字は伏せ、ファイルには保存しない
+#[derive(Clone)]
+pub(crate) struct SecretField {
+    pub(crate) root: Stack,
+    pub(crate) input: PasswordInput,
+    pub(crate) load: naui::Button,
+    pub(crate) save: naui::Button,
+    pub(crate) delete: naui::Button,
+    key: ApiKey,
+}
+
+impl SecretField {
+    pub(crate) fn render(&self, model: &AppModel) {
+        self.input.set_text(self.key.value(&model.settings));
+        self.load.set_visible(model.credential_errors[self.key.index()].is_some());
+        self.save.set_enabled(credentials::SUPPORTED);
+        self.delete.set_enabled(credentials::SUPPORTED);
+    }
+}
+
+/// API キー欄と、OS の認証ストアへの読み書きボタン。
 pub(crate) fn secret_field(
     ui: &Ui,
-    store: &Store,
-    set: impl Fn(&mut AppSettings, String) + 'static,
+    dispatch: &Dispatch<Message>,
+    key: ApiKey,
     placeholder: &str,
-) -> Result<PasswordInput> {
+) -> Result<SecretField> {
+    let row = ui.stack(Orientation::Horizontal)?;
+    row.set_spacing(8.0);
+    row.set_sizing(Sizing::fill_width());
     let input = ui.password_input()?;
     input.set_placeholder(placeholder);
     input.set_sizing(Sizing::fill_width());
-    input.on_change({
-        let store = store.clone();
-        move |text| store.update(|s| set(s, text.to_string()))
-    });
-    Ok(input)
+    input.on_change(dispatch.with(move |text: &str| Message::ApiKeyChanged(key, text.to_owned())));
+
+    let load = ui.button("読み込む")?;
+    load.set_visible(false);
+    load.on_click(dispatch.to(move || Message::LoadApiKey(key)));
+    let save = ui.button("保存")?;
+    save.set_enabled(credentials::SUPPORTED);
+    save.on_click(dispatch.to(move || Message::SaveApiKey(key)));
+    let delete = ui.button("削除")?;
+    delete.set_enabled(credentials::SUPPORTED);
+    delete.on_click(dispatch.to(move || Message::DeleteApiKey(key)));
+    row.append(&input);
+    row.append(&load);
+    row.append(&save);
+    row.append(&delete);
+    Ok(SecretField { root: row, input, load, save, delete, key })
 }
 
-/// フォルダのパスを入力する欄と、選ぶダイアログを開くボタン
+/// フォルダのパス入力と選択ダイアログ。
 pub(crate) fn folder_field(
     ui: &Ui,
-    store: &Store,
-    get: impl Fn(&AppSettings) -> String,
-    set: impl Fn(&mut AppSettings, String) + Clone + 'static,
+    dispatch: &Dispatch<Message>,
+    field: TextField,
 ) -> Result<(Stack, TextInput, naui::FilePicker)> {
     let row = ui.stack(Orientation::Horizontal)?;
     row.set_spacing(8.0);
     row.set_sizing(Sizing::fill_width());
-    let input = text_field(ui, store, get, set.clone(), "フォルダのパス")?;
+    let input = text_field(ui, dispatch, field, "フォルダのパス")?;
     let picker = ui.file_picker("選択…")?;
     picker.set_mode(FilePickerMode::Folder);
-    picker.on_select({
-        let store = store.clone();
-        let input = input.clone();
-        move |entries| {
-            let Some(path) = entries.first().and_then(|e| e.path()) else {
-                return;
-            };
-            let path = path.display().to_string();
-            // 入力欄の書き換えは通知されないので、設定もここで更新する
-            input.set_text(&path);
-            store.update(|s| set(s, path));
+    let dispatch = dispatch.clone();
+    picker.on_select(move |entries| {
+        if let Some(path) = entries.first().and_then(|entry| entry.path()) {
+            dispatch.send(Message::TextChanged(field, path.display().to_string()));
         }
     });
     row.append(&input);
@@ -160,7 +184,6 @@ pub(crate) fn folder_field(
     Ok((row, input, picker))
 }
 
-/// 数値の入力欄
 pub(crate) fn number_field(
     ui: &Ui,
     value: f64,
@@ -168,7 +191,6 @@ pub(crate) fn number_field(
     step: f64,
     decimals: u32,
 ) -> Result<naui::NumberInput> {
-    // 既定は整数なので、小数桁を決めてから値を入れる(先に入れると丸められる)
     let input = ui.number_input(0.0)?;
     input.set_decimals(decimals);
     input.set_step(step);
@@ -178,49 +200,17 @@ pub(crate) fn number_field(
     Ok(input)
 }
 
-/// 「接続を確認」のボタンと結果を page へ置く。check は押した時点の設定の写しを受け取り、
-/// 画面を止めないよう別のスレッドで呼ばれる
-pub(crate) fn check_section<F>(ui: &Ui, store: &Store, page: &Stack, description: &str, check: F) -> Result<()>
-where
-    F: Fn(&AppSettings) -> CheckOutcome + Send + Clone + 'static,
-{
+pub(crate) fn check_section(
+    ui: &Ui,
+    dispatch: &Dispatch<Message>,
+    page: &Stack,
+    description: &str,
+    target: CheckTarget,
+) -> Result<naui::Button> {
     page.append(&heading(ui, "接続の確認")?);
     page.append(&note(ui, description)?);
     let button = ui.button("接続を確認")?;
+    button.on_click(dispatch.to(move || Message::CheckConnection(target)));
     page.append(&button);
-    let result = ui.label("")?;
-    result.set_wrap(true);
-    result.set_selectable(true);
-    result.set_sizing(Sizing::fill_width());
-    page.append(&result);
-
-    button.on_click({
-        let ui = ui.clone();
-        let store = store.clone();
-        let button = button.clone();
-        move || {
-            button.set_enabled(false);
-            result.set_text("確認しています…");
-            result.set_color(TextColor::Secondary);
-            let sender = ui.tasks().channel({
-                let (button, result) = (button.clone(), result.clone());
-                move |outcome: CheckOutcome| {
-                    button.set_enabled(true);
-                    result.set_text(outcome.message());
-                    result.set_color(match outcome {
-                        CheckOutcome::Ok(_) => TextColor::Success,
-                        CheckOutcome::Warning(_) => TextColor::Warning,
-                        CheckOutcome::Failed(_) => TextColor::Danger,
-                    });
-                }
-            });
-            let settings = store.snapshot();
-            let check = check.clone();
-            std::thread::spawn(move || {
-                // 画面を閉じた後に届いた結果は捨てる
-                let _ = sender.send(check(&settings));
-            });
-        }
-    });
-    Ok(())
+    Ok(button)
 }
