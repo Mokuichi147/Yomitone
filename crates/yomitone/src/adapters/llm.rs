@@ -6,7 +6,7 @@ use serde::de::{self, DeserializeOwned};
 use serde::{Deserialize, Deserializer};
 use serde_json::{json, Value};
 
-use crate::adapters::http::{openai_error_message, send_with_retry, HttpFailure, OPENAI_RETRY};
+use crate::adapters::http::{openai_error_message, resolve_api_key, send_with_retry, HttpFailure, OPENAI_RETRY};
 use crate::adapters::py_repr::{gender_repr, list_repr};
 use crate::application::ports::{CharacterExtractor, EstimationError, ExtractionError, SpeakerEstimator, SpeakerGuess};
 use crate::domain::character::{Character, Gender};
@@ -84,8 +84,7 @@ pub fn parse_json<T: DeserializeOwned>(data: &str) -> Result<T, serde_json::Erro
     })
 }
 
-/// LM Studio などキーを確かめないサーバー向けの、ダミーの API キー
-const AUTHORIZATION: &str = "Bearer lm-studio";
+pub const API_KEY_ENV: &str = "OPENAI_API_KEY";
 
 enum ChatError {
     ContextTooLong(String),
@@ -97,6 +96,7 @@ pub struct OpenAiChatModel {
     agent: ureq::Agent,
     base_url: String,
     model: String,
+    authorization: Option<String>,
 }
 
 impl OpenAiChatModel {
@@ -107,7 +107,23 @@ impl OpenAiChatModel {
             .timeout_read(Duration::from_secs(600))
             .timeout_write(Duration::from_secs(600))
             .build();
-        Self { agent, base_url: format!("http://{host}:{port}/v1"), model: model.to_string() }
+        Self { agent, base_url: format!("http://{host}:{port}/v1"), model: model.to_string(), authorization: None }
+            .with_api_key(None)
+    }
+
+    /// 指定したキー、環境変数 OPENAI_API_KEY の順に使う。どちらもなければ認証しない
+    pub fn with_api_key(mut self, api_key: Option<&str>) -> Self {
+        let environment = std::env::var(API_KEY_ENV).ok();
+        self.authorization = resolve_api_key(api_key, environment.as_deref()).map(|key| format!("Bearer {key}"));
+        self
+    }
+
+    fn request(&self, method: &str, url: &str) -> ureq::Request {
+        let request = self.agent.request(method, url);
+        match &self.authorization {
+            Some(authorization) => request.set("Authorization", authorization),
+            None => request,
+        }
     }
 
     /// 接続先の URL (http://<ホスト>:<ポート>/v1)
@@ -118,9 +134,8 @@ impl OpenAiChatModel {
     /// サーバーで使えるモデルの名前 (GET /v1/models)
     pub fn list_models(&self) -> Result<Vec<String>, String> {
         let url = format!("{}/models", self.base_url);
-        let response =
-            send_with_retry(&OPENAI_RETRY, |_| self.agent.get(&url).set("Authorization", AUTHORIZATION), None)
-                .map_err(|failure| openai_error_message(&failure))?;
+        let response = send_with_retry(&OPENAI_RETRY, |_| self.request("GET", &url), None)
+            .map_err(|failure| openai_error_message(&failure))?;
         let response: Value = response.into_json().map_err(|e| format!("モデルの一覧を読めませんでした: {e}"))?;
         let models = response
             .get("data")
@@ -142,16 +157,15 @@ impl OpenAiChatModel {
         });
         let url = format!("{}/chat/completions", self.base_url);
         let response =
-            send_with_retry(&OPENAI_RETRY, |_| self.agent.post(&url).set("Authorization", AUTHORIZATION), Some(&body))
-                .map_err(|failure| {
-                    let message = openai_error_message(&failure);
-                    match failure {
-                        HttpFailure::Status { status: 400, .. } if message.to_lowercase().contains("context") => {
-                            ChatError::ContextTooLong(message)
-                        }
-                        _ => ChatError::Fatal(message),
+            send_with_retry(&OPENAI_RETRY, |_| self.request("POST", &url), Some(&body)).map_err(|failure| {
+                let message = openai_error_message(&failure);
+                match failure {
+                    HttpFailure::Status { status: 400, .. } if message.to_lowercase().contains("context") => {
+                        ChatError::ContextTooLong(message)
                     }
-                })?;
+                    _ => ChatError::Fatal(message),
+                }
+            })?;
         let response: Value =
             response.into_json().map_err(|e| ChatError::Fatal(format!("LLMサーバーの応答を読めませんでした: {e}")))?;
         let message = response
@@ -271,6 +285,15 @@ impl SpeakerEstimator for OpenAiChatModel {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn api_key_is_optional_and_explicit_takes_precedence() {
+        assert_eq!(resolve_api_key(Some(" explicit "), Some("environment")).as_deref(), Some("explicit"));
+        assert_eq!(resolve_api_key(None, Some(" environment ")).as_deref(), Some("environment"));
+        assert_eq!(resolve_api_key(Some(" \t"), Some("environment")).as_deref(), Some("environment"));
+        assert_eq!(resolve_api_key(None, None), None);
+        assert_eq!(resolve_api_key(Some(" "), Some(" \n")), None);
+    }
 
     #[test]
     fn schema_repr_and_json_describe_same_schema() {

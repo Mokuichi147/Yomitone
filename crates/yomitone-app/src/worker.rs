@@ -60,7 +60,6 @@ pub fn describe_setup_error(error: &SetupError, tts: TtsBackendSetting) -> Strin
         SetupError::NoServerVoices => format!("{error}。「{page}」の使用する音声か言語を確認してください"),
         SetupError::VoicesRequired => format!("「{page}」で使用する音声を指定してください"),
         SetupError::Assigner(_) => format!("{error}。「{page}」の使用する音声に含まれる音声を指定してください"),
-        SetupError::Jev(_) => format!("{error}。「{}」で API キーを入力してください", SpeakerBackend::Jev.page_title()),
         _ => error.to_string(),
     }
 }

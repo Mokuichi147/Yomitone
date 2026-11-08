@@ -61,6 +61,9 @@ pub struct Args {
     /// LLMのモデル名
     #[arg(long, default_value = "qwen3.8-flash-next-iq3_s")]
     pub model: String,
+    /// LLMサーバーのAPIキー(未指定時は OPENAI_API_KEY。認証不要なら省略可)
+    #[arg(long)]
+    pub llm_api_key: Option<String>,
     /// 話者推測に使うバックエンド
     #[arg(long, value_enum, default_value = "llm")]
     pub speaker_backend: SpeakerBackend,
@@ -70,7 +73,7 @@ pub struct Args {
     /// Jev互換APIのURL(未指定時は TYPESAFE_BASE_URL または https://api.typesafe.ai)
     #[arg(long)]
     pub jev_base_url: Option<String>,
-    /// Jev互換APIのキー(未指定時は TYPESAFE_API_KEY)
+    /// Jev互換APIのキー(未指定時は TYPESAFE_API_KEY。認証不要なら省略可)
     #[arg(long)]
     pub jev_api_key: Option<String>,
     /// 音声ファイルの出力先ディレクトリ(指定時のみ音声合成を行う)
@@ -85,7 +88,7 @@ pub struct Args {
     /// OpenAI互換APIで使うモデル名
     #[arg(long, default_value = "tts-1")]
     pub tts_model: String,
-    /// OpenAI互換APIのキー(未指定時は OPENAI_API_KEY)
+    /// OpenAI互換APIのキー(未指定時は OPENAI_API_KEY。認証不要なら省略可)
     #[arg(long)]
     pub tts_api_key: Option<String>,
     /// Wyomingで音声一覧を絞り込む言語(空文字で絞り込まない)

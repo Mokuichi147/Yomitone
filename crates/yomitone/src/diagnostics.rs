@@ -45,7 +45,8 @@ fn check_model(model: &str, models: &[String]) -> CheckOutcome {
 
 /// LLM サーバーにつながり、モデルが一覧にあるかを確かめる
 pub fn check_llm(options: &LlmOptions) -> CheckOutcome {
-    let model = OpenAiChatModel::new(&options.host, &options.port, &options.model);
+    let model =
+        OpenAiChatModel::new(&options.host, &options.port, &options.model).with_api_key(options.api_key.as_deref());
     match model.list_models() {
         Ok(models) => check_model(&options.model, &models),
         Err(error) => CheckOutcome::Failed(format!("LLMサーバー({})に接続できませんでした: {error}", model.base_url())),

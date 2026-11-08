@@ -3,7 +3,7 @@ use std::time::Duration;
 use serde::Deserialize;
 use serde_json::{json, Map, Value};
 
-use crate::adapters::http::{send_with_retry, HttpFailure, RetryPolicy};
+use crate::adapters::http::{resolve_api_key, send_with_retry, HttpFailure, RetryPolicy};
 use crate::application::ports::{EstimationError, SpeakerEstimator, SpeakerGuess};
 use crate::domain::character::Character;
 use crate::domain::novel::Sentence;
@@ -109,16 +109,16 @@ struct ChoiceAnswer {
 /// Jev(TypeSafe System One API)互換モデルで話者を判定する
 pub struct JevSpeakerEstimator {
     agent: ureq::Agent,
-    api_key: String,
+    api_key: Option<String>,
     base_url: String,
     model: String,
 }
 
 impl JevSpeakerEstimator {
-    /// 指定がない項目は環境変数、既定値の順に使う。API キーがない場合はエラー
+    /// 指定がない項目は環境変数、既定値の順に使う。API キーは省略できる
     pub fn new(api_key: Option<String>, model: Option<String>, base_url: Option<String>) -> Result<Self, String> {
-        let api_key = resolve(api_key, API_KEY_ENV)
-            .ok_or_else(|| format!("Jev互換APIのキーが指定されていません(環境変数 {API_KEY_ENV} もありません)"))?;
+        let environment = std::env::var(API_KEY_ENV).ok();
+        let api_key = resolve_api_key(api_key.as_deref(), environment.as_deref());
         let base_url = resolve(base_url, BASE_URL_ENV).unwrap_or_else(|| DEFAULT_BASE_URL.to_string());
         let model = resolve(model, DEFAULT_MODEL_ENV).unwrap_or_else(|| DEFAULT_MODEL.to_string());
         let agent =
@@ -178,14 +178,14 @@ impl JevSpeakerEstimator {
     fn request(&self, method: &'static str, path: &str) -> impl Fn(u32) -> ureq::Request + '_ {
         let url = format!("{}{path}", self.base_url);
         let user_agent = format!("yomitone/{}", env!("CARGO_PKG_VERSION"));
-        let authorization = format!("Bearer {}", self.api_key);
+        let authorization = self.api_key.as_ref().map(|key| format!("Bearer {key}"));
         move |attempt| {
-            let request = self
-                .agent
-                .request(method, &url)
-                .set("Authorization", &authorization)
-                .set("Accept", "application/json")
-                .set("User-Agent", &user_agent);
+            let request =
+                self.agent.request(method, &url).set("Accept", "application/json").set("User-Agent", &user_agent);
+            let request = match &authorization {
+                Some(authorization) => request.set("Authorization", authorization),
+                None => request,
+            };
             if attempt > 0 {
                 request.set("X-TypeSafe-Retry-Count", &attempt.to_string())
             } else {

@@ -1,5 +1,6 @@
 pub mod audio_convert;
 mod http;
+pub(crate) use http::resolve_api_key;
 pub mod jev;
 pub mod llm;
 pub mod openai_speech;

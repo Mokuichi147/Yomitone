@@ -4,6 +4,15 @@ use std::io::Read;
 use std::thread;
 use std::time::{Duration, Instant};
 
+/// 空白だけのキーは未指定とし、入力値、環境変数の順に使う。認証不要なら None
+pub(crate) fn resolve_api_key(explicit: Option<&str>, environment: Option<&str>) -> Option<String> {
+    fn non_empty(value: &str) -> Option<&str> {
+        let value = value.trim();
+        (!value.is_empty()).then_some(value)
+    }
+    explicit.and_then(non_empty).or_else(|| environment.and_then(non_empty)).map(str::to_string)
+}
+
 /// HTTP サーバーへの送信に失敗した理由
 #[derive(Debug)]
 pub enum HttpFailure {

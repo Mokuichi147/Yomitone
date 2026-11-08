@@ -7,6 +7,7 @@ use thiserror::Error;
 use crate::adapters::jev::JevSpeakerEstimator;
 use crate::adapters::llm::OpenAiChatModel;
 use crate::adapters::openai_speech::OpenAiSpeechClient;
+use crate::adapters::resolve_api_key;
 use crate::adapters::text_files::{list_text_files, read_novel};
 use crate::adapters::wav::WavDirectory;
 use crate::adapters::wyoming::WyomingClient;
@@ -33,15 +34,22 @@ pub struct LlmOptions {
     pub host: String,
     pub port: String,
     pub model: String,
+    /// 未指定時は環境変数 OPENAI_API_KEY。キー不要のサーバーでは省略できる
+    pub api_key: Option<String>,
 }
 
 impl Default for LlmOptions {
     fn default() -> Self {
-        Self { host: DEFAULT_LLM_HOST.into(), port: DEFAULT_LLM_PORT.into(), model: DEFAULT_LLM_MODEL.into() }
+        Self {
+            host: DEFAULT_LLM_HOST.into(),
+            port: DEFAULT_LLM_PORT.into(),
+            model: DEFAULT_LLM_MODEL.into(),
+            api_key: None,
+        }
     }
 }
 
-/// 話者推測に使う Jev 互換 API。指定がない項目は環境変数、既定値の順に使う
+/// 話者推測に使う Jev 互換 API。API キーは任意。指定がない項目は環境変数、既定値の順に使う
 #[derive(Debug, Clone, Default, PartialEq, Eq)]
 pub struct JevOptions {
     pub api_key: Option<String>,
@@ -171,7 +179,8 @@ pub fn prepare_output(directory: &Path, pause: f64, chapters: &[Chapter]) -> Res
 
 /// 登場人物の抽出と、LLM での話者の推測
 pub fn create_chat_models(options: &LlmOptions) -> (Box<dyn CharacterExtractor>, Box<dyn SpeakerEstimator>) {
-    let model = || OpenAiChatModel::new(&options.host, &options.port, &options.model);
+    let model =
+        || OpenAiChatModel::new(&options.host, &options.port, &options.model).with_api_key(options.api_key.as_deref());
     (Box::new(model()), Box::new(model()))
 }
 
@@ -190,12 +199,8 @@ pub fn create_tts(options: &TtsOptions) -> Result<(Box<dyn SpeechSynthesizer>, V
             .map_err(|error| SetupError::WyomingUnreachable { uri: url.to_string(), error })?;
         Box::new(client)
     } else {
-        let api_key = options
-            .api_key
-            .clone()
-            .filter(|k| !k.is_empty())
-            .or_else(|| std::env::var("OPENAI_API_KEY").ok())
-            .unwrap_or_else(|| "not-needed".into());
+        let environment = std::env::var("OPENAI_API_KEY").ok();
+        let api_key = resolve_api_key(options.api_key.as_deref(), environment.as_deref()).unwrap_or_default();
         Box::new(OpenAiSpeechClient::new(url, &options.model, &api_key, options.timeout))
     };
 

@@ -46,7 +46,7 @@ fn requests_match_python_version() {
     let target = Sentence::new("「う」");
     let following = [Sentence::new("後"), Sentence::new("「え」")];
 
-    let mut llm = OpenAiChatModel::new("127.0.0.1", &port, "test-model");
+    let mut llm = OpenAiChatModel::new("127.0.0.1", &port, "test-model").with_api_key(Some("lm-studio"));
     assert_eq!(llm.extract_characters(&novel, &[]).unwrap(), []);
     llm.extract_characters(&novel, &known).unwrap();
     assert_eq!(llm.estimate_speaker(&candidates, &previous, &target, &following).unwrap(), Some(SpeakerGuess::new(1)));

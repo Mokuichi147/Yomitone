@@ -3,6 +3,8 @@ mod support;
 use serde_json::json;
 use support::*;
 use yomitone::diagnostics::{check_jev, check_llm, check_tts, CheckOutcome, CHECK_TEXT};
+use yomitone::domain::character::Character;
+use yomitone::domain::novel::{Novel, Sentence};
 use yomitone::setup::{JevOptions, LlmOptions, SetupError, TtsBackend, TtsOptions};
 
 fn json_response(body: serde_json::Value) -> HttpResponse {
@@ -11,7 +13,7 @@ fn json_response(body: serde_json::Value) -> HttpResponse {
 
 fn llm_options(url: &str, model: &str) -> LlmOptions {
     let port = url.rsplit(':').next().unwrap().to_string();
-    LlmOptions { host: "127.0.0.1".into(), port, model: model.into() }
+    LlmOptions { host: "127.0.0.1".into(), port, model: model.into(), ..LlmOptions::default() }
 }
 
 fn describe(error: &SetupError) -> String {
@@ -36,6 +38,49 @@ fn llm_model_is_listed() {
     }
     let requests = requests.lock().unwrap();
     assert_eq!((requests[0].method.as_str(), requests[0].path.as_str()), ("GET", "/v1/models"));
+}
+
+#[test]
+fn llm_authenticates_model_check_extraction_and_speaker_estimation() {
+    let (url, requests) = http_server(|request| {
+        if request.header("authorization") != Some("Bearer llm-test-key") {
+            return HttpResponse {
+                status: 401,
+                content_type: "application/json",
+                body: br#"{"error": {"message": "invalid api key"}}"#.to_vec(),
+            };
+        }
+        if request.path == "/v1/models" {
+            return json_response(json!({"data": [{"id": "model-a"}]}));
+        }
+        let body = request.json();
+        let content = if body["response_format"]["json_schema"]["name"] == "Narrators" {
+            json!({"narrators": [{"name": "花子", "portrait": "明るい少女"}]})
+        } else {
+            json!({"narrator_index": 1})
+        };
+        json_response(json!({"choices": [{"message": {"content": content.to_string()}}]}))
+    });
+    let mut options = llm_options(&url, "model-a");
+    options.api_key = Some(" llm-test-key ".into());
+    assert!(matches!(check_llm(&options), CheckOutcome::Ok(_)));
+    let (mut extractor, mut estimator) = yomitone::setup::create_chat_models(&options);
+    let characters = extractor.extract_characters(&Novel::from_lines(["「こんにちは」"]), &[]).unwrap();
+    assert_eq!(characters.len(), 1);
+    let candidates = [Character::narrator(), characters[0].clone()];
+    assert_eq!(
+        estimator.estimate_speaker(&candidates, &[], &Sentence::new("「こんにちは」"), &[]).unwrap().unwrap().index,
+        1
+    );
+    options.api_key = Some("wrong".into());
+    assert!(failed(check_llm(&options)).contains("401"));
+    let requests = requests.lock().unwrap();
+    assert_eq!(requests.len(), 4);
+    assert!(requests[..3].iter().all(|r| r.header("authorization") == Some("Bearer llm-test-key")));
+    assert_eq!(
+        requests.iter().map(|r| r.path.as_str()).collect::<Vec<_>>(),
+        ["/v1/models", "/v1/chat/completions", "/v1/chat/completions", "/v1/models"]
+    );
 }
 
 #[test]

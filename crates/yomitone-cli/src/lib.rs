@@ -37,7 +37,6 @@ impl From<SetupError> for CliError {
             SetupError::NoServerVoices => format!("{error}。--tts-voices や --tts-language を確認してください"),
             SetupError::VoicesRequired => "利用する音声を --tts-voices で指定してください".to_string(),
             SetupError::Assigner(_) => format!("{error}。--tts-voices に含まれる音声を指定してください"),
-            SetupError::Jev(_) => format!("{error}。--jev-api-key で指定してください"),
             _ => error.to_string(),
         })
     }
@@ -72,7 +71,12 @@ impl Default for Factories {
 }
 
 pub fn llm_options(args: &Args) -> LlmOptions {
-    LlmOptions { host: args.host.clone(), port: args.port.clone(), model: args.model.clone() }
+    LlmOptions {
+        host: args.host.clone(),
+        port: args.port.clone(),
+        model: args.model.clone(),
+        api_key: args.llm_api_key.clone(),
+    }
 }
 
 pub fn jev_options(args: &Args) -> JevOptions {

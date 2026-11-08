@@ -31,7 +31,7 @@ impl OpenAiSpeechClient {
             agent,
             base_url: base_url.trim_end_matches('/').to_string(),
             model: model.to_string(),
-            api_key: api_key.to_string(),
+            api_key: api_key.trim().to_string(),
             max_audio_bytes: MAX_AUDIO_BYTES,
             header_allowance: WAV_HEADER_ALLOWANCE,
         }
@@ -75,16 +75,26 @@ impl SpeechSynthesizer for OpenAiSpeechClient {
         let url = format!("{}/audio/speech", self.base_url);
         let body = json!({"input": text, "model": self.model, "voice": voice, "response_format": "wav"});
         let authorization = format!("Bearer {}", self.api_key);
-        let response =
-            send_with_retry(&OPENAI_RETRY, |_| self.agent.post(&url).set("Authorization", &authorization), Some(&body))
-                .map_err(|failure| {
-                    let message = openai_error_message(&failure);
-                    match failure {
-                        HttpFailure::Status { status: 400 | 422, .. } => TtsError::Input(message),
-                        // 認証・接続・サーバー内部のエラーは続けても失敗するだけなので中断させる
-                        _ => TtsError::Fatal(message),
-                    }
-                })?;
+        let response = send_with_retry(
+            &OPENAI_RETRY,
+            |_| {
+                let request = self.agent.post(&url);
+                if self.api_key.is_empty() {
+                    request
+                } else {
+                    request.set("Authorization", &authorization)
+                }
+            },
+            Some(&body),
+        )
+        .map_err(|failure| {
+            let message = openai_error_message(&failure);
+            match failure {
+                HttpFailure::Status { status: 400 | 422, .. } => TtsError::Input(message),
+                // 認証・接続・サーバー内部のエラーは続けても失敗するだけなので中断させる
+                _ => TtsError::Fatal(message),
+            }
+        })?;
 
         // 巨大な応答でメモリを使い切らないよう、上限を超えた時点で読むのをやめる
         let limit = self.max_audio_bytes.saturating_add(self.header_allowance);

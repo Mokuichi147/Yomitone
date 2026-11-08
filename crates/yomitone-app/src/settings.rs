@@ -1,4 +1,4 @@
-//! 画面で入力する設定。API キー以外は次に起動したときのために保存する
+//! 画面で入力する設定。API キーは OS の認証ストアへ、それ以外は設定ファイルへ保存する
 
 use std::fs;
 use std::io;
@@ -130,6 +130,9 @@ pub struct AppSettings {
     pub llm_host: String,
     pub llm_port: String,
     pub llm_model: String,
+    /// 平文でファイルに残さないよう保存しない
+    #[serde(skip)]
+    pub llm_api_key: String,
 
     /// 話者推測に使うもの
     pub speaker_backend: SpeakerBackend,
@@ -155,6 +158,7 @@ impl Default for AppSettings {
             llm_host: llm.host,
             llm_port: llm.port,
             llm_model: llm.model,
+            llm_api_key: String::new(),
             speaker_backend: SpeakerBackend::default(),
             jev_model: String::new(),
             jev_base_url: String::new(),
@@ -178,6 +182,7 @@ impl AppSettings {
             host: optional(&self.llm_host).unwrap_or(default.host),
             port: optional(&self.llm_port).unwrap_or(default.port),
             model: optional(&self.llm_model).unwrap_or(default.model),
+            api_key: optional(&self.llm_api_key),
         }
     }
 

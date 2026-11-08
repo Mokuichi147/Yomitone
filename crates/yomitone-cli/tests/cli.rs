@@ -35,6 +35,85 @@ fn parser_defaults() {
         (args.host.as_str(), args.port.as_str(), args.model.as_str()),
         ("localhost", "1234", "qwen3.8-flash-next-iq3_s")
     );
+    assert_eq!(llm_options(&args).api_key, None);
+}
+
+#[test]
+fn parser_passes_llm_api_key_to_options() {
+    let args = parse(&["--llm-api-key", "cli-test-key"]).unwrap();
+    assert_eq!(llm_options(&args).api_key.as_deref(), Some("cli-test-key"));
+}
+
+#[test]
+fn main_accepts_keyless_llm_jev_and_tts() {
+    let (url, requests) = http_server(|request| {
+        if request.header("authorization").is_some() {
+            return HttpResponse {
+                status: 401,
+                content_type: "application/json",
+                body: br#"{"error": {"message": "unexpected authorization"}}"#.to_vec(),
+            };
+        }
+        if request.path == "/v1/audio/speech" {
+            return HttpResponse { status: 200, content_type: "audio/wav", body: wav_bytes(24000, 24) };
+        }
+        let body = if request.path == "/v1/systemone" {
+            json!({"model": "test", "usage": {}, "answers": {"speaker": {
+                "type": "choice", "choice": "花子", "confidence": 0.9, "probabilities": {"花子": 1.0}
+            }}})
+        } else {
+            let content = json!({"narrators": [{"name": "花子", "portrait": "明るい少女"}]}).to_string();
+            json!({"choices": [{"message": {"content": content}}]})
+        };
+        HttpResponse { status: 200, content_type: "application/json", body: body.to_string().into_bytes() }
+    });
+    let dir = tempfile::tempdir().unwrap();
+    let input = dir.path().join("input");
+    let output = dir.path().join("output");
+    fs::create_dir(&input).unwrap();
+    fs::write(input.join("1.txt"), "地の文\n「こんにちは」\n").unwrap();
+    let port = url.rsplit(':').next().unwrap();
+    let result = Command::new(env!("CARGO_BIN_EXE_yomitone"))
+        .env_remove("OPENAI_API_KEY")
+        .env_remove("TYPESAFE_API_KEY")
+        .args([
+            "--host",
+            "127.0.0.1",
+            "--port",
+            port,
+            "--model",
+            "test",
+            "--speaker-backend",
+            "jev",
+            "--jev-base-url",
+            &url,
+            "--jev-model",
+            "test",
+            "--tts-output",
+            output.to_str().unwrap(),
+            "--tts-url",
+            &format!("{url}/v1"),
+            "--tts-voices",
+            "n,a",
+            "--tts-pause",
+            "0",
+            input.to_str().unwrap(),
+        ])
+        .output()
+        .unwrap();
+    assert!(
+        result.status.success(),
+        "{}\n{}",
+        String::from_utf8_lossy(&result.stdout),
+        String::from_utf8_lossy(&result.stderr)
+    );
+    assert!(output.join("1.wav").exists());
+    let requests = requests.lock().unwrap();
+    assert_eq!(requests.len(), 4);
+    assert!(requests.iter().all(|request| request.header("authorization").is_none()));
+    assert!(requests.iter().any(|request| request.path == "/v1/chat/completions"));
+    assert!(requests.iter().any(|request| request.path == "/v1/systemone"));
+    assert_eq!(requests.iter().filter(|request| request.path == "/v1/audio/speech").count(), 2);
 }
 
 #[test]

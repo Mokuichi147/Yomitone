@@ -13,6 +13,13 @@ use yomitone_app::worker::{run, Event, Outcome};
 /// 「名前:セリフ」の行をその登場人物のセリフとみなす LLM サーバー
 fn chat_server() -> String {
     let (url, _) = http_server(|request| {
+        if request.header("authorization") != Some("Bearer worker-test-key") {
+            return HttpResponse {
+                status: 401,
+                content_type: "application/json",
+                body: br#"{"error": {"message": "invalid api key"}}"#.to_vec(),
+            };
+        }
         let body = request.json();
         let content = if body["response_format"]["json_schema"]["name"] == "Narrators" {
             json!({"narrators": [{"name": "花子", "portrait": "", "gender": "女性"}, {"name": "太郎", "portrait": ""}]})
@@ -72,6 +79,7 @@ impl Workspace {
             output_folder: self.dir.path().join("out").display().to_string(),
             llm_host: "127.0.0.1".into(),
             llm_port: port,
+            llm_api_key: "worker-test-key".into(),
             openai_tts: TtsServerSettings { pause: 0.0, ..TtsServerSettings::default() },
             ..AppSettings::default()
         }
@@ -162,19 +170,8 @@ fn reports_setup_errors_with_where_to_fix() {
             AppSettings { export_audio: true, ..workspace.settings("http://127.0.0.1:1") },
             "「TTS（OpenAI互換API）」で使用する音声",
         ),
-        (
-            AppSettings {
-                speaker_backend: SpeakerBackend::Jev,
-                jev_api_key: String::new(),
-                ..workspace.settings("http://127.0.0.1:1")
-            },
-            "「Jev」で API キー",
-        ),
     ];
     for (settings, message) in cases {
-        if settings.speaker_backend == SpeakerBackend::Jev && std::env::var("TYPESAFE_API_KEY").is_ok() {
-            continue;
-        }
         match outcome(&collect(settings, CancelFlag::new())) {
             Outcome::Failed(error) => assert!(error.contains(message), "{error}"),
             other => panic!("{other:?}"),
@@ -196,6 +193,7 @@ fn settings_are_saved_without_api_keys() {
     let saved = AppSettings {
         input_folder: "/novel".into(),
         speaker_backend: SpeakerBackend::Jev,
+        llm_api_key: "secret-llm".into(),
         jev_api_key: "secret-jev".into(),
         openai_tts: TtsServerSettings {
             api_key: "secret-tts".into(),
@@ -207,8 +205,9 @@ fn settings_are_saved_without_api_keys() {
     settings::save(&path, &saved).unwrap();
     let text = fs::read_to_string(&path).unwrap();
     assert!(!text.contains("secret"), "{text}");
+    assert!(!text.contains("llm_api_key"), "{text}");
     let loaded = settings::load(&path);
-    let mut expected = AppSettings { jev_api_key: String::new(), ..saved };
+    let mut expected = AppSettings { llm_api_key: String::new(), jev_api_key: String::new(), ..saved };
     expected.openai_tts.api_key = String::new();
     assert_eq!(loaded, expected);
     // 項目が足りない古い設定や壊れた設定でも起動できる
