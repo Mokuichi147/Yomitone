@@ -1,149 +1,107 @@
 # Yomitone
 
-ライトノベルなどの小説テキストを、登場人物ごとに声を変えて読み上げるためのツールです。
+小説テキストを章ごとに読み込み、登場人物とセリフの話者を推測して読み上げるツールです。音声合成を有効にすると、章ごとの WAV ファイルを書き出します。
 
-1. OpenAI API 互換の LLM サーバーで、小説から登場人物(名前・別名・性別・特徴)を抽出します。
-2. 「」で囲まれたセリフごとに、誰の発言かを推測します。
-3. 登場人物ごとに音声を割り当てて音声合成し、章ごとに WAV ファイルを書き出します(任意)。
+## はじめに
 
-## 必要なもの
+利用には、JSON Schema による構造化出力に対応した OpenAI API 互換の LLM サーバーが必要です。人物抽出と、LLM を使った話者推測に利用します。Jev を話者推測に使う場合も、人物抽出には LLM サーバーが必要です。
 
-- Rust 1.82 以上
-- デスクトップアプリを Linux でビルドする場合: GTK4 と libadwaita の開発用ライブラリ(Ubuntu では `sudo apt install libgtk-4-dev libadwaita-1-dev`)
-- OpenAI API 互換の LLM サーバー(JSON Schema による構造化出力に対応したモデル)
-- 音声を書き出す場合: OpenAI 互換の `/v1/audio/speech` または Wyoming プロトコルに対応した TTS サーバー
+音声を書き出す場合は、OpenAI 互換の `/v1/audio/speech` または Wyoming に対応した TTS サーバーも必要です。ローカルサーバーなど認証が不要な場合、API キーは指定せずに使えます。
+
+### CLI をインストールする
+
+Rust 1.88 以上を用意し、リポジトリのルートで実行します。
 
 ```bash
 cargo install --path crates/yomitone-cli
+yomitone --help
 ```
 
-`yomitone` コマンドが使えるようになります。インストールせずに `cargo run --release -p yomitone-cli -- <オプション> data/` でも実行できます。
-
-デスクトップアプリは次のコマンドで起動します。
+### デスクトップアプリを起動する
 
 ```bash
 cargo run --release -p yomitone-app
 ```
 
+Linux でアプリをビルドする場合は GTK4 と libadwaita の開発用ライブラリが必要です。Ubuntu では次のコマンドでインストールできます。
+
+```bash
+sudo apt install libgtk-4-dev libadwaita-1-dev
+```
+
 ## 入力ファイル
 
-章ごとに分けた UTF-8 の `.txt` ファイルを1つのフォルダに置きます。
+章ごとに分けた UTF-8 の `.txt` ファイルを、1つのフォルダに置いてください。
 
-- ファイル名の自然順に処理し、登場人物の一覧と音声の割り当ては後のファイルに引き継ぎます。
-- 1行を1つの文として扱い、行全体が `「……」` で囲まれた行だけを話者推測の対象にします。それ以外の行はナレーターが読みます。
+- ファイル名の自然順に処理します。登場人物と音声の割り当ては章をまたいで引き継ぎます。
+- 1行を1文として扱います。行全体が `「……」` で囲まれた文は話者を推測し、それ以外はナレーターが読みます。
 
 ## デスクトップアプリ
 
-[naui 0.16.x](https://github.com/mokuichi147/naui) で各 OS のネイティブ UI(macOS は AppKit、Windows は WinUI 3、Linux は GTK4)を使います。画面の状態をモデルにまとめ、UI 操作をメッセージとして更新・描画する MVU 構成です。左のサイドバーで画面を切り替え、コマンドのオプションと同じ項目をすべて画面から設定できます。
+「読み上げ」で入力フォルダや話者推測、音声出力を設定して開始します。「結果」では登場人物と音声の割り当てを確認できます。接続先や音声は左側の「設定」から変更できます。
 
-| サイドバー | 内容 |
-| --- | --- |
-| 読み上げ | 入力フォルダと出力フォルダ、話者推測(LLM / Jev)と TTS(OpenAI 互換 API / Wyoming)を選んで開始・中止する。進捗と経過を表示する |
-| 結果 | 登場人物の一覧と、音声の割り当て |
-| 設定 › LLM | 登場人物の抽出と話者推測に使う LLM サーバーとAPIキー(`--host` / `--port` / `--model` / `--llm-api-key`) |
-| 設定 › Jev | 話者推測に使う Jev 互換 API(`--jev-model` / `--jev-base-url` / `--jev-api-key`) |
-| 設定 › TTS（OpenAI互換API） | URL・モデル名・API キー・タイムアウト、使用する音声とナレーター・性別ごとの音声、1回の最大文字数・行間の無音 |
-| 設定 › TTS（Wyoming） | URL・言語・タイムアウト、使用する音声とナレーター・性別ごとの音声(サーバーから一覧を取得できる)、1回の最大文字数・行間の無音 |
+設定は自動保存され、次回起動時に引き継がれます。API キーは設定ファイルに保存されません。「保存」を押すと、macOS ではキーチェーン、Windows では資格情報マネージャーに保存します。Linux では環境変数を使うか、起動ごとに入力してください。
 
-- 設定の各画面の「接続を確認」で、設定した内容で使えるかを確かめられます。LLM と Jev はモデル一覧を取得してモデル名があるかを、TTS は設定した音声で短い文を実際に合成できるかを確かめます。
-- 音声名はサーバーごとに違うため、声の割り当てと合成の設定は TTS ごとに別々に保存します。
-- 設定は変えるたびに保存し、次に起動したときに引き継ぎます(macOS は `~/Library/Application Support/Yomitone/settings.json`)。
-- LLM・Jev・TTS の API キーはすべて任意です。認証が必要なサーバーだけ指定してください。入力値、環境変数(LLM・TTS は `OPENAI_API_KEY`、Jev は `TYPESAFE_API_KEY`)の順に使い、どちらもなければ認証ヘッダーを送信しません。
-- デスクトップアプリでは API キー欄の「保存」を押すと、macOS はキーチェーン、Windows は資格情報マネージャーに保存し、次回起動時に読み込みます。LLM・Jev・TTS のキーはそれぞれ個別に管理します。「削除」で保存済みのキーと入力欄を消せます（環境変数は引き続き使われます）。キーを編集しただけでは保存済みの値は変わりません。
-- macOS の起動時の読み込みでは認証画面を表示しません。アクセス許可が必要な場合は、API キー欄の「読み込む」を押してください。開発中にアプリを再ビルドすると、macOS がアクセス許可を再確認することがあります。
-- macOS は下記の署名付きビルドを使ってください。旧ビルドで保存したキーは、最初に読み込めたときに新しい署名の項目へ引き継ぎます。旧項目の読み込みでは移行時の一度だけ従来の認証が必要になる場合があります。
-- API キーは設定ファイルには保存しません。保存しない場合や macOS・Windows 以外では、起動ごとに入力するか環境変数を設定してください。CLI は引き続き引数または環境変数からキーを受け取ります。
+保存したキーを読み込めない場合は、API キー欄の「読み込む」を押してください。環境変数は LLM と OpenAI 互換 TTS で `OPENAI_API_KEY`、Jev で `TYPESAFE_API_KEY` を使います。
 
-## 使い方
+## CLI の使い方
 
-登場人物と話者を推測し、結果を標準出力に表示します。
+入力フォルダの登場人物と話者を推測し、結果を表示します。
 
 ```bash
-yomitone --host localhost --port 1234 --model qwen3.8-flash-next-iq3_s data/
+yomitone --host localhost --port 1234 --model qwen3.8-flash-next-iq3_s novels/
 ```
 
-`--tts-output` を指定すると、音声合成して `<入力ファイル名>.wav` を書き出します。
+Jev で話者を推測する場合は `--speaker-backend jev` を指定します。
 
 ```bash
-yomitone --tts-output out/ --tts-backend openai --tts-url http://localhost:8880/v1 --tts-voices voice1,voice2,voice3 data/
+yomitone --speaker-backend jev novels/
+```
+
+音声を書き出す場合は `--tts-output` と TTS サーバーの設定を指定します。
+
+```bash
+yomitone --tts-output out/ --tts-backend openai \
+  --tts-url http://localhost:8880/v1 --tts-voices voice1,voice2 novels/
 ```
 
 ```bash
-yomitone --tts-output out/ --tts-backend wyoming --tts-url tcp://localhost:10200 data/
+yomitone --tts-output out/ --tts-backend wyoming \
+  --tts-url tcp://localhost:10200 novels/
 ```
 
-- OpenAI 互換 API には音声一覧を取得する標準 API がないため、`--tts-voices` が必須です。
-- Wyoming で `--tts-voices` を省略すると、サーバーの音声のうち `--tts-language` に一致するものを使います。複数話者の音声は `音声名:話者名` の形式で指定します。
+OpenAI 互換 TTS では音声一覧を取得できないため、`--tts-voices` に音声名を指定してください。Wyoming では省略すると、`--tts-language` に合う音声をサーバーから取得します。
 
-話者推測を Jev(TypeSafe System One API)互換モデルで行う場合は `--speaker-backend jev` を指定します(登場人物の抽出には引き続き LLM サーバーを使います)。
-
-```bash
-yomitone --speaker-backend jev data/
-```
-
-Jev サーバーが認証を必要とする場合は、`--jev-api-key` または環境変数 `TYPESAFE_API_KEY` でキーを指定してください。
+API キーは `--llm-api-key`、`--jev-api-key`、`--tts-api-key` または環境変数で指定できます。コマンドラインで指定したキーを優先します。認証不要のサーバーでは省略してください。
 
 ### 音声の割り当て
 
-- ナレーターには `--tts-narrator-voice`(省略時は音声一覧の先頭)を使います。
-- 登場人物には、ナレーター以外で使用数が最も少ない音声を割り当て、以降のファイルでも同じ音声を使います。
-- `--tts-male-voices` / `--tts-female-voices` を指定すると、性別が分かっている登場人物にはその中から優先して割り当てます。
+- `--tts-narrator-voice` を省略すると、音声一覧の先頭をナレーターに使います。
+- 登場人物にはナレーター以外の音声を使用数が均等になるように割り当てます。同じ人物には後の章でも同じ音声を使います。
+- `--tts-male-voices` と `--tts-female-voices` を指定すると、該当する性別の人物にはその音声を優先します。
 
 ## オプション
 
 | オプション | 既定値 | 説明 |
 | --- | --- | --- |
-| `--host` / `--port` | `localhost` / `1234` | LLM サーバー(`http://<host>:<port>/v1`) |
+| `--host` / `--port` | `localhost` / `1234` | LLM サーバーのホストとポート |
 | `--model` | `qwen3.8-flash-next-iq3_s` | LLM のモデル名 |
-| `--llm-api-key` | `OPENAI_API_KEY` | LLM サーバーのAPIキー。認証不要なら省略可 |
-| `--speaker-backend` | `llm` | 話者推測のバックエンド(`llm` / `jev`) |
-| `--jev-model` | `TYPESAFE_DEFAULT_MODEL` または `jev-latest` | Jev 互換モデル名 |
-| `--jev-base-url` | `TYPESAFE_BASE_URL` または `https://api.typesafe.ai` | Jev 互換 API の URL |
-| `--jev-api-key` | `TYPESAFE_API_KEY` | Jev 互換 API のキー。認証不要なら省略可 |
-| `--tts-output` | なし | 音声の出力先フォルダ(指定時のみ音声合成) |
-| `--tts-backend` | `openai` | TTS のプロトコル(`openai` / `wyoming`) |
-| `--tts-url` | `http://localhost:8880/v1` / `tcp://localhost:10200` | TTS サーバーの URL |
-| `--tts-model` | `tts-1` | OpenAI 互換 API のモデル名 |
-| `--tts-api-key` | `OPENAI_API_KEY` | OpenAI 互換 API のキー。認証不要なら省略可 |
-| `--tts-language` | `ja` | Wyoming で音声を絞り込む言語(空文字で絞り込まない) |
-| `--tts-voices` | Wyoming: サーバーの一覧 | 使用する音声(カンマ区切り) |
+| `--llm-api-key` | `OPENAI_API_KEY` | LLM の API キー |
+| `--speaker-backend` | `llm` | 話者推測に使うバックエンド (`llm` / `jev`) |
+| `--jev-model` | `TYPESAFE_DEFAULT_MODEL` または `jev-latest` | Jev のモデル名 |
+| `--jev-base-url` | `TYPESAFE_BASE_URL` または `https://api.typesafe.ai` | Jev API の URL |
+| `--jev-api-key` | `TYPESAFE_API_KEY` | Jev の API キー |
+| `--tts-output` | なし | 音声の出力先。指定したとき音声合成を行います |
+| `--tts-backend` | `openai` | TTS の方式 (`openai` / `wyoming`) |
+| `--tts-url` | OpenAI: `http://localhost:8880/v1` / Wyoming: `tcp://localhost:10200` | TTS サーバーの URL |
+| `--tts-model` | `tts-1` | OpenAI 互換 TTS のモデル名 |
+| `--tts-api-key` | `OPENAI_API_KEY` | OpenAI 互換 TTS の API キー |
+| `--tts-language` | `ja` | Wyoming の音声を絞り込む言語。空欄で絞り込みません |
+| `--tts-voices` | Wyoming: サーバーの一覧 | 使用する音声名 (カンマ区切り) |
 | `--tts-narrator-voice` | 音声一覧の先頭 | ナレーターの音声 |
-| `--tts-male-voices` / `--tts-female-voices` | なし | 男性 / 女性に優先して使う音声(カンマ区切り) |
-| `--tts-pause` | `0.3` | 行間に入れる無音の秒数(最大 60) |
-| `--tts-max-chars` | `200` | 1回の合成の最大文字数。超える行は文末・読点・文字数の順で分割(0 で分割しない) |
+| `--tts-male-voices` / `--tts-female-voices` | なし | 性別ごとに優先する音声名 (カンマ区切り) |
+| `--tts-pause` | `0.3` | 行間に入れる無音の秒数 (最大 60 秒) |
+| `--tts-max-chars` | `200` | 1回の合成に送る最大文字数。`0` で分割しません |
 | `--tts-timeout` | `60` | TTS サーバーへのリクエストのタイムアウト秒数 |
 
-<details>
-<summary>音声合成の詳しい挙動</summary>
-
-- LLM や TTS サーバーでの処理を始める前に、入力ファイルを読み込めるか、出力先に書き込めるか、出力ファイル名が衝突しないか、指定した音声が一覧(Wyoming ではサーバー)にあるかを確認します。
-- 空行や `＊　＊　＊` のように読み上げる文字がない行は読み飛ばします。
-- 文の内容が原因で合成できなかった行(OpenAI 互換 API の 400/422、Wyoming のエラー応答)は除いて WAV を書き出し、最後に終了コード 1 で終了します。
-- その音声で一度も合成に成功していない場合や、5回続けて失敗した場合は、設定やサーバーの問題とみなして中断します。接続・認証・サーバー内部のエラーでも中断し、そのファイルの WAV は書き出しません。
-- 読み上げる文がないファイルでは WAV を書き出さず、以前の同名の WAV を削除します。
-- 章によって登場人物の正式名が揺れても、以前の正式名・別名と一致すれば同じ音声を使います。複数の人物が持つ別名は一致に使いません。
-
-</details>
-
-## 開発
-
-macOS では、同じコード署名証明書でアプリをビルドします。証明書が1つなら自動選択します。複数ある場合は `YOMITONE_SIGNING_IDENTITY` に証明書名かフィンガープリントを設定してください。
-
-```bash
-bash scripts/build-macos-app.sh
-open target/debug/Yomitone.app
-```
-
-`release` を引数に渡すとリリース版を作ります。通常の `cargo build` はアドホック署名に戻るため、キーチェーンのアクセス確認を安定させるには上記のスクリプトでビルドしてください。
-
-| クレート | 内容 |
-| --- | --- |
-| `crates/yomitone` | domain / application / adapters (コア機能) |
-| `crates/yomitone-cli` | コマンドライン引数から各層を組み立てて実行する |
-| `crates/yomitone-app` | naui 0.16.x の MVU 構成によるデスクトップアプリ |
-
-```bash
-cargo test
-```
-
-`crates/yomitone/tests/fixtures/python_requests.json` は、移植前の Python 版が LLM・Jev 互換 API へ送っていた要求本文です。Rust 版が同じプロンプトを送ることの確認に使っています。プロンプトを意図して変えた場合は、このファイルも合わせて更新してください。
+詳しい引数は `yomitone --help` でも確認できます。
