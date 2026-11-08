@@ -1,0 +1,31 @@
+{
+  "scored": 59,
+  "correct": 0,
+  "fallbacks": 59,
+  "fatal_cases": 0,
+  "elapsed_seconds": 91.716815917,
+  "successful_mean_seconds": null,
+  "successful_median_seconds": null,
+  "successful_p95_seconds": null,
+  "all_mean_seconds": 1.5543899872711864,
+  "confidence_thresholds": {
+    "0.5": {
+      "accepted": 0,
+      "correct": 0
+    },
+    "0.7": {
+      "accepted": 0,
+      "correct": 0
+    },
+    "0.9": {
+      "accepted": 0,
+      "correct": 0
+    }
+  },
+  "model": "clef-artemis",
+  "base_url": "http://192.168.11.51:11433",
+  "previous_count": 4,
+  "following_count": 0,
+  "characters_mode": "fixed",
+  "batch_size_errors": 59
+}

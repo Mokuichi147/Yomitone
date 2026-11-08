@@ -1,0 +1,8 @@
+{
+  "client_concurrency": 1,
+  "http_requests": 1,
+  "retries": 0,
+  "status": 500,
+  "seconds": 0.02535245900071459,
+  "body": "{\n    \"error\": {\n        \"message\": \"clef-artemis: input (649 tokens) is too large to process. increase the physical batch size (current batch size: 512)\",\n        \"type\": \"server_error\",\n        \"param\": null,\n        \"code\": \"500\"\n    }\n}"
+}

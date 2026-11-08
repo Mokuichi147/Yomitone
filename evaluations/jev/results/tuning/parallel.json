@@ -1,0 +1,4747 @@
+{
+  "started_unix_seconds": 1793727734.865153,
+  "base_url": "http://192.168.11.51:11433",
+  "model": "clef-artemis",
+  "history_mode": "gold",
+  "previous_count": 100,
+  "following_count": 0,
+  "unique_request_ids": true,
+  "server_before": {
+    "type": "decision",
+    "loaded_instances": [
+      {
+        "id": "clef-artemis",
+        "config": {
+          "context_length": 262144,
+          "eval_batch_size": 8192,
+          "physical_batch_size": 8192,
+          "parallel": 4,
+          "flash_attention": true,
+          "offload_kv_cache_to_gpu": true
+        }
+      }
+    ]
+  },
+  "batches": [
+    {
+      "client_concurrency": 1,
+      "observed_max_inflight": 1,
+      "requests": 35,
+      "retries": 0,
+      "valid": 35,
+      "correct": 34,
+      "wall_seconds": 22.0020272499969,
+      "valid_per_second": 1.5907625057597787,
+      "over_app_timeout": 0,
+      "mean_seconds": 0.6284396964563972,
+      "p50_seconds": 0.6106243749964051,
+      "p95_seconds": 0.8058725000009872,
+      "max_seconds": 0.8447766249955748,
+      "items": [
+        {
+          "id": "explicit-1",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.8784904260492054,
+          "usage": {
+            "input_tokens": 382,
+            "output_tokens": 0
+          },
+          "seconds": 0.5262449579968234
+        },
+        {
+          "id": "explicit-3",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.9188989719516315,
+          "usage": {
+            "input_tokens": 416,
+            "output_tokens": 0
+          },
+          "seconds": 0.566897707998578
+        },
+        {
+          "id": "explicit-5",
+          "expected": "高橋澪",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "高橋澪",
+          "confidence": 0.831511914475835,
+          "usage": {
+            "input_tokens": 456,
+            "output_tokens": 0
+          },
+          "seconds": 0.5935198749939445
+        },
+        {
+          "id": "explicit-7",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.9301586771612596,
+          "usage": {
+            "input_tokens": 490,
+            "output_tokens": 0
+          },
+          "seconds": 0.6064641670018318
+        },
+        {
+          "id": "alternating-1",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.8073229098780103,
+          "usage": {
+            "input_tokens": 396,
+            "output_tokens": 0
+          },
+          "seconds": 0.6438651670032414
+        },
+        {
+          "id": "alternating-2",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.9614004906188597,
+          "usage": {
+            "input_tokens": 417,
+            "output_tokens": 0
+          },
+          "seconds": 0.5764835420050076
+        },
+        {
+          "id": "alternating-3",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.826673538515712,
+          "usage": {
+            "input_tokens": 437,
+            "output_tokens": 0
+          },
+          "seconds": 0.5783729159957147
+        },
+        {
+          "id": "alternating-4",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.8832985028661895,
+          "usage": {
+            "input_tokens": 459,
+            "output_tokens": 0
+          },
+          "seconds": 0.6827127919968916
+        },
+        {
+          "id": "alternating-5",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.8832150238531442,
+          "usage": {
+            "input_tokens": 477,
+            "output_tokens": 0
+          },
+          "seconds": 0.6180756249959813
+        },
+        {
+          "id": "alternating-6",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.6882325378662216,
+          "usage": {
+            "input_tokens": 499,
+            "output_tokens": 0
+          },
+          "seconds": 0.6890736249988549
+        },
+        {
+          "id": "aliases-1",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.9065586574876319,
+          "usage": {
+            "input_tokens": 390,
+            "output_tokens": 0
+          },
+          "seconds": 0.5934249169949908
+        },
+        {
+          "id": "aliases-3",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.809100378544226,
+          "usage": {
+            "input_tokens": 426,
+            "output_tokens": 0
+          },
+          "seconds": 0.646686915999453
+        },
+        {
+          "id": "aliases-5",
+          "expected": "高橋澪",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "高橋澪",
+          "confidence": 0.9375697551588714,
+          "usage": {
+            "input_tokens": 468,
+            "output_tokens": 0
+          },
+          "seconds": 0.6050543329984066
+        },
+        {
+          "id": "aliases-7",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.9015298086684278,
+          "usage": {
+            "input_tokens": 501,
+            "output_tokens": 0
+          },
+          "seconds": 0.614586292002059
+        },
+        {
+          "id": "three_way-1",
+          "expected": "高橋澪",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "高橋澪",
+          "confidence": 0.9310671940957852,
+          "usage": {
+            "input_tokens": 393,
+            "output_tokens": 0
+          },
+          "seconds": 0.5717192079973756
+        },
+        {
+          "id": "three_way-2",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.9372305729088636,
+          "usage": {
+            "input_tokens": 413,
+            "output_tokens": 0
+          },
+          "seconds": 0.6381570829980774
+        },
+        {
+          "id": "three_way-4",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.8741867991599052,
+          "usage": {
+            "input_tokens": 448,
+            "output_tokens": 0
+          },
+          "seconds": 0.5777757499963627
+        },
+        {
+          "id": "three_way-6",
+          "expected": "高橋澪",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "高橋澪",
+          "confidence": 0.9388881056773029,
+          "usage": {
+            "input_tokens": 490,
+            "output_tokens": 0
+          },
+          "seconds": 0.6625986250001006
+        },
+        {
+          "id": "three_way-7",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.9538433788038095,
+          "usage": {
+            "input_tokens": 510,
+            "output_tokens": 0
+          },
+          "seconds": 0.6091244589988491
+        },
+        {
+          "id": "quoted_speech-1",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.7696123053573509,
+          "usage": {
+            "input_tokens": 393,
+            "output_tokens": 0
+          },
+          "seconds": 0.5729898339995998
+        },
+        {
+          "id": "quoted_speech-3",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.517115468701543,
+          "usage": {
+            "input_tokens": 439,
+            "output_tokens": 0
+          },
+          "seconds": 0.5766375000021071
+        },
+        {
+          "id": "quoted_speech-5",
+          "expected": "高橋澪",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "高橋澪",
+          "confidence": 0.9301757658894588,
+          "usage": {
+            "input_tokens": 481,
+            "output_tokens": 0
+          },
+          "seconds": 0.6704450830002315
+        },
+        {
+          "id": "unknown-1",
+          "expected": "ナレーター",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "ナレーター",
+          "confidence": 0.9220066047393246,
+          "usage": {
+            "input_tokens": 396,
+            "output_tokens": 0
+          },
+          "seconds": 0.5659727919992292
+        },
+        {
+          "id": "unknown-3",
+          "expected": "ナレーター",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "ナレーター",
+          "confidence": 0.42245937105475884,
+          "usage": {
+            "input_tokens": 438,
+            "output_tokens": 0
+          },
+          "seconds": 0.5694867499987595
+        },
+        {
+          "id": "post_attribution-1",
+          "expected": "高橋澪",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "高橋澪",
+          "confidence": 0.8434478268514477,
+          "usage": {
+            "input_tokens": 390,
+            "output_tokens": 0
+          },
+          "seconds": 0.6471301659985329
+        },
+        {
+          "id": "post_attribution-3",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": false,
+          "actual": "佐藤葵",
+          "confidence": 0.4202492365509552,
+          "usage": {
+            "input_tokens": 424,
+            "output_tokens": 0
+          },
+          "seconds": 0.5718690840003546
+        },
+        {
+          "id": "post_attribution-5",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.6683332581858608,
+          "usage": {
+            "input_tokens": 457,
+            "output_tokens": 0
+          },
+          "seconds": 0.6193869580019964
+        },
+        {
+          "id": "post_attribution-7",
+          "expected": "高橋澪",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "高橋澪",
+          "confidence": 0.9179153102583779,
+          "usage": {
+            "input_tokens": 487,
+            "output_tokens": 0
+          },
+          "seconds": 0.6944831669970881
+        },
+        {
+          "id": "style-1",
+          "expected": "ユイ",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "ユイ",
+          "confidence": 0.7244891166033742,
+          "usage": {
+            "input_tokens": 413,
+            "output_tokens": 0
+          },
+          "seconds": 0.5945250000004307
+        },
+        {
+          "id": "style-2",
+          "expected": "千代",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "千代",
+          "confidence": 0.8751955892572824,
+          "usage": {
+            "input_tokens": 439,
+            "output_tokens": 0
+          },
+          "seconds": 0.6465877090013237
+        },
+        {
+          "id": "style-3",
+          "expected": "白石先生",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "白石先生",
+          "confidence": 0.954895162623825,
+          "usage": {
+            "input_tokens": 463,
+            "output_tokens": 0
+          },
+          "seconds": 0.6106243749964051
+        },
+        {
+          "id": "style-4",
+          "expected": "ユイ",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "ユイ",
+          "confidence": 0.8806034005707951,
+          "usage": {
+            "input_tokens": 485,
+            "output_tokens": 0
+          },
+          "seconds": 0.6115000000063446
+        },
+        {
+          "id": "distractors-1",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.6334765657443567,
+          "usage": {
+            "input_tokens": 687,
+            "output_tokens": 0
+          },
+          "seconds": 0.7922638750023907
+        },
+        {
+          "id": "distractors-3",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.8209408103881549,
+          "usage": {
+            "input_tokens": 730,
+            "output_tokens": 0
+          },
+          "seconds": 0.8058725000009872
+        },
+        {
+          "id": "distractors-5",
+          "expected": "高橋澪",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "高橋澪",
+          "confidence": 0.8753708924267235,
+          "usage": {
+            "input_tokens": 778,
+            "output_tokens": 0
+          },
+          "seconds": 0.8447766249955748
+        }
+      ],
+      "workload": "short",
+      "round": 1
+    },
+    {
+      "client_concurrency": 2,
+      "observed_max_inflight": 2,
+      "requests": 35,
+      "retries": 0,
+      "valid": 35,
+      "correct": 34,
+      "wall_seconds": 20.13093708299857,
+      "valid_per_second": 1.7386175246436482,
+      "over_app_timeout": 0,
+      "mean_seconds": 1.1267278000571033,
+      "p50_seconds": 1.1111998339983984,
+      "p95_seconds": 1.5279764170045382,
+      "max_seconds": 1.5861672910032212,
+      "items": [
+        {
+          "id": "explicit-1",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.8884939886356727,
+          "usage": {
+            "input_tokens": 382,
+            "output_tokens": 0
+          },
+          "seconds": 0.5201985000021523
+        },
+        {
+          "id": "explicit-3",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.9363661202757046,
+          "usage": {
+            "input_tokens": 416,
+            "output_tokens": 0
+          },
+          "seconds": 1.0594028749983408
+        },
+        {
+          "id": "explicit-5",
+          "expected": "高橋澪",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "高橋澪",
+          "confidence": 0.8531016962848058,
+          "usage": {
+            "input_tokens": 456,
+            "output_tokens": 0
+          },
+          "seconds": 1.1211739999998827
+        },
+        {
+          "id": "explicit-7",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.9210755889763576,
+          "usage": {
+            "input_tokens": 490,
+            "output_tokens": 0
+          },
+          "seconds": 1.1544976669974858
+        },
+        {
+          "id": "alternating-1",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.8220511591156742,
+          "usage": {
+            "input_tokens": 396,
+            "output_tokens": 0
+          },
+          "seconds": 1.1380350420004106
+        },
+        {
+          "id": "alternating-2",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.9589539958775544,
+          "usage": {
+            "input_tokens": 417,
+            "output_tokens": 0
+          },
+          "seconds": 1.1050759170029778
+        },
+        {
+          "id": "alternating-3",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.8084069835344452,
+          "usage": {
+            "input_tokens": 437,
+            "output_tokens": 0
+          },
+          "seconds": 1.0827977919980185
+        },
+        {
+          "id": "alternating-4",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.8872786589750592,
+          "usage": {
+            "input_tokens": 459,
+            "output_tokens": 0
+          },
+          "seconds": 1.1111998339983984
+        },
+        {
+          "id": "alternating-5",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.8904375262786991,
+          "usage": {
+            "input_tokens": 477,
+            "output_tokens": 0
+          },
+          "seconds": 1.156710833995021
+        },
+        {
+          "id": "alternating-6",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.7059286355994233,
+          "usage": {
+            "input_tokens": 499,
+            "output_tokens": 0
+          },
+          "seconds": 1.1600798339932226
+        },
+        {
+          "id": "aliases-1",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.8931423909887676,
+          "usage": {
+            "input_tokens": 390,
+            "output_tokens": 0
+          },
+          "seconds": 1.1044347920033033
+        },
+        {
+          "id": "aliases-3",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.8642808974677472,
+          "usage": {
+            "input_tokens": 426,
+            "output_tokens": 0
+          },
+          "seconds": 1.067579292001028
+        },
+        {
+          "id": "aliases-5",
+          "expected": "高橋澪",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "高橋澪",
+          "confidence": 0.9412993060581151,
+          "usage": {
+            "input_tokens": 468,
+            "output_tokens": 0
+          },
+          "seconds": 1.1056239579993417
+        },
+        {
+          "id": "aliases-7",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.9089047303426289,
+          "usage": {
+            "input_tokens": 501,
+            "output_tokens": 0
+          },
+          "seconds": 1.150183959005517
+        },
+        {
+          "id": "three_way-1",
+          "expected": "高橋澪",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "高橋澪",
+          "confidence": 0.9303815904942231,
+          "usage": {
+            "input_tokens": 393,
+            "output_tokens": 0
+          },
+          "seconds": 1.1172284159983974
+        },
+        {
+          "id": "three_way-2",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.9333056215513662,
+          "usage": {
+            "input_tokens": 413,
+            "output_tokens": 0
+          },
+          "seconds": 1.0696177079953486
+        },
+        {
+          "id": "three_way-4",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.8826335114739604,
+          "usage": {
+            "input_tokens": 448,
+            "output_tokens": 0
+          },
+          "seconds": 1.0714259169981233
+        },
+        {
+          "id": "three_way-6",
+          "expected": "高橋澪",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "高橋澪",
+          "confidence": 0.940182621315925,
+          "usage": {
+            "input_tokens": 490,
+            "output_tokens": 0
+          },
+          "seconds": 1.1094751659984468
+        },
+        {
+          "id": "three_way-7",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.95360656784778,
+          "usage": {
+            "input_tokens": 510,
+            "output_tokens": 0
+          },
+          "seconds": 1.1440541249976377
+        },
+        {
+          "id": "quoted_speech-1",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.7799169776802116,
+          "usage": {
+            "input_tokens": 393,
+            "output_tokens": 0
+          },
+          "seconds": 1.105660583001736
+        },
+        {
+          "id": "quoted_speech-3",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.40961212162579513,
+          "usage": {
+            "input_tokens": 439,
+            "output_tokens": 0
+          },
+          "seconds": 1.070537042003707
+        },
+        {
+          "id": "quoted_speech-5",
+          "expected": "高橋澪",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "高橋澪",
+          "confidence": 0.9349376657325806,
+          "usage": {
+            "input_tokens": 481,
+            "output_tokens": 0
+          },
+          "seconds": 1.1135334169957787
+        },
+        {
+          "id": "unknown-1",
+          "expected": "ナレーター",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "ナレーター",
+          "confidence": 0.9115433087218402,
+          "usage": {
+            "input_tokens": 396,
+            "output_tokens": 0
+          },
+          "seconds": 1.1070480830021552
+        },
+        {
+          "id": "unknown-3",
+          "expected": "ナレーター",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "ナレーター",
+          "confidence": 0.41434334548391466,
+          "usage": {
+            "input_tokens": 438,
+            "output_tokens": 0
+          },
+          "seconds": 1.089746917001321
+        },
+        {
+          "id": "post_attribution-1",
+          "expected": "高橋澪",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "高橋澪",
+          "confidence": 0.8209919703258574,
+          "usage": {
+            "input_tokens": 390,
+            "output_tokens": 0
+          },
+          "seconds": 1.0923237079987302
+        },
+        {
+          "id": "post_attribution-3",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": false,
+          "actual": "佐藤葵",
+          "confidence": 0.41334686777458146,
+          "usage": {
+            "input_tokens": 424,
+            "output_tokens": 0
+          },
+          "seconds": 1.0742022920021554
+        },
+        {
+          "id": "post_attribution-5",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.6504904101694561,
+          "usage": {
+            "input_tokens": 457,
+            "output_tokens": 0
+          },
+          "seconds": 1.1114794579989393
+        },
+        {
+          "id": "post_attribution-7",
+          "expected": "高橋澪",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "高橋澪",
+          "confidence": 0.9166070072924092,
+          "usage": {
+            "input_tokens": 487,
+            "output_tokens": 0
+          },
+          "seconds": 1.1465004999990924
+        },
+        {
+          "id": "style-1",
+          "expected": "ユイ",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "ユイ",
+          "confidence": 0.7993238893293401,
+          "usage": {
+            "input_tokens": 413,
+            "output_tokens": 0
+          },
+          "seconds": 1.134168958000373
+        },
+        {
+          "id": "style-2",
+          "expected": "千代",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "千代",
+          "confidence": 0.8890172847939083,
+          "usage": {
+            "input_tokens": 439,
+            "output_tokens": 0
+          },
+          "seconds": 1.100845417000528
+        },
+        {
+          "id": "style-3",
+          "expected": "白石先生",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "白石先生",
+          "confidence": 0.9562740949379984,
+          "usage": {
+            "input_tokens": 463,
+            "output_tokens": 0
+          },
+          "seconds": 1.1127036250036326
+        },
+        {
+          "id": "style-4",
+          "expected": "ユイ",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "ユイ",
+          "confidence": 0.8708997380509326,
+          "usage": {
+            "input_tokens": 485,
+            "output_tokens": 0
+          },
+          "seconds": 1.1617917910043616
+        },
+        {
+          "id": "distractors-1",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.732831180576261,
+          "usage": {
+            "input_tokens": 687,
+            "output_tokens": 0
+          },
+          "seconds": 1.3519918749952922
+        },
+        {
+          "id": "distractors-3",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.8388839982222734,
+          "usage": {
+            "input_tokens": 730,
+            "output_tokens": 0
+          },
+          "seconds": 1.5279764170045382
+        },
+        {
+          "id": "distractors-5",
+          "expected": "高橋澪",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "高橋澪",
+          "confidence": 0.8742955549473652,
+          "usage": {
+            "input_tokens": 778,
+            "output_tokens": 0
+          },
+          "seconds": 1.5861672910032212
+        }
+      ],
+      "workload": "short",
+      "round": 1
+    },
+    {
+      "client_concurrency": 4,
+      "observed_max_inflight": 4,
+      "requests": 35,
+      "retries": 0,
+      "valid": 35,
+      "correct": 34,
+      "wall_seconds": 20.16024599999946,
+      "valid_per_second": 1.7360899266805045,
+      "over_app_timeout": 2,
+      "mean_seconds": 2.198965768943474,
+      "p50_seconds": 1.1126457500067772,
+      "p95_seconds": 19.58893220799655,
+      "max_seconds": 20.15539491700474,
+      "items": [
+        {
+          "id": "explicit-1",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.8747330527622484,
+          "usage": {
+            "input_tokens": 382,
+            "output_tokens": 0
+          },
+          "seconds": 0.5501432919991203
+        },
+        {
+          "id": "explicit-3",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.9180159791621468,
+          "usage": {
+            "input_tokens": 416,
+            "output_tokens": 0
+          },
+          "seconds": 1.0849369159986963
+        },
+        {
+          "id": "explicit-5",
+          "expected": "高橋澪",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "高橋澪",
+          "confidence": 0.8368805066962941,
+          "usage": {
+            "input_tokens": 456,
+            "output_tokens": 0
+          },
+          "seconds": 20.15539491700474
+        },
+        {
+          "id": "explicit-7",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.9319605588675391,
+          "usage": {
+            "input_tokens": 490,
+            "output_tokens": 0
+          },
+          "seconds": 19.58893220799655
+        },
+        {
+          "id": "alternating-1",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.8017064837652293,
+          "usage": {
+            "input_tokens": 396,
+            "output_tokens": 0
+          },
+          "seconds": 1.0716081249993294
+        },
+        {
+          "id": "alternating-2",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.9613829793830951,
+          "usage": {
+            "input_tokens": 417,
+            "output_tokens": 0
+          },
+          "seconds": 1.0699438329975237
+        },
+        {
+          "id": "alternating-3",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.8114228909423677,
+          "usage": {
+            "input_tokens": 437,
+            "output_tokens": 0
+          },
+          "seconds": 1.0747597919980763
+        },
+        {
+          "id": "alternating-4",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.8685879642056594,
+          "usage": {
+            "input_tokens": 459,
+            "output_tokens": 0
+          },
+          "seconds": 1.112041375003173
+        },
+        {
+          "id": "alternating-5",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.8864040816395095,
+          "usage": {
+            "input_tokens": 477,
+            "output_tokens": 0
+          },
+          "seconds": 1.144966250001744
+        },
+        {
+          "id": "alternating-6",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.7115170145809372,
+          "usage": {
+            "input_tokens": 499,
+            "output_tokens": 0
+          },
+          "seconds": 1.1505264160005026
+        },
+        {
+          "id": "aliases-1",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.9032473698483087,
+          "usage": {
+            "input_tokens": 390,
+            "output_tokens": 0
+          },
+          "seconds": 1.130215582998062
+        },
+        {
+          "id": "aliases-3",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.8177407927669731,
+          "usage": {
+            "input_tokens": 426,
+            "output_tokens": 0
+          },
+          "seconds": 1.0931948750003357
+        },
+        {
+          "id": "aliases-5",
+          "expected": "高橋澪",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "高橋澪",
+          "confidence": 0.9374673050396966,
+          "usage": {
+            "input_tokens": 468,
+            "output_tokens": 0
+          },
+          "seconds": 1.1136350000015227
+        },
+        {
+          "id": "aliases-7",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.8973620841099357,
+          "usage": {
+            "input_tokens": 501,
+            "output_tokens": 0
+          },
+          "seconds": 1.143254500006151
+        },
+        {
+          "id": "three_way-1",
+          "expected": "高橋澪",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "高橋澪",
+          "confidence": 0.9316217164041793,
+          "usage": {
+            "input_tokens": 393,
+            "output_tokens": 0
+          },
+          "seconds": 1.1031022910028696
+        },
+        {
+          "id": "three_way-2",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.932561826423772,
+          "usage": {
+            "input_tokens": 413,
+            "output_tokens": 0
+          },
+          "seconds": 1.0676284169967403
+        },
+        {
+          "id": "three_way-4",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.8796948031559291,
+          "usage": {
+            "input_tokens": 448,
+            "output_tokens": 0
+          },
+          "seconds": 1.0775201249998645
+        },
+        {
+          "id": "three_way-6",
+          "expected": "高橋澪",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "高橋澪",
+          "confidence": 0.9402109446942899,
+          "usage": {
+            "input_tokens": 490,
+            "output_tokens": 0
+          },
+          "seconds": 1.1126457500067772
+        },
+        {
+          "id": "three_way-7",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.9523937431026552,
+          "usage": {
+            "input_tokens": 510,
+            "output_tokens": 0
+          },
+          "seconds": 1.14560270900256
+        },
+        {
+          "id": "quoted_speech-1",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.766318724593607,
+          "usage": {
+            "input_tokens": 393,
+            "output_tokens": 0
+          },
+          "seconds": 1.1199738330033142
+        },
+        {
+          "id": "quoted_speech-3",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.4788126769293452,
+          "usage": {
+            "input_tokens": 439,
+            "output_tokens": 0
+          },
+          "seconds": 1.105313500003831
+        },
+        {
+          "id": "quoted_speech-5",
+          "expected": "高橋澪",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "高橋澪",
+          "confidence": 0.9326426121651572,
+          "usage": {
+            "input_tokens": 481,
+            "output_tokens": 0
+          },
+          "seconds": 1.1363298329961253
+        },
+        {
+          "id": "unknown-1",
+          "expected": "ナレーター",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "ナレーター",
+          "confidence": 0.9271516601286306,
+          "usage": {
+            "input_tokens": 396,
+            "output_tokens": 0
+          },
+          "seconds": 1.111482749998686
+        },
+        {
+          "id": "unknown-3",
+          "expected": "ナレーター",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "ナレーター",
+          "confidence": 0.41221082214304133,
+          "usage": {
+            "input_tokens": 438,
+            "output_tokens": 0
+          },
+          "seconds": 1.0822322079984588
+        },
+        {
+          "id": "post_attribution-1",
+          "expected": "高橋澪",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "高橋澪",
+          "confidence": 0.8239774353276235,
+          "usage": {
+            "input_tokens": 390,
+            "output_tokens": 0
+          },
+          "seconds": 1.0876232920054463
+        },
+        {
+          "id": "post_attribution-3",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": false,
+          "actual": "佐藤葵",
+          "confidence": 0.43267765107356615,
+          "usage": {
+            "input_tokens": 424,
+            "output_tokens": 0
+          },
+          "seconds": 1.099202958001115
+        },
+        {
+          "id": "post_attribution-5",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.6149559188861432,
+          "usage": {
+            "input_tokens": 457,
+            "output_tokens": 0
+          },
+          "seconds": 1.1298412079995614
+        },
+        {
+          "id": "post_attribution-7",
+          "expected": "高橋澪",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "高橋澪",
+          "confidence": 0.9176859912177823,
+          "usage": {
+            "input_tokens": 487,
+            "output_tokens": 0
+          },
+          "seconds": 1.1431176249971031
+        },
+        {
+          "id": "style-1",
+          "expected": "ユイ",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "ユイ",
+          "confidence": 0.749492699430779,
+          "usage": {
+            "input_tokens": 413,
+            "output_tokens": 0
+          },
+          "seconds": 1.1114568329940084
+        },
+        {
+          "id": "style-2",
+          "expected": "千代",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "千代",
+          "confidence": 0.8958222663587717,
+          "usage": {
+            "input_tokens": 439,
+            "output_tokens": 0
+          },
+          "seconds": 1.0972471670029336
+        },
+        {
+          "id": "style-3",
+          "expected": "白石先生",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "白石先生",
+          "confidence": 0.956165630016463,
+          "usage": {
+            "input_tokens": 463,
+            "output_tokens": 0
+          },
+          "seconds": 1.1345527500016033
+        },
+        {
+          "id": "style-4",
+          "expected": "ユイ",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "ユイ",
+          "confidence": 0.8786911063430942,
+          "usage": {
+            "input_tokens": 485,
+            "output_tokens": 0
+          },
+          "seconds": 1.163408458000049
+        },
+        {
+          "id": "distractors-1",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.6608210130483009,
+          "usage": {
+            "input_tokens": 687,
+            "output_tokens": 0
+          },
+          "seconds": 1.339771416001895
+        },
+        {
+          "id": "distractors-3",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.8178368675978142,
+          "usage": {
+            "input_tokens": 730,
+            "output_tokens": 0
+          },
+          "seconds": 1.5285537079980713
+        },
+        {
+          "id": "distractors-5",
+          "expected": "高橋澪",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "高橋澪",
+          "confidence": 0.8758338433905148,
+          "usage": {
+            "input_tokens": 778,
+            "output_tokens": 0
+          },
+          "seconds": 1.5836420000050566
+        }
+      ],
+      "workload": "short",
+      "round": 1
+    },
+    {
+      "client_concurrency": 8,
+      "observed_max_inflight": 8,
+      "requests": 35,
+      "retries": 0,
+      "valid": 35,
+      "correct": 34,
+      "wall_seconds": 20.183824332998483,
+      "valid_per_second": 1.7340618617443369,
+      "over_app_timeout": 3,
+      "mean_seconds": 4.115819761914567,
+      "p50_seconds": 2.794626208000409,
+      "p95_seconds": 19.68963362499926,
+      "max_seconds": 20.183138041997154,
+      "items": [
+        {
+          "id": "explicit-1",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.8709108278852534,
+          "usage": {
+            "input_tokens": 382,
+            "output_tokens": 0
+          },
+          "seconds": 20.183138041997154
+        },
+        {
+          "id": "explicit-3",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.9259317080056993,
+          "usage": {
+            "input_tokens": 416,
+            "output_tokens": 0
+          },
+          "seconds": 1.1736641250026878
+        },
+        {
+          "id": "explicit-5",
+          "expected": "高橋澪",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "高橋澪",
+          "confidence": 0.8228587825869856,
+          "usage": {
+            "input_tokens": 456,
+            "output_tokens": 0
+          },
+          "seconds": 0.6393371250014752
+        },
+        {
+          "id": "explicit-7",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.9291474733311996,
+          "usage": {
+            "input_tokens": 490,
+            "output_tokens": 0
+          },
+          "seconds": 19.68963362499926
+        },
+        {
+          "id": "alternating-1",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.7986108789622927,
+          "usage": {
+            "input_tokens": 396,
+            "output_tokens": 0
+          },
+          "seconds": 2.2506129590037744
+        },
+        {
+          "id": "alternating-2",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.9609264237121168,
+          "usage": {
+            "input_tokens": 417,
+            "output_tokens": 0
+          },
+          "seconds": 1.6954987909994088
+        },
+        {
+          "id": "alternating-3",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.8546509554100185,
+          "usage": {
+            "input_tokens": 437,
+            "output_tokens": 0
+          },
+          "seconds": 2.7948233330025687
+        },
+        {
+          "id": "alternating-4",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.8780794902519036,
+          "usage": {
+            "input_tokens": 459,
+            "output_tokens": 0
+          },
+          "seconds": 19.102108250001038
+        },
+        {
+          "id": "alternating-5",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.8912023529326869,
+          "usage": {
+            "input_tokens": 477,
+            "output_tokens": 0
+          },
+          "seconds": 2.747259125004348
+        },
+        {
+          "id": "alternating-6",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.7101187270589658,
+          "usage": {
+            "input_tokens": 499,
+            "output_tokens": 0
+          },
+          "seconds": 2.7953675419994397
+        },
+        {
+          "id": "aliases-1",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.8981739793608271,
+          "usage": {
+            "input_tokens": 390,
+            "output_tokens": 0
+          },
+          "seconds": 2.793590042005235
+        },
+        {
+          "id": "aliases-3",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.8077386385700439,
+          "usage": {
+            "input_tokens": 426,
+            "output_tokens": 0
+          },
+          "seconds": 2.7815992500036373
+        },
+        {
+          "id": "aliases-5",
+          "expected": "高橋澪",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "高橋澪",
+          "confidence": 0.9387009752013129,
+          "usage": {
+            "input_tokens": 468,
+            "output_tokens": 0
+          },
+          "seconds": 2.812636292001116
+        },
+        {
+          "id": "aliases-7",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.9055341231820023,
+          "usage": {
+            "input_tokens": 501,
+            "output_tokens": 0
+          },
+          "seconds": 2.8161299170023995
+        },
+        {
+          "id": "three_way-1",
+          "expected": "高橋澪",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "高橋澪",
+          "confidence": 0.9329331347919383,
+          "usage": {
+            "input_tokens": 393,
+            "output_tokens": 0
+          },
+          "seconds": 2.7884209169933456
+        },
+        {
+          "id": "three_way-2",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.930612733025442,
+          "usage": {
+            "input_tokens": 413,
+            "output_tokens": 0
+          },
+          "seconds": 2.8052665409995825
+        },
+        {
+          "id": "three_way-4",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.8838941067766138,
+          "usage": {
+            "input_tokens": 448,
+            "output_tokens": 0
+          },
+          "seconds": 2.806894207998994
+        },
+        {
+          "id": "three_way-6",
+          "expected": "高橋澪",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "高橋澪",
+          "confidence": 0.9375249639035922,
+          "usage": {
+            "input_tokens": 490,
+            "output_tokens": 0
+          },
+          "seconds": 2.8071354159983457
+        },
+        {
+          "id": "three_way-7",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.9539416839051973,
+          "usage": {
+            "input_tokens": 510,
+            "output_tokens": 0
+          },
+          "seconds": 2.8075371670056484
+        },
+        {
+          "id": "quoted_speech-1",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.7882541085560483,
+          "usage": {
+            "input_tokens": 393,
+            "output_tokens": 0
+          },
+          "seconds": 2.792175208000117
+        },
+        {
+          "id": "quoted_speech-3",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.5500379800237193,
+          "usage": {
+            "input_tokens": 439,
+            "output_tokens": 0
+          },
+          "seconds": 2.782629791996442
+        },
+        {
+          "id": "quoted_speech-5",
+          "expected": "高橋澪",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "高橋澪",
+          "confidence": 0.9364945721440893,
+          "usage": {
+            "input_tokens": 481,
+            "output_tokens": 0
+          },
+          "seconds": 2.8143265409962623
+        },
+        {
+          "id": "unknown-1",
+          "expected": "ナレーター",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "ナレーター",
+          "confidence": 0.9238345190943357,
+          "usage": {
+            "input_tokens": 396,
+            "output_tokens": 0
+          },
+          "seconds": 2.773097749995941
+        },
+        {
+          "id": "unknown-3",
+          "expected": "ナレーター",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "ナレーター",
+          "confidence": 0.38322426886109023,
+          "usage": {
+            "input_tokens": 438,
+            "output_tokens": 0
+          },
+          "seconds": 2.7486270000008517
+        },
+        {
+          "id": "post_attribution-1",
+          "expected": "高橋澪",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "高橋澪",
+          "confidence": 0.8259438690379056,
+          "usage": {
+            "input_tokens": 390,
+            "output_tokens": 0
+          },
+          "seconds": 2.759170749995974
+        },
+        {
+          "id": "post_attribution-3",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": false,
+          "actual": "佐藤葵",
+          "confidence": 0.43714018522628023,
+          "usage": {
+            "input_tokens": 424,
+            "output_tokens": 0
+          },
+          "seconds": 2.755207665999478
+        },
+        {
+          "id": "post_attribution-5",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.6213062002199643,
+          "usage": {
+            "input_tokens": 457,
+            "output_tokens": 0
+          },
+          "seconds": 2.7526285420026397
+        },
+        {
+          "id": "post_attribution-7",
+          "expected": "高橋澪",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "高橋澪",
+          "confidence": 0.9201644164495013,
+          "usage": {
+            "input_tokens": 487,
+            "output_tokens": 0
+          },
+          "seconds": 2.794626208000409
+        },
+        {
+          "id": "style-1",
+          "expected": "ユイ",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "ユイ",
+          "confidence": 0.7404605317293068,
+          "usage": {
+            "input_tokens": 413,
+            "output_tokens": 0
+          },
+          "seconds": 2.7751246670013643
+        },
+        {
+          "id": "style-2",
+          "expected": "千代",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "千代",
+          "confidence": 0.8906603432144363,
+          "usage": {
+            "input_tokens": 439,
+            "output_tokens": 0
+          },
+          "seconds": 2.7640124169993214
+        },
+        {
+          "id": "style-3",
+          "expected": "白石先生",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "白石先生",
+          "confidence": 0.9557240846463363,
+          "usage": {
+            "input_tokens": 463,
+            "output_tokens": 0
+          },
+          "seconds": 2.8021427909989143
+        },
+        {
+          "id": "style-4",
+          "expected": "ユイ",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "ユイ",
+          "confidence": 0.8924457179088208,
+          "usage": {
+            "input_tokens": 485,
+            "output_tokens": 0
+          },
+          "seconds": 2.8014870420010993
+        },
+        {
+          "id": "distractors-1",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.6732669094972613,
+          "usage": {
+            "input_tokens": 687,
+            "output_tokens": 0
+          },
+          "seconds": 2.9730704169996898
+        },
+        {
+          "id": "distractors-3",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.8220683365919041,
+          "usage": {
+            "input_tokens": 730,
+            "output_tokens": 0
+          },
+          "seconds": 3.197314083998208
+        },
+        {
+          "id": "distractors-5",
+          "expected": "高橋澪",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "高橋澪",
+          "confidence": 0.872099166450414,
+          "usage": {
+            "input_tokens": 778,
+            "output_tokens": 0
+          },
+          "seconds": 3.477398125003674
+        }
+      ],
+      "workload": "short",
+      "round": 1
+    },
+    {
+      "client_concurrency": 8,
+      "observed_max_inflight": 8,
+      "requests": 35,
+      "retries": 0,
+      "valid": 35,
+      "correct": 34,
+      "wall_seconds": 20.12944104199414,
+      "valid_per_second": 1.7387467405072412,
+      "over_app_timeout": 3,
+      "mean_seconds": 4.100346070228261,
+      "p50_seconds": 2.7773534170046332,
+      "p95_seconds": 19.589312333002454,
+      "max_seconds": 20.128485834000458,
+      "items": [
+        {
+          "id": "explicit-1",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.8628947699990682,
+          "usage": {
+            "input_tokens": 382,
+            "output_tokens": 0
+          },
+          "seconds": 1.6523645000052056
+        },
+        {
+          "id": "explicit-3",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.921254257933116,
+          "usage": {
+            "input_tokens": 416,
+            "output_tokens": 0
+          },
+          "seconds": 20.128485834000458
+        },
+        {
+          "id": "explicit-5",
+          "expected": "高橋澪",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "高橋澪",
+          "confidence": 0.8256896294290113,
+          "usage": {
+            "input_tokens": 456,
+            "output_tokens": 0
+          },
+          "seconds": 0.6254597919978551
+        },
+        {
+          "id": "explicit-7",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.9283299319468549,
+          "usage": {
+            "input_tokens": 490,
+            "output_tokens": 0
+          },
+          "seconds": 19.589312333002454
+        },
+        {
+          "id": "alternating-1",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.8034207226599409,
+          "usage": {
+            "input_tokens": 396,
+            "output_tokens": 0
+          },
+          "seconds": 2.7567383749992587
+        },
+        {
+          "id": "alternating-2",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.9615751688613869,
+          "usage": {
+            "input_tokens": 417,
+            "output_tokens": 0
+          },
+          "seconds": 19.009912458001054
+        },
+        {
+          "id": "alternating-3",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.8332923559608819,
+          "usage": {
+            "input_tokens": 437,
+            "output_tokens": 0
+          },
+          "seconds": 1.1634239170016372
+        },
+        {
+          "id": "alternating-4",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.868369909922721,
+          "usage": {
+            "input_tokens": 459,
+            "output_tokens": 0
+          },
+          "seconds": 2.220771957996476
+        },
+        {
+          "id": "alternating-5",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.8921398413772484,
+          "usage": {
+            "input_tokens": 477,
+            "output_tokens": 0
+          },
+          "seconds": 2.7086137079968466
+        },
+        {
+          "id": "alternating-6",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.7173006734039683,
+          "usage": {
+            "input_tokens": 499,
+            "output_tokens": 0
+          },
+          "seconds": 2.745887999997649
+        },
+        {
+          "id": "aliases-1",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.9006070406136933,
+          "usage": {
+            "input_tokens": 390,
+            "output_tokens": 0
+          },
+          "seconds": 2.7959555839988752
+        },
+        {
+          "id": "aliases-3",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.8232072118731848,
+          "usage": {
+            "input_tokens": 426,
+            "output_tokens": 0
+          },
+          "seconds": 2.7637815000052797
+        },
+        {
+          "id": "aliases-5",
+          "expected": "高橋澪",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "高橋澪",
+          "confidence": 0.9366427623736859,
+          "usage": {
+            "input_tokens": 468,
+            "output_tokens": 0
+          },
+          "seconds": 2.8024904579942813
+        },
+        {
+          "id": "aliases-7",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.8968923771495939,
+          "usage": {
+            "input_tokens": 501,
+            "output_tokens": 0
+          },
+          "seconds": 2.8054999579981086
+        },
+        {
+          "id": "three_way-1",
+          "expected": "高橋澪",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "高橋澪",
+          "confidence": 0.9330220105253471,
+          "usage": {
+            "input_tokens": 393,
+            "output_tokens": 0
+          },
+          "seconds": 2.766789624998637
+        },
+        {
+          "id": "three_way-2",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.9372004144753191,
+          "usage": {
+            "input_tokens": 413,
+            "output_tokens": 0
+          },
+          "seconds": 2.768733249999059
+        },
+        {
+          "id": "three_way-4",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.8741383731383428,
+          "usage": {
+            "input_tokens": 448,
+            "output_tokens": 0
+          },
+          "seconds": 2.774094917003822
+        },
+        {
+          "id": "three_way-6",
+          "expected": "高橋澪",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "高橋澪",
+          "confidence": 0.9325340809425842,
+          "usage": {
+            "input_tokens": 490,
+            "output_tokens": 0
+          },
+          "seconds": 2.7773534170046332
+        },
+        {
+          "id": "three_way-7",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.9557140025599317,
+          "usage": {
+            "input_tokens": 510,
+            "output_tokens": 0
+          },
+          "seconds": 2.7731812080019154
+        },
+        {
+          "id": "quoted_speech-1",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.7987222420583993,
+          "usage": {
+            "input_tokens": 393,
+            "output_tokens": 0
+          },
+          "seconds": 2.7723519999999553
+        },
+        {
+          "id": "quoted_speech-3",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.4733250329680927,
+          "usage": {
+            "input_tokens": 439,
+            "output_tokens": 0
+          },
+          "seconds": 2.7781885000003967
+        },
+        {
+          "id": "quoted_speech-5",
+          "expected": "高橋澪",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "高橋澪",
+          "confidence": 0.9335846192099347,
+          "usage": {
+            "input_tokens": 481,
+            "output_tokens": 0
+          },
+          "seconds": 2.8303862499960815
+        },
+        {
+          "id": "unknown-1",
+          "expected": "ナレーター",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "ナレーター",
+          "confidence": 0.9274744524143258,
+          "usage": {
+            "input_tokens": 396,
+            "output_tokens": 0
+          },
+          "seconds": 2.7925691249984084
+        },
+        {
+          "id": "unknown-3",
+          "expected": "ナレーター",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "ナレーター",
+          "confidence": 0.4305120250756442,
+          "usage": {
+            "input_tokens": 438,
+            "output_tokens": 0
+          },
+          "seconds": 2.7629386659973534
+        },
+        {
+          "id": "post_attribution-1",
+          "expected": "高橋澪",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "高橋澪",
+          "confidence": 0.8100886226128524,
+          "usage": {
+            "input_tokens": 390,
+            "output_tokens": 0
+          },
+          "seconds": 2.7556379580055363
+        },
+        {
+          "id": "post_attribution-3",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": false,
+          "actual": "佐藤葵",
+          "confidence": 0.43990156217397053,
+          "usage": {
+            "input_tokens": 424,
+            "output_tokens": 0
+          },
+          "seconds": 2.7462980419950327
+        },
+        {
+          "id": "post_attribution-5",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.6215955358660511,
+          "usage": {
+            "input_tokens": 457,
+            "output_tokens": 0
+          },
+          "seconds": 2.727094333000423
+        },
+        {
+          "id": "post_attribution-7",
+          "expected": "高橋澪",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "高橋澪",
+          "confidence": 0.9168251562028998,
+          "usage": {
+            "input_tokens": 487,
+            "output_tokens": 0
+          },
+          "seconds": 2.7815698749982403
+        },
+        {
+          "id": "style-1",
+          "expected": "ユイ",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "ユイ",
+          "confidence": 0.7455854202347029,
+          "usage": {
+            "input_tokens": 413,
+            "output_tokens": 0
+          },
+          "seconds": 2.792438874996151
+        },
+        {
+          "id": "style-2",
+          "expected": "千代",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "千代",
+          "confidence": 0.8837031310387576,
+          "usage": {
+            "input_tokens": 439,
+            "output_tokens": 0
+          },
+          "seconds": 2.79924320900318
+        },
+        {
+          "id": "style-3",
+          "expected": "白石先生",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "白石先生",
+          "confidence": 0.9545927135170236,
+          "usage": {
+            "input_tokens": 463,
+            "output_tokens": 0
+          },
+          "seconds": 2.838614291002159
+        },
+        {
+          "id": "style-4",
+          "expected": "ユイ",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "ユイ",
+          "confidence": 0.8920549579639009,
+          "usage": {
+            "input_tokens": 485,
+            "output_tokens": 0
+          },
+          "seconds": 2.8385177919990383
+        },
+        {
+          "id": "distractors-1",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.6657517784949363,
+          "usage": {
+            "input_tokens": 687,
+            "output_tokens": 0
+          },
+          "seconds": 2.998517499996524
+        },
+        {
+          "id": "distractors-3",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.821514070591571,
+          "usage": {
+            "input_tokens": 730,
+            "output_tokens": 0
+          },
+          "seconds": 3.1996715419954853
+        },
+        {
+          "id": "distractors-5",
+          "expected": "高橋澪",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "高橋澪",
+          "confidence": 0.8721778917998088,
+          "usage": {
+            "input_tokens": 778,
+            "output_tokens": 0
+          },
+          "seconds": 3.469223708001664
+        }
+      ],
+      "workload": "short",
+      "round": 2
+    },
+    {
+      "client_concurrency": 4,
+      "observed_max_inflight": 4,
+      "requests": 35,
+      "retries": 0,
+      "valid": 35,
+      "correct": 34,
+      "wall_seconds": 20.141885166005522,
+      "valid_per_second": 1.7376725024264992,
+      "over_app_timeout": 2,
+      "mean_seconds": 2.2002783631708422,
+      "p50_seconds": 1.1158462919993326,
+      "p95_seconds": 19.555416959003196,
+      "max_seconds": 20.13875000000553,
+      "items": [
+        {
+          "id": "explicit-1",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.8804347946550314,
+          "usage": {
+            "input_tokens": 382,
+            "output_tokens": 0
+          },
+          "seconds": 19.555416959003196
+        },
+        {
+          "id": "explicit-3",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.915958829815095,
+          "usage": {
+            "input_tokens": 416,
+            "output_tokens": 0
+          },
+          "seconds": 0.5960681249998743
+        },
+        {
+          "id": "explicit-5",
+          "expected": "高橋澪",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "高橋澪",
+          "confidence": 0.8398170532222579,
+          "usage": {
+            "input_tokens": 456,
+            "output_tokens": 0
+          },
+          "seconds": 1.1626590419982676
+        },
+        {
+          "id": "explicit-7",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.9292228854129344,
+          "usage": {
+            "input_tokens": 490,
+            "output_tokens": 0
+          },
+          "seconds": 20.13875000000553
+        },
+        {
+          "id": "alternating-1",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.8275964943205417,
+          "usage": {
+            "input_tokens": 396,
+            "output_tokens": 0
+          },
+          "seconds": 1.1055017090038746
+        },
+        {
+          "id": "alternating-2",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.96031899115057,
+          "usage": {
+            "input_tokens": 417,
+            "output_tokens": 0
+          },
+          "seconds": 1.0791513750009472
+        },
+        {
+          "id": "alternating-3",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.8224473455074786,
+          "usage": {
+            "input_tokens": 437,
+            "output_tokens": 0
+          },
+          "seconds": 1.0887069999953383
+        },
+        {
+          "id": "alternating-4",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.8867583558991434,
+          "usage": {
+            "input_tokens": 459,
+            "output_tokens": 0
+          },
+          "seconds": 1.1098443749942817
+        },
+        {
+          "id": "alternating-5",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.8874015813008335,
+          "usage": {
+            "input_tokens": 477,
+            "output_tokens": 0
+          },
+          "seconds": 1.1343446660030168
+        },
+        {
+          "id": "alternating-6",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.792050188220287,
+          "usage": {
+            "input_tokens": 499,
+            "output_tokens": 0
+          },
+          "seconds": 1.1480169579954236
+        },
+        {
+          "id": "aliases-1",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.9127760452260976,
+          "usage": {
+            "input_tokens": 390,
+            "output_tokens": 0
+          },
+          "seconds": 1.1180125000028056
+        },
+        {
+          "id": "aliases-3",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.8842186030438909,
+          "usage": {
+            "input_tokens": 426,
+            "output_tokens": 0
+          },
+          "seconds": 1.0940789169981144
+        },
+        {
+          "id": "aliases-5",
+          "expected": "高橋澪",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "高橋澪",
+          "confidence": 0.9393042466676484,
+          "usage": {
+            "input_tokens": 468,
+            "output_tokens": 0
+          },
+          "seconds": 1.1213042919989675
+        },
+        {
+          "id": "aliases-7",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.9050728518154441,
+          "usage": {
+            "input_tokens": 501,
+            "output_tokens": 0
+          },
+          "seconds": 1.1502616249999846
+        },
+        {
+          "id": "three_way-1",
+          "expected": "高橋澪",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "高橋澪",
+          "confidence": 0.9333440428420686,
+          "usage": {
+            "input_tokens": 393,
+            "output_tokens": 0
+          },
+          "seconds": 1.1136932500012335
+        },
+        {
+          "id": "three_way-2",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.929526162286099,
+          "usage": {
+            "input_tokens": 413,
+            "output_tokens": 0
+          },
+          "seconds": 1.0724134580013924
+        },
+        {
+          "id": "three_way-4",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.8778225318814655,
+          "usage": {
+            "input_tokens": 448,
+            "output_tokens": 0
+          },
+          "seconds": 1.0838692499964964
+        },
+        {
+          "id": "three_way-6",
+          "expected": "高橋澪",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "高橋澪",
+          "confidence": 0.9391878965928878,
+          "usage": {
+            "input_tokens": 490,
+            "output_tokens": 0
+          },
+          "seconds": 1.1171853749983711
+        },
+        {
+          "id": "three_way-7",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.9531113928824874,
+          "usage": {
+            "input_tokens": 510,
+            "output_tokens": 0
+          },
+          "seconds": 1.1518061249953462
+        },
+        {
+          "id": "quoted_speech-1",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.7571811562220284,
+          "usage": {
+            "input_tokens": 393,
+            "output_tokens": 0
+          },
+          "seconds": 1.1263377919967752
+        },
+        {
+          "id": "quoted_speech-3",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.5804184141899525,
+          "usage": {
+            "input_tokens": 439,
+            "output_tokens": 0
+          },
+          "seconds": 1.0917923340020934
+        },
+        {
+          "id": "quoted_speech-5",
+          "expected": "高橋澪",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "高橋澪",
+          "confidence": 0.9336097393279755,
+          "usage": {
+            "input_tokens": 481,
+            "output_tokens": 0
+          },
+          "seconds": 1.1158462919993326
+        },
+        {
+          "id": "unknown-1",
+          "expected": "ナレーター",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "ナレーター",
+          "confidence": 0.9092227125132738,
+          "usage": {
+            "input_tokens": 396,
+            "output_tokens": 0
+          },
+          "seconds": 1.107715416001156
+        },
+        {
+          "id": "unknown-3",
+          "expected": "ナレーター",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "ナレーター",
+          "confidence": 0.46779688002462166,
+          "usage": {
+            "input_tokens": 438,
+            "output_tokens": 0
+          },
+          "seconds": 1.0764477079937933
+        },
+        {
+          "id": "post_attribution-1",
+          "expected": "高橋澪",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "高橋澪",
+          "confidence": 0.8322128636375931,
+          "usage": {
+            "input_tokens": 390,
+            "output_tokens": 0
+          },
+          "seconds": 1.0722450000030221
+        },
+        {
+          "id": "post_attribution-3",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": false,
+          "actual": "佐藤葵",
+          "confidence": 0.43903135892988815,
+          "usage": {
+            "input_tokens": 424,
+            "output_tokens": 0
+          },
+          "seconds": 1.0694383749942062
+        },
+        {
+          "id": "post_attribution-5",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.5877352785894755,
+          "usage": {
+            "input_tokens": 457,
+            "output_tokens": 0
+          },
+          "seconds": 1.1042586250041495
+        },
+        {
+          "id": "post_attribution-7",
+          "expected": "高橋澪",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "高橋澪",
+          "confidence": 0.922694905640749,
+          "usage": {
+            "input_tokens": 487,
+            "output_tokens": 0
+          },
+          "seconds": 1.1627798749977956
+        },
+        {
+          "id": "style-1",
+          "expected": "ユイ",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "ユイ",
+          "confidence": 0.7375535463723107,
+          "usage": {
+            "input_tokens": 413,
+            "output_tokens": 0
+          },
+          "seconds": 1.163800916998298
+        },
+        {
+          "id": "style-2",
+          "expected": "千代",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "千代",
+          "confidence": 0.8894059729753345,
+          "usage": {
+            "input_tokens": 439,
+            "output_tokens": 0
+          },
+          "seconds": 1.0888392499982729
+        },
+        {
+          "id": "style-3",
+          "expected": "白石先生",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "白石先生",
+          "confidence": 0.9572955224068331,
+          "usage": {
+            "input_tokens": 463,
+            "output_tokens": 0
+          },
+          "seconds": 1.1013647500003572
+        },
+        {
+          "id": "style-4",
+          "expected": "ユイ",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "ユイ",
+          "confidence": 0.8782642358763888,
+          "usage": {
+            "input_tokens": 485,
+            "output_tokens": 0
+          },
+          "seconds": 1.1563746250030817
+        },
+        {
+          "id": "distractors-1",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.668726565818045,
+          "usage": {
+            "input_tokens": 687,
+            "output_tokens": 0
+          },
+          "seconds": 1.3320429590021376
+        },
+        {
+          "id": "distractors-3",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.8371347546758294,
+          "usage": {
+            "input_tokens": 730,
+            "output_tokens": 0
+          },
+          "seconds": 1.5216916669960483
+        },
+        {
+          "id": "distractors-5",
+          "expected": "高橋澪",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "高橋澪",
+          "confidence": 0.8726120144843222,
+          "usage": {
+            "input_tokens": 778,
+            "output_tokens": 0
+          },
+          "seconds": 1.5776821249964996
+        }
+      ],
+      "workload": "short",
+      "round": 2
+    },
+    {
+      "client_concurrency": 2,
+      "observed_max_inflight": 2,
+      "requests": 35,
+      "retries": 0,
+      "valid": 35,
+      "correct": 34,
+      "wall_seconds": 20.110854749997088,
+      "valid_per_second": 1.7403536764147267,
+      "over_app_timeout": 0,
+      "mean_seconds": 1.1258630975147492,
+      "p50_seconds": 1.1114195000045584,
+      "p95_seconds": 1.5279953749995911,
+      "max_seconds": 1.5725177909989725,
+      "items": [
+        {
+          "id": "explicit-1",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.8875391388964214,
+          "usage": {
+            "input_tokens": 382,
+            "output_tokens": 0
+          },
+          "seconds": 0.5286733750035637
+        },
+        {
+          "id": "explicit-3",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.9196545682383243,
+          "usage": {
+            "input_tokens": 416,
+            "output_tokens": 0
+          },
+          "seconds": 1.0607922919953126
+        },
+        {
+          "id": "explicit-5",
+          "expected": "高橋澪",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "高橋澪",
+          "confidence": 0.828032352482484,
+          "usage": {
+            "input_tokens": 456,
+            "output_tokens": 0
+          },
+          "seconds": 1.1043065409976407
+        },
+        {
+          "id": "explicit-7",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.926530236519998,
+          "usage": {
+            "input_tokens": 490,
+            "output_tokens": 0
+          },
+          "seconds": 1.148141541001678
+        },
+        {
+          "id": "alternating-1",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.8066366697454875,
+          "usage": {
+            "input_tokens": 396,
+            "output_tokens": 0
+          },
+          "seconds": 1.1104661670033238
+        },
+        {
+          "id": "alternating-2",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.9620259941422579,
+          "usage": {
+            "input_tokens": 417,
+            "output_tokens": 0
+          },
+          "seconds": 1.073108291006065
+        },
+        {
+          "id": "alternating-3",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.8375683490438456,
+          "usage": {
+            "input_tokens": 437,
+            "output_tokens": 0
+          },
+          "seconds": 1.0806408329954138
+        },
+        {
+          "id": "alternating-4",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.8848598275982056,
+          "usage": {
+            "input_tokens": 459,
+            "output_tokens": 0
+          },
+          "seconds": 1.1114195000045584
+        },
+        {
+          "id": "alternating-5",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.8988642841941346,
+          "usage": {
+            "input_tokens": 477,
+            "output_tokens": 0
+          },
+          "seconds": 1.1406530840031337
+        },
+        {
+          "id": "alternating-6",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.7003585407624291,
+          "usage": {
+            "input_tokens": 499,
+            "output_tokens": 0
+          },
+          "seconds": 1.1571683330039377
+        },
+        {
+          "id": "aliases-1",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.9049655557597251,
+          "usage": {
+            "input_tokens": 390,
+            "output_tokens": 0
+          },
+          "seconds": 1.1253772499985644
+        },
+        {
+          "id": "aliases-3",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.8106471690222495,
+          "usage": {
+            "input_tokens": 426,
+            "output_tokens": 0
+          },
+          "seconds": 1.0789899169976707
+        },
+        {
+          "id": "aliases-5",
+          "expected": "高橋澪",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "高橋澪",
+          "confidence": 0.9378454660212459,
+          "usage": {
+            "input_tokens": 468,
+            "output_tokens": 0
+          },
+          "seconds": 1.1099250000042957
+        },
+        {
+          "id": "aliases-7",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.8998853562377563,
+          "usage": {
+            "input_tokens": 501,
+            "output_tokens": 0
+          },
+          "seconds": 1.1455425829990418
+        },
+        {
+          "id": "three_way-1",
+          "expected": "高橋澪",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "高橋澪",
+          "confidence": 0.9306907399725515,
+          "usage": {
+            "input_tokens": 393,
+            "output_tokens": 0
+          },
+          "seconds": 1.1117205829941668
+        },
+        {
+          "id": "three_way-2",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.9352991663137725,
+          "usage": {
+            "input_tokens": 413,
+            "output_tokens": 0
+          },
+          "seconds": 1.0843622500033234
+        },
+        {
+          "id": "three_way-4",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.8665281989173895,
+          "usage": {
+            "input_tokens": 448,
+            "output_tokens": 0
+          },
+          "seconds": 1.1099252499989234
+        },
+        {
+          "id": "three_way-6",
+          "expected": "高橋澪",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "高橋澪",
+          "confidence": 0.9354696283403402,
+          "usage": {
+            "input_tokens": 490,
+            "output_tokens": 0
+          },
+          "seconds": 1.1361170829986804
+        },
+        {
+          "id": "three_way-7",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.9526435820220365,
+          "usage": {
+            "input_tokens": 510,
+            "output_tokens": 0
+          },
+          "seconds": 1.1513506250048522
+        },
+        {
+          "id": "quoted_speech-1",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.7620305877696683,
+          "usage": {
+            "input_tokens": 393,
+            "output_tokens": 0
+          },
+          "seconds": 1.1070197910012212
+        },
+        {
+          "id": "quoted_speech-3",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.502677954489901,
+          "usage": {
+            "input_tokens": 439,
+            "output_tokens": 0
+          },
+          "seconds": 1.0706442919981782
+        },
+        {
+          "id": "quoted_speech-5",
+          "expected": "高橋澪",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "高橋澪",
+          "confidence": 0.9365738688099962,
+          "usage": {
+            "input_tokens": 481,
+            "output_tokens": 0
+          },
+          "seconds": 1.1129929579983582
+        },
+        {
+          "id": "unknown-1",
+          "expected": "ナレーター",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "ナレーター",
+          "confidence": 0.9229945328804635,
+          "usage": {
+            "input_tokens": 396,
+            "output_tokens": 0
+          },
+          "seconds": 1.1313034589984454
+        },
+        {
+          "id": "unknown-3",
+          "expected": "ナレーター",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "ナレーター",
+          "confidence": 0.41388451078263494,
+          "usage": {
+            "input_tokens": 438,
+            "output_tokens": 0
+          },
+          "seconds": 1.1046907080017263
+        },
+        {
+          "id": "post_attribution-1",
+          "expected": "高橋澪",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "高橋澪",
+          "confidence": 0.8078619681307025,
+          "usage": {
+            "input_tokens": 390,
+            "output_tokens": 0
+          },
+          "seconds": 1.0824963749982999
+        },
+        {
+          "id": "post_attribution-3",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": false,
+          "actual": "佐藤葵",
+          "confidence": 0.4099777753130744,
+          "usage": {
+            "input_tokens": 424,
+            "output_tokens": 0
+          },
+          "seconds": 1.0773065000030329
+        },
+        {
+          "id": "post_attribution-5",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.6427158106768487,
+          "usage": {
+            "input_tokens": 457,
+            "output_tokens": 0
+          },
+          "seconds": 1.116787500002829
+        },
+        {
+          "id": "post_attribution-7",
+          "expected": "高橋澪",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "高橋澪",
+          "confidence": 0.9204210391945474,
+          "usage": {
+            "input_tokens": 487,
+            "output_tokens": 0
+          },
+          "seconds": 1.1530124999990221
+        },
+        {
+          "id": "style-1",
+          "expected": "ユイ",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "ユイ",
+          "confidence": 0.7528034300757328,
+          "usage": {
+            "input_tokens": 413,
+            "output_tokens": 0
+          },
+          "seconds": 1.1125370830050088
+        },
+        {
+          "id": "style-2",
+          "expected": "千代",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "千代",
+          "confidence": 0.8768657008650006,
+          "usage": {
+            "input_tokens": 439,
+            "output_tokens": 0
+          },
+          "seconds": 1.075123957998585
+        },
+        {
+          "id": "style-3",
+          "expected": "白石先生",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "白石先生",
+          "confidence": 0.9572118091332692,
+          "usage": {
+            "input_tokens": 463,
+            "output_tokens": 0
+          },
+          "seconds": 1.1107858329996816
+        },
+        {
+          "id": "style-4",
+          "expected": "ユイ",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "ユイ",
+          "confidence": 0.8772231355399266,
+          "usage": {
+            "input_tokens": 485,
+            "output_tokens": 0
+          },
+          "seconds": 1.143648375000339
+        },
+        {
+          "id": "distractors-1",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.675732828767245,
+          "usage": {
+            "input_tokens": 687,
+            "output_tokens": 0
+          },
+          "seconds": 1.3376654169987887
+        },
+        {
+          "id": "distractors-3",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.8417055957615892,
+          "usage": {
+            "input_tokens": 730,
+            "output_tokens": 0
+          },
+          "seconds": 1.5279953749995911
+        },
+        {
+          "id": "distractors-5",
+          "expected": "高橋澪",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "高橋澪",
+          "confidence": 0.8774786017985453,
+          "usage": {
+            "input_tokens": 778,
+            "output_tokens": 0
+          },
+          "seconds": 1.5725177909989725
+        }
+      ],
+      "workload": "short",
+      "round": 2
+    },
+    {
+      "client_concurrency": 1,
+      "observed_max_inflight": 1,
+      "requests": 35,
+      "retries": 0,
+      "valid": 35,
+      "correct": 34,
+      "wall_seconds": 21.189790999997058,
+      "valid_per_second": 1.6517388019544346,
+      "over_app_timeout": 0,
+      "mean_seconds": 0.6052637892288788,
+      "p50_seconds": 0.5790226250028354,
+      "p95_seconds": 0.8016454999960843,
+      "max_seconds": 0.8427437089994783,
+      "items": [
+        {
+          "id": "explicit-1",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.8745222294297391,
+          "usage": {
+            "input_tokens": 382,
+            "output_tokens": 0
+          },
+          "seconds": 0.5640320000020438
+        },
+        {
+          "id": "explicit-3",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.9199304871569,
+          "usage": {
+            "input_tokens": 416,
+            "output_tokens": 0
+          },
+          "seconds": 0.566276834004384
+        },
+        {
+          "id": "explicit-5",
+          "expected": "高橋澪",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "高橋澪",
+          "confidence": 0.8343526153812237,
+          "usage": {
+            "input_tokens": 456,
+            "output_tokens": 0
+          },
+          "seconds": 0.5993624170005205
+        },
+        {
+          "id": "explicit-7",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.9278637515363704,
+          "usage": {
+            "input_tokens": 490,
+            "output_tokens": 0
+          },
+          "seconds": 0.6242460420035059
+        },
+        {
+          "id": "alternating-1",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.7842467958487882,
+          "usage": {
+            "input_tokens": 396,
+            "output_tokens": 0
+          },
+          "seconds": 0.5790226250028354
+        },
+        {
+          "id": "alternating-2",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.9613959787936008,
+          "usage": {
+            "input_tokens": 417,
+            "output_tokens": 0
+          },
+          "seconds": 0.566333583999949
+        },
+        {
+          "id": "alternating-3",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.8243459150127442,
+          "usage": {
+            "input_tokens": 437,
+            "output_tokens": 0
+          },
+          "seconds": 0.5727903749939287
+        },
+        {
+          "id": "alternating-4",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.8822845542016887,
+          "usage": {
+            "input_tokens": 459,
+            "output_tokens": 0
+          },
+          "seconds": 0.6061669170012465
+        },
+        {
+          "id": "alternating-5",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.8822247186190068,
+          "usage": {
+            "input_tokens": 477,
+            "output_tokens": 0
+          },
+          "seconds": 0.6105414999983623
+        },
+        {
+          "id": "alternating-6",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.7144909257265538,
+          "usage": {
+            "input_tokens": 499,
+            "output_tokens": 0
+          },
+          "seconds": 0.6096370840023155
+        },
+        {
+          "id": "aliases-1",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.9073936117463582,
+          "usage": {
+            "input_tokens": 390,
+            "output_tokens": 0
+          },
+          "seconds": 0.5632393329942715
+        },
+        {
+          "id": "aliases-3",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.8116259104187572,
+          "usage": {
+            "input_tokens": 426,
+            "output_tokens": 0
+          },
+          "seconds": 0.5614047909984947
+        },
+        {
+          "id": "aliases-5",
+          "expected": "高橋澪",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "高橋澪",
+          "confidence": 0.9392623589464492,
+          "usage": {
+            "input_tokens": 468,
+            "output_tokens": 0
+          },
+          "seconds": 0.6094658750007511
+        },
+        {
+          "id": "aliases-7",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.9042189531713745,
+          "usage": {
+            "input_tokens": 501,
+            "output_tokens": 0
+          },
+          "seconds": 0.6046547500009183
+        },
+        {
+          "id": "three_way-1",
+          "expected": "高橋澪",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "高橋澪",
+          "confidence": 0.9329591731399663,
+          "usage": {
+            "input_tokens": 393,
+            "output_tokens": 0
+          },
+          "seconds": 0.5642289579991484
+        },
+        {
+          "id": "three_way-2",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.9366032887198491,
+          "usage": {
+            "input_tokens": 413,
+            "output_tokens": 0
+          },
+          "seconds": 0.5625790410049376
+        },
+        {
+          "id": "three_way-4",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.8744268187902419,
+          "usage": {
+            "input_tokens": 448,
+            "output_tokens": 0
+          },
+          "seconds": 0.5717686249990948
+        },
+        {
+          "id": "three_way-6",
+          "expected": "高橋澪",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "高橋澪",
+          "confidence": 0.9394474370445769,
+          "usage": {
+            "input_tokens": 490,
+            "output_tokens": 0
+          },
+          "seconds": 0.6081242500004009
+        },
+        {
+          "id": "three_way-7",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.9545170654983574,
+          "usage": {
+            "input_tokens": 510,
+            "output_tokens": 0
+          },
+          "seconds": 0.6095209589984734
+        },
+        {
+          "id": "quoted_speech-1",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.7784435199365388,
+          "usage": {
+            "input_tokens": 393,
+            "output_tokens": 0
+          },
+          "seconds": 0.5708749579935102
+        },
+        {
+          "id": "quoted_speech-3",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.466589476512184,
+          "usage": {
+            "input_tokens": 439,
+            "output_tokens": 0
+          },
+          "seconds": 0.5788132500019856
+        },
+        {
+          "id": "quoted_speech-5",
+          "expected": "高橋澪",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "高橋澪",
+          "confidence": 0.9360901395157829,
+          "usage": {
+            "input_tokens": 481,
+            "output_tokens": 0
+          },
+          "seconds": 0.6164830410052673
+        },
+        {
+          "id": "unknown-1",
+          "expected": "ナレーター",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "ナレーター",
+          "confidence": 0.9258480411238229,
+          "usage": {
+            "input_tokens": 396,
+            "output_tokens": 0
+          },
+          "seconds": 0.5556627500045579
+        },
+        {
+          "id": "unknown-3",
+          "expected": "ナレーター",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "ナレーター",
+          "confidence": 0.4098553471303174,
+          "usage": {
+            "input_tokens": 438,
+            "output_tokens": 0
+          },
+          "seconds": 0.572437250004441
+        },
+        {
+          "id": "post_attribution-1",
+          "expected": "高橋澪",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "高橋澪",
+          "confidence": 0.8220367273366175,
+          "usage": {
+            "input_tokens": 390,
+            "output_tokens": 0
+          },
+          "seconds": 0.561660874998779
+        },
+        {
+          "id": "post_attribution-3",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": false,
+          "actual": "佐藤葵",
+          "confidence": 0.42019565369300294,
+          "usage": {
+            "input_tokens": 424,
+            "output_tokens": 0
+          },
+          "seconds": 0.5666236660035793
+        },
+        {
+          "id": "post_attribution-5",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.620722925704606,
+          "usage": {
+            "input_tokens": 457,
+            "output_tokens": 0
+          },
+          "seconds": 0.5983492500017746
+        },
+        {
+          "id": "post_attribution-7",
+          "expected": "高橋澪",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "高橋澪",
+          "confidence": 0.917296954518198,
+          "usage": {
+            "input_tokens": 487,
+            "output_tokens": 0
+          },
+          "seconds": 0.6199355409989948
+        },
+        {
+          "id": "style-1",
+          "expected": "ユイ",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "ユイ",
+          "confidence": 0.7409516710767304,
+          "usage": {
+            "input_tokens": 413,
+            "output_tokens": 0
+          },
+          "seconds": 0.5639256249996834
+        },
+        {
+          "id": "style-2",
+          "expected": "千代",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "千代",
+          "confidence": 0.8765281418915337,
+          "usage": {
+            "input_tokens": 439,
+            "output_tokens": 0
+          },
+          "seconds": 0.5729818330000853
+        },
+        {
+          "id": "style-3",
+          "expected": "白石先生",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "白石先生",
+          "confidence": 0.9572969999705335,
+          "usage": {
+            "input_tokens": 463,
+            "output_tokens": 0
+          },
+          "seconds": 0.6100749160032137
+        },
+        {
+          "id": "style-4",
+          "expected": "ユイ",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "ユイ",
+          "confidence": 0.8777653557215813,
+          "usage": {
+            "input_tokens": 485,
+            "output_tokens": 0
+          },
+          "seconds": 0.6063348329989822
+        },
+        {
+          "id": "distractors-1",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.691757398976477,
+          "usage": {
+            "input_tokens": 687,
+            "output_tokens": 0
+          },
+          "seconds": 0.7922896659947583
+        },
+        {
+          "id": "distractors-3",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.8368631633556249,
+          "usage": {
+            "input_tokens": 730,
+            "output_tokens": 0
+          },
+          "seconds": 0.8016454999960843
+        },
+        {
+          "id": "distractors-5",
+          "expected": "高橋澪",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "高橋澪",
+          "confidence": 0.873941727437448,
+          "usage": {
+            "input_tokens": 778,
+            "output_tokens": 0
+          },
+          "seconds": 0.8427437089994783
+        }
+      ],
+      "workload": "short",
+      "round": 2
+    },
+    {
+      "client_concurrency": 1,
+      "observed_max_inflight": 1,
+      "requests": 4,
+      "retries": 0,
+      "valid": 4,
+      "correct": 4,
+      "wall_seconds": 19.16641416699713,
+      "valid_per_second": 0.20869840154490904,
+      "over_app_timeout": 0,
+      "mean_seconds": 4.791067781499805,
+      "p50_seconds": 4.777526875001058,
+      "p95_seconds": 4.857391708996147,
+      "max_seconds": 4.857391708996147,
+      "items": [
+        {
+          "id": "long_100-1",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.5751895730972456,
+          "usage": {
+            "input_tokens": 5824,
+            "output_tokens": 0
+          },
+          "seconds": 4.751825667000958
+        },
+        {
+          "id": "long_100-2",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.8809270185479731,
+          "usage": {
+            "input_tokens": 5792,
+            "output_tokens": 0
+          },
+          "seconds": 4.763117000002239
+        },
+        {
+          "id": "long_100-1",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.5621768453481759,
+          "usage": {
+            "input_tokens": 5824,
+            "output_tokens": 0
+          },
+          "seconds": 4.857391708996147
+        },
+        {
+          "id": "long_100-2",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.8813720186132755,
+          "usage": {
+            "input_tokens": 5792,
+            "output_tokens": 0
+          },
+          "seconds": 4.791936749999877
+        }
+      ],
+      "workload": "long",
+      "round": 1
+    },
+    {
+      "client_concurrency": 2,
+      "observed_max_inflight": 2,
+      "requests": 4,
+      "retries": 0,
+      "valid": 4,
+      "correct": 4,
+      "wall_seconds": 18.994163208000828,
+      "valid_per_second": 0.21059100925883892,
+      "over_app_timeout": 0,
+      "mean_seconds": 8.320111030750923,
+      "p50_seconds": 9.404411958003038,
+      "p95_seconds": 9.587019165999664,
+      "max_seconds": 9.587019165999664,
+      "items": [
+        {
+          "id": "long_100-1",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.5503697451974601,
+          "usage": {
+            "input_tokens": 5824,
+            "output_tokens": 0
+          },
+          "seconds": 9.587019165999664
+        },
+        {
+          "id": "long_100-2",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.8983699475124268,
+          "usage": {
+            "input_tokens": 5792,
+            "output_tokens": 0
+          },
+          "seconds": 4.88460104099795
+        },
+        {
+          "id": "long_100-1",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.5637344200020976,
+          "usage": {
+            "input_tokens": 5824,
+            "output_tokens": 0
+          },
+          "seconds": 9.402793916000519
+        },
+        {
+          "id": "long_100-2",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.8948959273409715,
+          "usage": {
+            "input_tokens": 5792,
+            "output_tokens": 0
+          },
+          "seconds": 9.406030000005558
+        }
+      ],
+      "workload": "long",
+      "round": 1
+    },
+    {
+      "client_concurrency": 4,
+      "observed_max_inflight": 4,
+      "requests": 4,
+      "retries": 0,
+      "valid": 4,
+      "correct": 4,
+      "wall_seconds": 19.001902291995066,
+      "valid_per_second": 0.21050523987196168,
+      "over_app_timeout": 2,
+      "mean_seconds": 11.912180666500717,
+      "p50_seconds": 11.90246227050011,
+      "p95_seconds": 19.000110667002446,
+      "max_seconds": 19.000110667002446,
+      "items": [
+        {
+          "id": "long_100-1",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.5429969703137879,
+          "usage": {
+            "input_tokens": 5824,
+            "output_tokens": 0
+          },
+          "seconds": 19.000110667002446
+        },
+        {
+          "id": "long_100-2",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.8809995782130781,
+          "usage": {
+            "input_tokens": 5792,
+            "output_tokens": 0
+          },
+          "seconds": 4.843687458000204
+        },
+        {
+          "id": "long_100-1",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.5525377745971154,
+          "usage": {
+            "input_tokens": 5824,
+            "output_tokens": 0
+          },
+          "seconds": 14.265798624997842
+        },
+        {
+          "id": "long_100-2",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.8804837595063439,
+          "usage": {
+            "input_tokens": 5792,
+            "output_tokens": 0
+          },
+          "seconds": 9.539125916002376
+        }
+      ],
+      "workload": "long",
+      "round": 1
+    },
+    {
+      "client_concurrency": 8,
+      "observed_max_inflight": 4,
+      "requests": 4,
+      "retries": 0,
+      "valid": 4,
+      "correct": 4,
+      "wall_seconds": 18.963678958003584,
+      "valid_per_second": 0.21092953581730026,
+      "over_app_timeout": 2,
+      "mean_seconds": 11.885833260499567,
+      "p50_seconds": 11.884853166498942,
+      "p95_seconds": 18.95941687499726,
+      "max_seconds": 18.95941687499726,
+      "items": [
+        {
+          "id": "long_100-1",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.5570747286692773,
+          "usage": {
+            "input_tokens": 5824,
+            "output_tokens": 0
+          },
+          "seconds": 14.24099720799859
+        },
+        {
+          "id": "long_100-2",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.8912992333073572,
+          "usage": {
+            "input_tokens": 5792,
+            "output_tokens": 0
+          },
+          "seconds": 4.8142098340031225
+        },
+        {
+          "id": "long_100-1",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.5604296223725481,
+          "usage": {
+            "input_tokens": 5824,
+            "output_tokens": 0
+          },
+          "seconds": 18.95941687499726
+        },
+        {
+          "id": "long_100-2",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.8891757193828128,
+          "usage": {
+            "input_tokens": 5792,
+            "output_tokens": 0
+          },
+          "seconds": 9.528709124999295
+        }
+      ],
+      "workload": "long",
+      "round": 1
+    },
+    {
+      "client_concurrency": 8,
+      "observed_max_inflight": 4,
+      "requests": 4,
+      "retries": 0,
+      "valid": 4,
+      "correct": 4,
+      "wall_seconds": 18.969035292000626,
+      "valid_per_second": 0.21086997511606864,
+      "over_app_timeout": 2,
+      "mean_seconds": 11.886841833247672,
+      "p50_seconds": 11.886817145998066,
+      "p95_seconds": 18.960881040999084,
+      "max_seconds": 18.960881040999084,
+      "items": [
+        {
+          "id": "long_100-1",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.55882801338482,
+          "usage": {
+            "input_tokens": 5824,
+            "output_tokens": 0
+          },
+          "seconds": 4.812851999995473
+        },
+        {
+          "id": "long_100-2",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.8931920713999486,
+          "usage": {
+            "input_tokens": 5792,
+            "output_tokens": 0
+          },
+          "seconds": 9.524725582996325
+        },
+        {
+          "id": "long_100-1",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.570840049269997,
+          "usage": {
+            "input_tokens": 5824,
+            "output_tokens": 0
+          },
+          "seconds": 14.248908708999807
+        },
+        {
+          "id": "long_100-2",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.897801219787434,
+          "usage": {
+            "input_tokens": 5792,
+            "output_tokens": 0
+          },
+          "seconds": 18.960881040999084
+        }
+      ],
+      "workload": "long",
+      "round": 2
+    },
+    {
+      "client_concurrency": 4,
+      "observed_max_inflight": 4,
+      "requests": 4,
+      "retries": 0,
+      "valid": 4,
+      "correct": 4,
+      "wall_seconds": 19.01051116700546,
+      "valid_per_second": 0.2104099129613294,
+      "over_app_timeout": 2,
+      "mean_seconds": 11.92773358299928,
+      "p50_seconds": 11.925682666500506,
+      "p95_seconds": 19.009342582998215,
+      "max_seconds": 19.009342582998215,
+      "items": [
+        {
+          "id": "long_100-1",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.5618832514508925,
+          "usage": {
+            "input_tokens": 5824,
+            "output_tokens": 0
+          },
+          "seconds": 19.009342582998215
+        },
+        {
+          "id": "long_100-2",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.8964272844452239,
+          "usage": {
+            "input_tokens": 5792,
+            "output_tokens": 0
+          },
+          "seconds": 9.565173875002074
+        },
+        {
+          "id": "long_100-1",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.5865663151156482,
+          "usage": {
+            "input_tokens": 5824,
+            "output_tokens": 0
+          },
+          "seconds": 14.286191457998939
+        },
+        {
+          "id": "long_100-2",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.9042557843314795,
+          "usage": {
+            "input_tokens": 5792,
+            "output_tokens": 0
+          },
+          "seconds": 4.850226415997895
+        }
+      ],
+      "workload": "long",
+      "round": 2
+    },
+    {
+      "client_concurrency": 2,
+      "observed_max_inflight": 2,
+      "requests": 4,
+      "retries": 0,
+      "valid": 4,
+      "correct": 4,
+      "wall_seconds": 18.967483167005412,
+      "valid_per_second": 0.21088723078231789,
+      "over_app_timeout": 0,
+      "mean_seconds": 8.303027728998131,
+      "p50_seconds": 9.45952995799962,
+      "p95_seconds": 9.5126489999966,
+      "max_seconds": 9.5126489999966,
+      "items": [
+        {
+          "id": "long_100-1",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.5717660705791712,
+          "usage": {
+            "input_tokens": 5824,
+            "output_tokens": 0
+          },
+          "seconds": 9.5126489999966
+        },
+        {
+          "id": "long_100-2",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.8895542244233551,
+          "usage": {
+            "input_tokens": 5792,
+            "output_tokens": 0
+          },
+          "seconds": 4.780401999996684
+        },
+        {
+          "id": "long_100-1",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.5679682395441517,
+          "usage": {
+            "input_tokens": 5824,
+            "output_tokens": 0
+          },
+          "seconds": 9.465518500001053
+        },
+        {
+          "id": "long_100-2",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.8871678664077156,
+          "usage": {
+            "input_tokens": 5792,
+            "output_tokens": 0
+          },
+          "seconds": 9.453541415998188
+        }
+      ],
+      "workload": "long",
+      "round": 2
+    },
+    {
+      "client_concurrency": 1,
+      "observed_max_inflight": 1,
+      "requests": 4,
+      "retries": 0,
+      "valid": 4,
+      "correct": 4,
+      "wall_seconds": 19.155906082996808,
+      "valid_per_second": 0.20881288427021918,
+      "over_app_timeout": 0,
+      "mean_seconds": 4.788198135498533,
+      "p50_seconds": 4.787940103997244,
+      "p95_seconds": 4.8000562919987715,
+      "max_seconds": 4.8000562919987715,
+      "items": [
+        {
+          "id": "long_100-1",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.5766576705965218,
+          "usage": {
+            "input_tokens": 5824,
+            "output_tokens": 0
+          },
+          "seconds": 4.78411058299389
+        },
+        {
+          "id": "long_100-2",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.8828235748556534,
+          "usage": {
+            "input_tokens": 5792,
+            "output_tokens": 0
+          },
+          "seconds": 4.7768560420008725
+        },
+        {
+          "id": "long_100-1",
+          "expected": "佐藤葵",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "佐藤葵",
+          "confidence": 0.5733527399323696,
+          "usage": {
+            "input_tokens": 5824,
+            "output_tokens": 0
+          },
+          "seconds": 4.791769625000597
+        },
+        {
+          "id": "long_100-2",
+          "expected": "鈴木蓮",
+          "status": 200,
+          "valid": true,
+          "correct": true,
+          "actual": "鈴木蓮",
+          "confidence": 0.882189535833533,
+          "usage": {
+            "input_tokens": 5792,
+            "output_tokens": 0
+          },
+          "seconds": 4.8000562919987715
+        }
+      ],
+      "workload": "long",
+      "round": 2
+    }
+  ],
+  "long_probe": {
+    "client_concurrency": 1,
+    "observed_max_inflight": 1,
+    "requests": 1,
+    "retries": 0,
+    "valid": 1,
+    "correct": 1,
+    "wall_seconds": 4.72500737500377,
+    "valid_per_second": 0.2116398813026619,
+    "over_app_timeout": 0,
+    "mean_seconds": 4.718263458002184,
+    "p50_seconds": 4.718263458002184,
+    "p95_seconds": 4.718263458002184,
+    "max_seconds": 4.718263458002184,
+    "items": [
+      {
+        "id": "long_100-1",
+        "expected": "佐藤葵",
+        "status": 200,
+        "valid": true,
+        "correct": true,
+        "actual": "佐藤葵",
+        "confidence": 0.5875655229612949,
+        "usage": {
+          "input_tokens": 5800,
+          "output_tokens": 0
+        },
+        "seconds": 4.718263458002184
+      }
+    ]
+  },
+  "server_after": {
+    "type": "decision",
+    "loaded_instances": [
+      {
+        "id": "clef-artemis",
+        "config": {
+          "context_length": 262144,
+          "eval_batch_size": 8192,
+          "physical_batch_size": 8192,
+          "parallel": 4,
+          "flash_attention": true,
+          "offload_kv_cache_to_gpu": true
+        }
+      }
+    ]
+  },
+  "finished_unix_seconds": 1793728056.034831
+}

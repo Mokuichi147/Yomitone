@@ -1,0 +1,538 @@
+{
+  "started_unix_seconds": 1793726812,
+  "base_url": "http://192.168.11.51:11433",
+  "model": "clef-artemis",
+  "backend": "jev",
+  "previous_count": 100,
+  "following_count": 0,
+  "rounds": 1,
+  "characters_mode": "extract",
+  "fixture": "evaluations/jev/synthetic.json",
+  "model_list": null,
+  "model_list_error": "GET http://192.168.11.51:11433/v1/models: 200 Invalid response data: models",
+  "cases": [
+    {
+      "id": "explicit",
+      "category": "明示された話者",
+      "round": 1,
+      "source": null,
+      "characters": [],
+      "extraction": {
+        "seconds": 0.013426625,
+        "error": "Error code: 400 - {\n    \"error\": {\n        \"message\": \"No models loaded. Please load a model in the developer page or use the 'lms load' command.\",\n        \"type\": \"invalid_request_error\",\n        \"param\": \"model\",\n        \"code\": null\n    }\n}"
+      },
+      "seconds": 0.000137708,
+      "fatal_error": "Error code: 400 - {\n    \"error\": {\n        \"message\": \"No models loaded. Please load a model in the developer page or use the 'lms load' command.\",\n        \"type\": \"invalid_request_error\",\n        \"param\": \"model\",\n        \"code\": null\n    }\n}",
+      "events": [
+        {
+          "actual": null,
+          "confidence": null,
+          "fallback": true,
+          "error": "Error code: 400 - {\n    \"error\": {\n        \"message\": \"No models loaded. Please load a model in the developer page or use the 'lms load' command.\",\n        \"type\": \"invalid_request_error\",\n        \"param\": \"model\",\n        \"code\": null\n    }\n}",
+          "seconds": null,
+          "calls": [],
+          "line": 2,
+          "expected": "佐藤葵",
+          "correct": false
+        },
+        {
+          "actual": null,
+          "confidence": null,
+          "fallback": true,
+          "error": "Error code: 400 - {\n    \"error\": {\n        \"message\": \"No models loaded. Please load a model in the developer page or use the 'lms load' command.\",\n        \"type\": \"invalid_request_error\",\n        \"param\": \"model\",\n        \"code\": null\n    }\n}",
+          "seconds": null,
+          "calls": [],
+          "line": 4,
+          "expected": "鈴木蓮",
+          "correct": false
+        },
+        {
+          "actual": null,
+          "confidence": null,
+          "fallback": true,
+          "error": "Error code: 400 - {\n    \"error\": {\n        \"message\": \"No models loaded. Please load a model in the developer page or use the 'lms load' command.\",\n        \"type\": \"invalid_request_error\",\n        \"param\": \"model\",\n        \"code\": null\n    }\n}",
+          "seconds": null,
+          "calls": [],
+          "line": 6,
+          "expected": "高橋澪",
+          "correct": false
+        },
+        {
+          "actual": null,
+          "confidence": null,
+          "fallback": true,
+          "error": "Error code: 400 - {\n    \"error\": {\n        \"message\": \"No models loaded. Please load a model in the developer page or use the 'lms load' command.\",\n        \"type\": \"invalid_request_error\",\n        \"param\": \"model\",\n        \"code\": null\n    }\n}",
+          "seconds": null,
+          "calls": [],
+          "line": 8,
+          "expected": "佐藤葵",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "alternating",
+      "category": "交互の短い応答",
+      "round": 1,
+      "source": null,
+      "characters": [],
+      "extraction": {
+        "seconds": 0.012725375,
+        "error": "Error code: 400 - {\n    \"error\": {\n        \"message\": \"No models loaded. Please load a model in the developer page or use the 'lms load' command.\",\n        \"type\": \"invalid_request_error\",\n        \"param\": \"model\",\n        \"code\": null\n    }\n}"
+      },
+      "seconds": 0.000172125,
+      "fatal_error": "Error code: 400 - {\n    \"error\": {\n        \"message\": \"No models loaded. Please load a model in the developer page or use the 'lms load' command.\",\n        \"type\": \"invalid_request_error\",\n        \"param\": \"model\",\n        \"code\": null\n    }\n}",
+      "events": [
+        {
+          "actual": null,
+          "confidence": null,
+          "fallback": true,
+          "error": "Error code: 400 - {\n    \"error\": {\n        \"message\": \"No models loaded. Please load a model in the developer page or use the 'lms load' command.\",\n        \"type\": \"invalid_request_error\",\n        \"param\": \"model\",\n        \"code\": null\n    }\n}",
+          "seconds": null,
+          "calls": [],
+          "line": 2,
+          "expected": "佐藤葵",
+          "correct": false
+        },
+        {
+          "actual": null,
+          "confidence": null,
+          "fallback": true,
+          "error": "Error code: 400 - {\n    \"error\": {\n        \"message\": \"No models loaded. Please load a model in the developer page or use the 'lms load' command.\",\n        \"type\": \"invalid_request_error\",\n        \"param\": \"model\",\n        \"code\": null\n    }\n}",
+          "seconds": null,
+          "calls": [],
+          "line": 3,
+          "expected": "鈴木蓮",
+          "correct": false
+        },
+        {
+          "actual": null,
+          "confidence": null,
+          "fallback": true,
+          "error": "Error code: 400 - {\n    \"error\": {\n        \"message\": \"No models loaded. Please load a model in the developer page or use the 'lms load' command.\",\n        \"type\": \"invalid_request_error\",\n        \"param\": \"model\",\n        \"code\": null\n    }\n}",
+          "seconds": null,
+          "calls": [],
+          "line": 4,
+          "expected": "佐藤葵",
+          "correct": false
+        },
+        {
+          "actual": null,
+          "confidence": null,
+          "fallback": true,
+          "error": "Error code: 400 - {\n    \"error\": {\n        \"message\": \"No models loaded. Please load a model in the developer page or use the 'lms load' command.\",\n        \"type\": \"invalid_request_error\",\n        \"param\": \"model\",\n        \"code\": null\n    }\n}",
+          "seconds": null,
+          "calls": [],
+          "line": 5,
+          "expected": "鈴木蓮",
+          "correct": false
+        },
+        {
+          "actual": null,
+          "confidence": null,
+          "fallback": true,
+          "error": "Error code: 400 - {\n    \"error\": {\n        \"message\": \"No models loaded. Please load a model in the developer page or use the 'lms load' command.\",\n        \"type\": \"invalid_request_error\",\n        \"param\": \"model\",\n        \"code\": null\n    }\n}",
+          "seconds": null,
+          "calls": [],
+          "line": 6,
+          "expected": "佐藤葵",
+          "correct": false
+        },
+        {
+          "actual": null,
+          "confidence": null,
+          "fallback": true,
+          "error": "Error code: 400 - {\n    \"error\": {\n        \"message\": \"No models loaded. Please load a model in the developer page or use the 'lms load' command.\",\n        \"type\": \"invalid_request_error\",\n        \"param\": \"model\",\n        \"code\": null\n    }\n}",
+          "seconds": null,
+          "calls": [],
+          "line": 7,
+          "expected": "鈴木蓮",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "aliases",
+      "category": "別名と呼びかけ",
+      "round": 1,
+      "source": null,
+      "characters": [],
+      "extraction": {
+        "seconds": 0.012178875,
+        "error": "Error code: 400 - {\n    \"error\": {\n        \"message\": \"No models loaded. Please load a model in the developer page or use the 'lms load' command.\",\n        \"type\": \"invalid_request_error\",\n        \"param\": \"model\",\n        \"code\": null\n    }\n}"
+      },
+      "seconds": 0.00013525,
+      "fatal_error": "Error code: 400 - {\n    \"error\": {\n        \"message\": \"No models loaded. Please load a model in the developer page or use the 'lms load' command.\",\n        \"type\": \"invalid_request_error\",\n        \"param\": \"model\",\n        \"code\": null\n    }\n}",
+      "events": [
+        {
+          "actual": null,
+          "confidence": null,
+          "fallback": true,
+          "error": "Error code: 400 - {\n    \"error\": {\n        \"message\": \"No models loaded. Please load a model in the developer page or use the 'lms load' command.\",\n        \"type\": \"invalid_request_error\",\n        \"param\": \"model\",\n        \"code\": null\n    }\n}",
+          "seconds": null,
+          "calls": [],
+          "line": 2,
+          "expected": "佐藤葵",
+          "correct": false
+        },
+        {
+          "actual": null,
+          "confidence": null,
+          "fallback": true,
+          "error": "Error code: 400 - {\n    \"error\": {\n        \"message\": \"No models loaded. Please load a model in the developer page or use the 'lms load' command.\",\n        \"type\": \"invalid_request_error\",\n        \"param\": \"model\",\n        \"code\": null\n    }\n}",
+          "seconds": null,
+          "calls": [],
+          "line": 4,
+          "expected": "鈴木蓮",
+          "correct": false
+        },
+        {
+          "actual": null,
+          "confidence": null,
+          "fallback": true,
+          "error": "Error code: 400 - {\n    \"error\": {\n        \"message\": \"No models loaded. Please load a model in the developer page or use the 'lms load' command.\",\n        \"type\": \"invalid_request_error\",\n        \"param\": \"model\",\n        \"code\": null\n    }\n}",
+          "seconds": null,
+          "calls": [],
+          "line": 6,
+          "expected": "高橋澪",
+          "correct": false
+        },
+        {
+          "actual": null,
+          "confidence": null,
+          "fallback": true,
+          "error": "Error code: 400 - {\n    \"error\": {\n        \"message\": \"No models loaded. Please load a model in the developer page or use the 'lms load' command.\",\n        \"type\": \"invalid_request_error\",\n        \"param\": \"model\",\n        \"code\": null\n    }\n}",
+          "seconds": null,
+          "calls": [],
+          "line": 8,
+          "expected": "佐藤葵",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "three_way",
+      "category": "三人の会話",
+      "round": 1,
+      "source": null,
+      "characters": [],
+      "extraction": {
+        "seconds": 0.01770175,
+        "error": "Error code: 400 - {\n    \"error\": {\n        \"message\": \"No models loaded. Please load a model in the developer page or use the 'lms load' command.\",\n        \"type\": \"invalid_request_error\",\n        \"param\": \"model\",\n        \"code\": null\n    }\n}"
+      },
+      "seconds": 0.000249458,
+      "fatal_error": "Error code: 400 - {\n    \"error\": {\n        \"message\": \"No models loaded. Please load a model in the developer page or use the 'lms load' command.\",\n        \"type\": \"invalid_request_error\",\n        \"param\": \"model\",\n        \"code\": null\n    }\n}",
+      "events": [
+        {
+          "actual": null,
+          "confidence": null,
+          "fallback": true,
+          "error": "Error code: 400 - {\n    \"error\": {\n        \"message\": \"No models loaded. Please load a model in the developer page or use the 'lms load' command.\",\n        \"type\": \"invalid_request_error\",\n        \"param\": \"model\",\n        \"code\": null\n    }\n}",
+          "seconds": null,
+          "calls": [],
+          "line": 2,
+          "expected": "高橋澪",
+          "correct": false
+        },
+        {
+          "actual": null,
+          "confidence": null,
+          "fallback": true,
+          "error": "Error code: 400 - {\n    \"error\": {\n        \"message\": \"No models loaded. Please load a model in the developer page or use the 'lms load' command.\",\n        \"type\": \"invalid_request_error\",\n        \"param\": \"model\",\n        \"code\": null\n    }\n}",
+          "seconds": null,
+          "calls": [],
+          "line": 3,
+          "expected": "鈴木蓮",
+          "correct": false
+        },
+        {
+          "actual": null,
+          "confidence": null,
+          "fallback": true,
+          "error": "Error code: 400 - {\n    \"error\": {\n        \"message\": \"No models loaded. Please load a model in the developer page or use the 'lms load' command.\",\n        \"type\": \"invalid_request_error\",\n        \"param\": \"model\",\n        \"code\": null\n    }\n}",
+          "seconds": null,
+          "calls": [],
+          "line": 5,
+          "expected": "佐藤葵",
+          "correct": false
+        },
+        {
+          "actual": null,
+          "confidence": null,
+          "fallback": true,
+          "error": "Error code: 400 - {\n    \"error\": {\n        \"message\": \"No models loaded. Please load a model in the developer page or use the 'lms load' command.\",\n        \"type\": \"invalid_request_error\",\n        \"param\": \"model\",\n        \"code\": null\n    }\n}",
+          "seconds": null,
+          "calls": [],
+          "line": 7,
+          "expected": "高橋澪",
+          "correct": false
+        },
+        {
+          "actual": null,
+          "confidence": null,
+          "fallback": true,
+          "error": "Error code: 400 - {\n    \"error\": {\n        \"message\": \"No models loaded. Please load a model in the developer page or use the 'lms load' command.\",\n        \"type\": \"invalid_request_error\",\n        \"param\": \"model\",\n        \"code\": null\n    }\n}",
+          "seconds": null,
+          "calls": [],
+          "line": 8,
+          "expected": "鈴木蓮",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "quoted_speech",
+      "category": "セリフ内の引用",
+      "round": 1,
+      "source": null,
+      "characters": [],
+      "extraction": {
+        "seconds": 0.012825209,
+        "error": "Error code: 400 - {\n    \"error\": {\n        \"message\": \"No models loaded. Please load a model in the developer page or use the 'lms load' command.\",\n        \"type\": \"invalid_request_error\",\n        \"param\": \"model\",\n        \"code\": null\n    }\n}"
+      },
+      "seconds": 0.000117417,
+      "fatal_error": "Error code: 400 - {\n    \"error\": {\n        \"message\": \"No models loaded. Please load a model in the developer page or use the 'lms load' command.\",\n        \"type\": \"invalid_request_error\",\n        \"param\": \"model\",\n        \"code\": null\n    }\n}",
+      "events": [
+        {
+          "actual": null,
+          "confidence": null,
+          "fallback": true,
+          "error": "Error code: 400 - {\n    \"error\": {\n        \"message\": \"No models loaded. Please load a model in the developer page or use the 'lms load' command.\",\n        \"type\": \"invalid_request_error\",\n        \"param\": \"model\",\n        \"code\": null\n    }\n}",
+          "seconds": null,
+          "calls": [],
+          "line": 2,
+          "expected": "鈴木蓮",
+          "correct": false
+        },
+        {
+          "actual": null,
+          "confidence": null,
+          "fallback": true,
+          "error": "Error code: 400 - {\n    \"error\": {\n        \"message\": \"No models loaded. Please load a model in the developer page or use the 'lms load' command.\",\n        \"type\": \"invalid_request_error\",\n        \"param\": \"model\",\n        \"code\": null\n    }\n}",
+          "seconds": null,
+          "calls": [],
+          "line": 4,
+          "expected": "佐藤葵",
+          "correct": false
+        },
+        {
+          "actual": null,
+          "confidence": null,
+          "fallback": true,
+          "error": "Error code: 400 - {\n    \"error\": {\n        \"message\": \"No models loaded. Please load a model in the developer page or use the 'lms load' command.\",\n        \"type\": \"invalid_request_error\",\n        \"param\": \"model\",\n        \"code\": null\n    }\n}",
+          "seconds": null,
+          "calls": [],
+          "line": 6,
+          "expected": "高橋澪",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "unknown",
+      "category": "候補にいない話者",
+      "round": 1,
+      "source": null,
+      "characters": [],
+      "extraction": {
+        "seconds": 0.012673541,
+        "error": "Error code: 400 - {\n    \"error\": {\n        \"message\": \"No models loaded. Please load a model in the developer page or use the 'lms load' command.\",\n        \"type\": \"invalid_request_error\",\n        \"param\": \"model\",\n        \"code\": null\n    }\n}"
+      },
+      "seconds": 0.000062708,
+      "fatal_error": "Error code: 400 - {\n    \"error\": {\n        \"message\": \"No models loaded. Please load a model in the developer page or use the 'lms load' command.\",\n        \"type\": \"invalid_request_error\",\n        \"param\": \"model\",\n        \"code\": null\n    }\n}",
+      "events": [
+        {
+          "actual": null,
+          "confidence": null,
+          "fallback": true,
+          "error": "Error code: 400 - {\n    \"error\": {\n        \"message\": \"No models loaded. Please load a model in the developer page or use the 'lms load' command.\",\n        \"type\": \"invalid_request_error\",\n        \"param\": \"model\",\n        \"code\": null\n    }\n}",
+          "seconds": null,
+          "calls": [],
+          "line": 2,
+          "expected": "ナレーター",
+          "correct": false
+        },
+        {
+          "actual": null,
+          "confidence": null,
+          "fallback": true,
+          "error": "Error code: 400 - {\n    \"error\": {\n        \"message\": \"No models loaded. Please load a model in the developer page or use the 'lms load' command.\",\n        \"type\": \"invalid_request_error\",\n        \"param\": \"model\",\n        \"code\": null\n    }\n}",
+          "seconds": null,
+          "calls": [],
+          "line": 4,
+          "expected": "ナレーター",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "post_attribution",
+      "category": "後ろで明かされる話者",
+      "round": 1,
+      "source": null,
+      "characters": [],
+      "extraction": {
+        "seconds": 0.012366792,
+        "error": "Error code: 400 - {\n    \"error\": {\n        \"message\": \"No models loaded. Please load a model in the developer page or use the 'lms load' command.\",\n        \"type\": \"invalid_request_error\",\n        \"param\": \"model\",\n        \"code\": null\n    }\n}"
+      },
+      "seconds": 0.000098458,
+      "fatal_error": "Error code: 400 - {\n    \"error\": {\n        \"message\": \"No models loaded. Please load a model in the developer page or use the 'lms load' command.\",\n        \"type\": \"invalid_request_error\",\n        \"param\": \"model\",\n        \"code\": null\n    }\n}",
+      "events": [
+        {
+          "actual": null,
+          "confidence": null,
+          "fallback": true,
+          "error": "Error code: 400 - {\n    \"error\": {\n        \"message\": \"No models loaded. Please load a model in the developer page or use the 'lms load' command.\",\n        \"type\": \"invalid_request_error\",\n        \"param\": \"model\",\n        \"code\": null\n    }\n}",
+          "seconds": null,
+          "calls": [],
+          "line": 2,
+          "expected": "高橋澪",
+          "correct": false
+        },
+        {
+          "actual": null,
+          "confidence": null,
+          "fallback": true,
+          "error": "Error code: 400 - {\n    \"error\": {\n        \"message\": \"No models loaded. Please load a model in the developer page or use the 'lms load' command.\",\n        \"type\": \"invalid_request_error\",\n        \"param\": \"model\",\n        \"code\": null\n    }\n}",
+          "seconds": null,
+          "calls": [],
+          "line": 4,
+          "expected": "鈴木蓮",
+          "correct": false
+        },
+        {
+          "actual": null,
+          "confidence": null,
+          "fallback": true,
+          "error": "Error code: 400 - {\n    \"error\": {\n        \"message\": \"No models loaded. Please load a model in the developer page or use the 'lms load' command.\",\n        \"type\": \"invalid_request_error\",\n        \"param\": \"model\",\n        \"code\": null\n    }\n}",
+          "seconds": null,
+          "calls": [],
+          "line": 6,
+          "expected": "佐藤葵",
+          "correct": false
+        },
+        {
+          "actual": null,
+          "confidence": null,
+          "fallback": true,
+          "error": "Error code: 400 - {\n    \"error\": {\n        \"message\": \"No models loaded. Please load a model in the developer page or use the 'lms load' command.\",\n        \"type\": \"invalid_request_error\",\n        \"param\": \"model\",\n        \"code\": null\n    }\n}",
+          "seconds": null,
+          "calls": [],
+          "line": 8,
+          "expected": "高橋澪",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "style",
+      "category": "口調と役割",
+      "round": 1,
+      "source": null,
+      "characters": [],
+      "extraction": {
+        "seconds": 0.011101667,
+        "error": "Error code: 400 - {\n    \"error\": {\n        \"message\": \"No models loaded. Please load a model in the developer page or use the 'lms load' command.\",\n        \"type\": \"invalid_request_error\",\n        \"param\": \"model\",\n        \"code\": null\n    }\n}"
+      },
+      "seconds": 0.000104333,
+      "fatal_error": "Error code: 400 - {\n    \"error\": {\n        \"message\": \"No models loaded. Please load a model in the developer page or use the 'lms load' command.\",\n        \"type\": \"invalid_request_error\",\n        \"param\": \"model\",\n        \"code\": null\n    }\n}",
+      "events": [
+        {
+          "actual": null,
+          "confidence": null,
+          "fallback": true,
+          "error": "Error code: 400 - {\n    \"error\": {\n        \"message\": \"No models loaded. Please load a model in the developer page or use the 'lms load' command.\",\n        \"type\": \"invalid_request_error\",\n        \"param\": \"model\",\n        \"code\": null\n    }\n}",
+          "seconds": null,
+          "calls": [],
+          "line": 2,
+          "expected": "ユイ",
+          "correct": false
+        },
+        {
+          "actual": null,
+          "confidence": null,
+          "fallback": true,
+          "error": "Error code: 400 - {\n    \"error\": {\n        \"message\": \"No models loaded. Please load a model in the developer page or use the 'lms load' command.\",\n        \"type\": \"invalid_request_error\",\n        \"param\": \"model\",\n        \"code\": null\n    }\n}",
+          "seconds": null,
+          "calls": [],
+          "line": 3,
+          "expected": "千代",
+          "correct": false
+        },
+        {
+          "actual": null,
+          "confidence": null,
+          "fallback": true,
+          "error": "Error code: 400 - {\n    \"error\": {\n        \"message\": \"No models loaded. Please load a model in the developer page or use the 'lms load' command.\",\n        \"type\": \"invalid_request_error\",\n        \"param\": \"model\",\n        \"code\": null\n    }\n}",
+          "seconds": null,
+          "calls": [],
+          "line": 4,
+          "expected": "白石先生",
+          "correct": false
+        },
+        {
+          "actual": null,
+          "confidence": null,
+          "fallback": true,
+          "error": "Error code: 400 - {\n    \"error\": {\n        \"message\": \"No models loaded. Please load a model in the developer page or use the 'lms load' command.\",\n        \"type\": \"invalid_request_error\",\n        \"param\": \"model\",\n        \"code\": null\n    }\n}",
+          "seconds": null,
+          "calls": [],
+          "line": 5,
+          "expected": "ユイ",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": "distractors",
+      "category": "多数の候補と主語の取り違え",
+      "round": 1,
+      "source": null,
+      "characters": [],
+      "extraction": {
+        "seconds": 0.013107791,
+        "error": "Error code: 400 - {\n    \"error\": {\n        \"message\": \"No models loaded. Please load a model in the developer page or use the 'lms load' command.\",\n        \"type\": \"invalid_request_error\",\n        \"param\": \"model\",\n        \"code\": null\n    }\n}"
+      },
+      "seconds": 0.00008025,
+      "fatal_error": "Error code: 400 - {\n    \"error\": {\n        \"message\": \"No models loaded. Please load a model in the developer page or use the 'lms load' command.\",\n        \"type\": \"invalid_request_error\",\n        \"param\": \"model\",\n        \"code\": null\n    }\n}",
+      "events": [
+        {
+          "actual": null,
+          "confidence": null,
+          "fallback": true,
+          "error": "Error code: 400 - {\n    \"error\": {\n        \"message\": \"No models loaded. Please load a model in the developer page or use the 'lms load' command.\",\n        \"type\": \"invalid_request_error\",\n        \"param\": \"model\",\n        \"code\": null\n    }\n}",
+          "seconds": null,
+          "calls": [],
+          "line": 2,
+          "expected": "佐藤葵",
+          "correct": false
+        },
+        {
+          "actual": null,
+          "confidence": null,
+          "fallback": true,
+          "error": "Error code: 400 - {\n    \"error\": {\n        \"message\": \"No models loaded. Please load a model in the developer page or use the 'lms load' command.\",\n        \"type\": \"invalid_request_error\",\n        \"param\": \"model\",\n        \"code\": null\n    }\n}",
+          "seconds": null,
+          "calls": [],
+          "line": 4,
+          "expected": "鈴木蓮",
+          "correct": false
+        },
+        {
+          "actual": null,
+          "confidence": null,
+          "fallback": true,
+          "error": "Error code: 400 - {\n    \"error\": {\n        \"message\": \"No models loaded. Please load a model in the developer page or use the 'lms load' command.\",\n        \"type\": \"invalid_request_error\",\n        \"param\": \"model\",\n        \"code\": null\n    }\n}",
+          "seconds": null,
+          "calls": [],
+          "line": 6,
+          "expected": "高橋澪",
+          "correct": false
+        }
+      ]
+    }
+  ],
+  "elapsed_seconds": 0.1408065,
+  "scored": 35,
+  "correct": 0
+}

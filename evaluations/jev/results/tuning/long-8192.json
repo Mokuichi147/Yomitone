@@ -1,0 +1,93 @@
+{
+  "started_unix_seconds": 1793727685,
+  "base_url": "http://192.168.11.51:11433",
+  "model": "clef-artemis",
+  "backend": "jev",
+  "previous_count": 100,
+  "following_count": 0,
+  "rounds": 1,
+  "characters_mode": "fixed",
+  "fixture": "evaluations/jev/long.json",
+  "model_list": null,
+  "model_list_error": "GET http://192.168.11.51:11433/v1/models: 200 Invalid response data: models",
+  "cases": [
+    {
+      "id": "long_100",
+      "category": "長い履歴",
+      "round": 1,
+      "source": null,
+      "characters": [
+        {
+          "name": "佐藤葵",
+          "aliases": [
+            "葵",
+            "委員長"
+          ],
+          "portrait": "高校の図書委員。落ち着いた口調で話す女子。"
+        },
+        {
+          "name": "鈴木蓮",
+          "aliases": [
+            "蓮",
+            "レン"
+          ],
+          "portrait": "葵の同級生。写真部に所属する男子。"
+        },
+        {
+          "name": "高橋澪",
+          "aliases": [
+            "澪先生",
+            "先生"
+          ],
+          "portrait": "二人の担任である女性教師。"
+        }
+      ],
+      "extraction": null,
+      "seconds": 9.591875541,
+      "fatal_error": null,
+      "events": [
+        {
+          "actual": "佐藤葵",
+          "confidence": 0.5634596684404621,
+          "fallback": false,
+          "error": null,
+          "seconds": 5.013882291,
+          "calls": [
+            {
+              "seconds": 5.013882291,
+              "previous_lines": 100,
+              "previous_chars": 7632,
+              "following_lines": 0,
+              "error": null
+            }
+          ],
+          "line": 102,
+          "expected": "佐藤葵",
+          "correct": true
+        },
+        {
+          "actual": "鈴木蓮",
+          "confidence": 0.8963523890034998,
+          "fallback": false,
+          "error": null,
+          "seconds": 4.5770615,
+          "calls": [
+            {
+              "seconds": 4.5770615,
+              "previous_lines": 100,
+              "previous_chars": 7572,
+              "following_lines": 0,
+              "error": null
+            }
+          ],
+          "line": 103,
+          "expected": "鈴木蓮",
+          "correct": true
+        }
+      ]
+    }
+  ],
+  "elapsed_seconds": 9.592199458,
+  "scored": 2,
+  "correct": 2
+}

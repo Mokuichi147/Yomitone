@@ -1,0 +1,284 @@
+{
+  "parallel.json": {
+    "server_before": {
+      "type": "decision",
+      "loaded_instances": [
+        {
+          "id": "clef-artemis",
+          "config": {
+            "context_length": 262144,
+            "eval_batch_size": 8192,
+            "physical_batch_size": 8192,
+            "parallel": 4,
+            "flash_attention": true,
+            "offload_kv_cache_to_gpu": true
+          }
+        }
+      ]
+    },
+    "server_after": {
+      "type": "decision",
+      "loaded_instances": [
+        {
+          "id": "clef-artemis",
+          "config": {
+            "context_length": 262144,
+            "eval_batch_size": 8192,
+            "physical_batch_size": 8192,
+            "parallel": 4,
+            "flash_attention": true,
+            "offload_kv_cache_to_gpu": true
+          }
+        }
+      ]
+    },
+    "started_unix_seconds": 1793727734.865153,
+    "finished_unix_seconds": 1793728056.034831,
+    "excluded_underfilled_batches": 2,
+    "rows": [
+      {
+        "workload": "long",
+        "client_concurrency": 1,
+        "rounds": 2,
+        "requests": 8,
+        "valid": 8,
+        "correct": 8,
+        "wall_seconds": 38.322320249993936,
+        "valid_per_second": 0.20875562721182744,
+        "mean_seconds": 4.789632958499169,
+        "p50_seconds": 4.787940103997244,
+        "p95_seconds": 4.857391708996147,
+        "max_seconds": 4.857391708996147,
+        "over_app_timeout": 0,
+        "min_input_tokens": 5792,
+        "max_input_tokens": 5824
+      },
+      {
+        "workload": "long",
+        "client_concurrency": 2,
+        "rounds": 2,
+        "requests": 8,
+        "valid": 8,
+        "correct": 8,
+        "wall_seconds": 37.96164637500624,
+        "valid_per_second": 0.21073901592601002,
+        "mean_seconds": 8.311569379874527,
+        "p50_seconds": 9.429785708001873,
+        "p95_seconds": 9.587019165999664,
+        "max_seconds": 9.587019165999664,
+        "over_app_timeout": 0,
+        "min_input_tokens": 5792,
+        "max_input_tokens": 5824
+      },
+      {
+        "workload": "long",
+        "client_concurrency": 4,
+        "rounds": 2,
+        "requests": 8,
+        "valid": 8,
+        "correct": 8,
+        "wall_seconds": 38.01241345900053,
+        "valid_per_second": 0.21045756562204737,
+        "mean_seconds": 11.919957124749999,
+        "p50_seconds": 11.915486249999958,
+        "p95_seconds": 19.009342582998215,
+        "max_seconds": 19.009342582998215,
+        "over_app_timeout": 4,
+        "min_input_tokens": 5792,
+        "max_input_tokens": 5824
+      },
+      {
+        "workload": "short",
+        "client_concurrency": 1,
+        "rounds": 2,
+        "requests": 70,
+        "valid": 70,
+        "correct": 68,
+        "wall_seconds": 43.19181824999396,
+        "valid_per_second": 1.6206773142737465,
+        "mean_seconds": 0.616851742842638,
+        "p50_seconds": 0.6048545414996624,
+        "p95_seconds": 0.8016454999960843,
+        "max_seconds": 0.8447766249955748,
+        "over_app_timeout": 0,
+        "min_input_tokens": 382,
+        "max_input_tokens": 778
+      },
+      {
+        "workload": "short",
+        "client_concurrency": 2,
+        "rounds": 2,
+        "requests": 70,
+        "valid": 70,
+        "correct": 68,
+        "wall_seconds": 40.24179183299566,
+        "valid_per_second": 1.7394851673231047,
+        "mean_seconds": 1.1262954487859262,
+        "p50_seconds": 1.1113096670014784,
+        "p95_seconds": 1.5279764170045382,
+        "max_seconds": 1.5861672910032212,
+        "over_app_timeout": 0,
+        "min_input_tokens": 382,
+        "max_input_tokens": 778
+      },
+      {
+        "workload": "short",
+        "client_concurrency": 4,
+        "rounds": 2,
+        "requests": 70,
+        "valid": 70,
+        "correct": 68,
+        "wall_seconds": 40.30213116600498,
+        "valid_per_second": 1.7368808540587872,
+        "mean_seconds": 2.199622066057158,
+        "p50_seconds": 1.1136641250013781,
+        "p95_seconds": 19.555416959003196,
+        "max_seconds": 20.15539491700474,
+        "over_app_timeout": 4,
+        "min_input_tokens": 382,
+        "max_input_tokens": 778
+      },
+      {
+        "workload": "short",
+        "client_concurrency": 8,
+        "rounds": 2,
+        "requests": 70,
+        "valid": 70,
+        "correct": 68,
+        "wall_seconds": 40.313265374992625,
+        "valid_per_second": 1.736401141134621,
+        "mean_seconds": 4.108082916071414,
+        "p50_seconds": 2.7902980624967313,
+        "p95_seconds": 19.589312333002454,
+        "max_seconds": 20.183138041997154,
+        "over_app_timeout": 6,
+        "min_input_tokens": 382,
+        "max_input_tokens": 778
+      }
+    ]
+  },
+  "parallel-slots8.json": {
+    "server_before": {
+      "type": "decision",
+      "loaded_instances": [
+        {
+          "id": "clef-artemis",
+          "config": {
+            "context_length": 262144,
+            "eval_batch_size": 8192,
+            "physical_batch_size": 8192,
+            "parallel": 8,
+            "flash_attention": true,
+            "offload_kv_cache_to_gpu": true
+          }
+        }
+      ]
+    },
+    "server_after": {
+      "type": "decision",
+      "loaded_instances": [
+        {
+          "id": "clef-artemis",
+          "config": {
+            "context_length": 262144,
+            "eval_batch_size": 8192,
+            "physical_batch_size": 8192,
+            "parallel": 8,
+            "flash_attention": true,
+            "offload_kv_cache_to_gpu": true
+          }
+        }
+      ]
+    },
+    "started_unix_seconds": 1793728095.279083,
+    "finished_unix_seconds": 1793728198.551371,
+    "excluded_underfilled_batches": 0,
+    "rows": [
+      {
+        "workload": "long",
+        "client_concurrency": 2,
+        "rounds": 1,
+        "requests": 4,
+        "valid": 4,
+        "correct": 4,
+        "wall_seconds": 18.879701790996478,
+        "valid_per_second": 0.21186775322412962,
+        "mean_seconds": 8.262318041746767,
+        "p50_seconds": 9.417913895496895,
+        "p95_seconds": 9.454821791994618,
+        "max_seconds": 9.454821791994618,
+        "over_app_timeout": 0,
+        "min_input_tokens": 5792,
+        "max_input_tokens": 5824
+      },
+      {
+        "workload": "long",
+        "client_concurrency": 4,
+        "rounds": 1,
+        "requests": 4,
+        "valid": 4,
+        "correct": 4,
+        "wall_seconds": 18.925165749998996,
+        "valid_per_second": 0.21135878294752647,
+        "mean_seconds": 11.865696281502096,
+        "p50_seconds": 11.867499875002977,
+        "p95_seconds": 18.919340792002913,
+        "max_seconds": 18.919340792002913,
+        "over_app_timeout": 2,
+        "min_input_tokens": 5792,
+        "max_input_tokens": 5824
+      },
+      {
+        "workload": "short",
+        "client_concurrency": 2,
+        "rounds": 1,
+        "requests": 35,
+        "valid": 35,
+        "correct": 34,
+        "wall_seconds": 20.249956416002533,
+        "valid_per_second": 1.7283987817544753,
+        "mean_seconds": 1.133711738085341,
+        "p50_seconds": 1.120102417000453,
+        "p95_seconds": 1.5780316669988679,
+        "max_seconds": 1.5827926250058226,
+        "over_app_timeout": 0,
+        "min_input_tokens": 382,
+        "max_input_tokens": 778
+      },
+      {
+        "workload": "short",
+        "client_concurrency": 4,
+        "rounds": 1,
+        "requests": 35,
+        "valid": 35,
+        "correct": 34,
+        "wall_seconds": 20.13424749999831,
+        "valid_per_second": 1.7383316659836896,
+        "mean_seconds": 2.170125361886416,
+        "p50_seconds": 1.1143584579986054,
+        "p95_seconds": 17.972309000004316,
+        "max_seconds": 18.53929241700098,
+        "over_app_timeout": 2,
+        "min_input_tokens": 382,
+        "max_input_tokens": 778
+      },
+      {
+        "workload": "short",
+        "client_concurrency": 8,
+        "rounds": 1,
+        "requests": 35,
+        "valid": 35,
+        "correct": 34,
+        "wall_seconds": 20.1585774999985,
+        "valid_per_second": 1.7362336206511895,
+        "mean_seconds": 4.1476040166854675,
+        "p50_seconds": 1.1209685840003658,
+        "p95_seconds": 18.995473833005235,
+        "max_seconds": 20.132113666993973,
+        "over_app_timeout": 6,
+        "min_input_tokens": 382,
+        "max_input_tokens": 778
+      }
+    ]
+  }
+}

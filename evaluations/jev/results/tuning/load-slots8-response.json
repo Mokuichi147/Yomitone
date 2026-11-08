@@ -1,0 +1,27 @@
+{
+  "status": 200,
+  "request": {
+    "model": "clef-artemis",
+    "context_length": 262144,
+    "eval_batch_size": 8192,
+    "physical_batch_size": 8192,
+    "parallel": 8,
+    "flash_attention": true,
+    "offload_kv_cache_to_gpu": true,
+    "echo_load_config": true
+  },
+  "response": {
+    "type": "decision",
+    "instance_id": "clef-artemis",
+    "load_time_seconds": 9.927,
+    "status": "loaded",
+    "load_config": {
+      "context_length": 262144,
+      "eval_batch_size": 8192,
+      "physical_batch_size": 8192,
+      "parallel": 8,
+      "flash_attention": true,
+      "offload_kv_cache_to_gpu": true
+    }
+  }
+}

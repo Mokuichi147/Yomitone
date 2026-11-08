@@ -1,0 +1,45 @@
+{
+  "scored": 59,
+  "correct": 46,
+  "fallbacks": 0,
+  "fatal_cases": 0,
+  "elapsed_seconds": 172.332399959,
+  "successful_mean_seconds": 2.920747355966102,
+  "successful_median_seconds": 3.236424708,
+  "successful_p95_seconds": 3.532180709,
+  "all_mean_seconds": 2.920747355966102,
+  "confidence_thresholds": {
+    "0.5": {
+      "accepted": 47,
+      "correct": 42
+    },
+    "0.7": {
+      "accepted": 37,
+      "correct": 36
+    },
+    "0.9": {
+      "accepted": 11,
+      "correct": 11
+    }
+  },
+  "model": "clef-artemis",
+  "base_url": "http://192.168.11.51:11433",
+  "previous_count": 100,
+  "following_count": 2,
+  "characters_mode": "manually_fixed",
+  "candidate_count_including_narrator": 6,
+  "readable_dialogues": 58,
+  "readable_correct": 46,
+  "wrong_confidence_gte_0_9": 0,
+  "wrong_to_narrator": 0,
+  "wrong_to_character": 13,
+  "api_errors_by_category": {},
+  "server_config": {
+    "context_length": 262144,
+    "eval_batch_size": 8192,
+    "physical_batch_size": 8192,
+    "parallel": 4,
+    "flash_attention": true,
+    "offload_kv_cache_to_gpu": true
+  }
+}

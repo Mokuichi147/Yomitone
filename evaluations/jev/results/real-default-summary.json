@@ -1,0 +1,8 @@
+{
+  "model": "clef-artemis",
+  "base_url": "http://192.168.11.51:11433",
+  "extraction_seconds": 0.016706084,
+  "extraction_failed": true,
+  "extraction_error_kind": "no_models_loaded",
+  "extracted_character_count": 0
+}

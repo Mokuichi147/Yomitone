@@ -1,0 +1,9 @@
+{
+  "model": "clef-artemis",
+  "base_url": "http://192.168.11.51:11433",
+  "extraction_success": false,
+  "extraction_seconds": 0.015208458,
+  "error_kind": "no_models_loaded",
+  "pipeline_aborted": true,
+  "speaker_estimation_requests": 0
+}

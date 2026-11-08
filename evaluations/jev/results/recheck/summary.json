@@ -1,0 +1,109 @@
+{
+  "synthetic-default": {
+    "scored": 70,
+    "correct": 60,
+    "fallbacks": 6,
+    "fatal_cases": 0,
+    "elapsed_seconds": 33.099090125,
+    "successful_mean_seconds": 0.368629888,
+    "successful_median_seconds": 0.367019479,
+    "successful_p95_seconds": 0.408373917,
+    "all_mean_seconds": 0.4715803827142857,
+    "categories": {
+      "明示された話者": {
+        "scored": 8,
+        "correct": 8,
+        "fallbacks": 0
+      },
+      "交互の短い応答": {
+        "scored": 12,
+        "correct": 12,
+        "fallbacks": 0
+      },
+      "別名と呼びかけ": {
+        "scored": 8,
+        "correct": 8,
+        "fallbacks": 0
+      },
+      "三人の会話": {
+        "scored": 10,
+        "correct": 10,
+        "fallbacks": 0
+      },
+      "セリフ内の引用": {
+        "scored": 6,
+        "correct": 6,
+        "fallbacks": 0
+      },
+      "候補にいない話者": {
+        "scored": 4,
+        "correct": 4,
+        "fallbacks": 0
+      },
+      "後ろで明かされる話者": {
+        "scored": 8,
+        "correct": 4,
+        "fallbacks": 0
+      },
+      "口調と役割": {
+        "scored": 8,
+        "correct": 8,
+        "fallbacks": 0
+      },
+      "多数の候補と主語の取り違え": {
+        "scored": 6,
+        "correct": 0,
+        "fallbacks": 6
+      }
+    },
+    "confidence_thresholds": {
+      "0.5": {
+        "accepted": 58,
+        "correct": 58
+      },
+      "0.7": {
+        "accepted": 56,
+        "correct": 56
+      },
+      "0.9": {
+        "accepted": 26,
+        "correct": 26
+      }
+    },
+    "started_jst": "2026-11-04T02:30:36+09:00"
+  },
+  "long-default": {
+    "scored": 2,
+    "correct": 0,
+    "fallbacks": 2,
+    "fatal_cases": 0,
+    "elapsed_seconds": 3.298628125,
+    "successful_mean_seconds": null,
+    "successful_median_seconds": null,
+    "successful_p95_seconds": null,
+    "all_mean_seconds": 1.6489851665,
+    "categories": {
+      "長い履歴": {
+        "scored": 2,
+        "correct": 0,
+        "fallbacks": 2
+      }
+    },
+    "confidence_thresholds": {
+      "0.5": {
+        "accepted": 0,
+        "correct": 0
+      },
+      "0.7": {
+        "accepted": 0,
+        "correct": 0
+      },
+      "0.9": {
+        "accepted": 0,
+        "correct": 0
+      }
+    },
+    "started_jst": "2026-11-04T02:31:09+09:00"
+  },
+  "cli_exit_code": 1
+}

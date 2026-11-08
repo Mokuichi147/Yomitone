@@ -1,0 +1,2086 @@
+{
+  "started_unix_seconds": 1793727695,
+  "base_url": "http://192.168.11.51:11433",
+  "model": "clef-artemis",
+  "backend": "jev",
+  "previous_count": 100,
+  "following_count": 0,
+  "rounds": 2,
+  "characters_mode": "fixed",
+  "fixture": "evaluations/jev/synthetic.json",
+  "model_list": null,
+  "model_list_error": "GET http://192.168.11.51:11433/v1/models: 200 Invalid response data: models",
+  "cases": [
+    {
+      "id": "explicit",
+      "category": "明示された話者",
+      "round": 1,
+      "source": null,
+      "characters": [
+        {
+          "name": "佐藤葵",
+          "aliases": [
+            "葵",
+            "委員長"
+          ],
+          "portrait": "高校の図書委員。落ち着いた口調で話す女子。"
+        },
+        {
+          "name": "鈴木蓮",
+          "aliases": [
+            "蓮",
+            "レン"
+          ],
+          "portrait": "葵の同級生。写真部に所属する男子。"
+        },
+        {
+          "name": "高橋澪",
+          "aliases": [
+            "澪先生",
+            "先生"
+          ],
+          "portrait": "二人の担任である女性教師。"
+        }
+      ],
+      "extraction": null,
+      "seconds": 2.119306166,
+      "fatal_error": null,
+      "events": [
+        {
+          "actual": "佐藤葵",
+          "confidence": 0.830729758675195,
+          "fallback": false,
+          "error": null,
+          "seconds": 0.497928375,
+          "calls": [
+            {
+              "seconds": 0.497928375,
+              "previous_lines": 1,
+              "previous_chars": 14,
+              "following_lines": 0,
+              "error": null
+            }
+          ],
+          "line": 2,
+          "expected": "佐藤葵",
+          "correct": true
+        },
+        {
+          "actual": "鈴木蓮",
+          "confidence": 0.925882628973247,
+          "fallback": false,
+          "error": null,
+          "seconds": 0.490719667,
+          "calls": [
+            {
+              "seconds": 0.490719667,
+              "previous_lines": 3,
+              "previous_chars": 47,
+              "following_lines": 0,
+              "error": null
+            }
+          ],
+          "line": 4,
+          "expected": "鈴木蓮",
+          "correct": true
+        },
+        {
+          "actual": "高橋澪",
+          "confidence": 0.8314105538897759,
+          "fallback": false,
+          "error": null,
+          "seconds": 0.549609584,
+          "calls": [
+            {
+              "seconds": 0.549609584,
+              "previous_lines": 5,
+              "previous_chars": 79,
+              "following_lines": 0,
+              "error": null
+            }
+          ],
+          "line": 6,
+          "expected": "高橋澪",
+          "correct": true
+        },
+        {
+          "actual": "佐藤葵",
+          "confidence": 0.9414188812637132,
+          "fallback": false,
+          "error": null,
+          "seconds": 0.580694833,
+          "calls": [
+            {
+              "seconds": 0.580694833,
+              "previous_lines": 7,
+              "previous_chars": 117,
+              "following_lines": 0,
+              "error": null
+            }
+          ],
+          "line": 8,
+          "expected": "佐藤葵",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "alternating",
+      "category": "交互の短い応答",
+      "round": 1,
+      "source": null,
+      "characters": [
+        {
+          "name": "佐藤葵",
+          "aliases": [
+            "葵",
+            "委員長"
+          ],
+          "portrait": "高校の図書委員。落ち着いた口調で話す女子。"
+        },
+        {
+          "name": "鈴木蓮",
+          "aliases": [
+            "蓮",
+            "レン"
+          ],
+          "portrait": "葵の同級生。写真部に所属する男子。"
+        },
+        {
+          "name": "高橋澪",
+          "aliases": [
+            "澪先生",
+            "先生"
+          ],
+          "portrait": "二人の担任である女性教師。"
+        }
+      ],
+      "extraction": null,
+      "seconds": 3.22502725,
+      "fatal_error": null,
+      "events": [
+        {
+          "actual": "佐藤葵",
+          "confidence": 0.882366953643294,
+          "fallback": false,
+          "error": null,
+          "seconds": 0.496731125,
+          "calls": [
+            {
+              "seconds": 0.496731125,
+              "previous_lines": 1,
+              "previous_chars": 30,
+              "following_lines": 0,
+              "error": null
+            }
+          ],
+          "line": 2,
+          "expected": "佐藤葵",
+          "correct": true
+        },
+        {
+          "actual": "鈴木蓮",
+          "confidence": 0.9621434861172076,
+          "fallback": false,
+          "error": null,
+          "seconds": 0.497917875,
+          "calls": [
+            {
+              "seconds": 0.497917875,
+              "previous_lines": 2,
+              "previous_chars": 47,
+              "following_lines": 0,
+              "error": null
+            }
+          ],
+          "line": 3,
+          "expected": "鈴木蓮",
+          "correct": true
+        },
+        {
+          "actual": "佐藤葵",
+          "confidence": 0.8487331175386229,
+          "fallback": false,
+          "error": null,
+          "seconds": 0.555475458,
+          "calls": [
+            {
+              "seconds": 0.555475458,
+              "previous_lines": 3,
+              "previous_chars": 64,
+              "following_lines": 0,
+              "error": null
+            }
+          ],
+          "line": 4,
+          "expected": "佐藤葵",
+          "correct": true
+        },
+        {
+          "actual": "鈴木蓮",
+          "confidence": 0.8787012533309163,
+          "fallback": false,
+          "error": null,
+          "seconds": 0.545812042,
+          "calls": [
+            {
+              "seconds": 0.545812042,
+              "previous_lines": 4,
+              "previous_chars": 83,
+              "following_lines": 0,
+              "error": null
+            }
+          ],
+          "line": 5,
+          "expected": "鈴木蓮",
+          "correct": true
+        },
+        {
+          "actual": "佐藤葵",
+          "confidence": 0.904249223772302,
+          "fallback": false,
+          "error": null,
+          "seconds": 0.547296417,
+          "calls": [
+            {
+              "seconds": 0.547296417,
+              "previous_lines": 5,
+              "previous_chars": 99,
+              "following_lines": 0,
+              "error": null
+            }
+          ],
+          "line": 6,
+          "expected": "佐藤葵",
+          "correct": true
+        },
+        {
+          "actual": "鈴木蓮",
+          "confidence": 0.8012523818499097,
+          "fallback": false,
+          "error": null,
+          "seconds": 0.581135709,
+          "calls": [
+            {
+              "seconds": 0.581135709,
+              "previous_lines": 6,
+              "previous_chars": 109,
+              "following_lines": 0,
+              "error": null
+            }
+          ],
+          "line": 7,
+          "expected": "鈴木蓮",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "aliases",
+      "category": "別名と呼びかけ",
+      "round": 1,
+      "source": null,
+      "characters": [
+        {
+          "name": "佐藤葵",
+          "aliases": [
+            "葵",
+            "委員長"
+          ],
+          "portrait": "高校の図書委員。落ち着いた口調で話す女子。"
+        },
+        {
+          "name": "鈴木蓮",
+          "aliases": [
+            "蓮",
+            "レン"
+          ],
+          "portrait": "葵の同級生。写真部に所属する男子。"
+        },
+        {
+          "name": "高橋澪",
+          "aliases": [
+            "澪先生",
+            "先生"
+          ],
+          "portrait": "二人の担任である女性教師。"
+        }
+      ],
+      "extraction": null,
+      "seconds": 2.201542792,
+      "fatal_error": null,
+      "events": [
+        {
+          "actual": "佐藤葵",
+          "confidence": 0.9049166846843626,
+          "fallback": false,
+          "error": null,
+          "seconds": 0.515586083,
+          "calls": [
+            {
+              "seconds": 0.515586083,
+              "previous_lines": 1,
+              "previous_chars": 33,
+              "following_lines": 0,
+              "error": null
+            }
+          ],
+          "line": 2,
+          "expected": "佐藤葵",
+          "correct": true
+        },
+        {
+          "actual": "鈴木蓮",
+          "confidence": 0.8853684889841681,
+          "fallback": false,
+          "error": null,
+          "seconds": 0.540328,
+          "calls": [
+            {
+              "seconds": 0.540328,
+              "previous_lines": 3,
+              "previous_chars": 62,
+              "following_lines": 0,
+              "error": null
+            }
+          ],
+          "line": 4,
+          "expected": "鈴木蓮",
+          "correct": true
+        },
+        {
+          "actual": "高橋澪",
+          "confidence": 0.9379916936557134,
+          "fallback": false,
+          "error": null,
+          "seconds": 0.568051708,
+          "calls": [
+            {
+              "seconds": 0.568051708,
+              "previous_lines": 5,
+              "previous_chars": 94,
+              "following_lines": 0,
+              "error": null
+            }
+          ],
+          "line": 6,
+          "expected": "高橋澪",
+          "correct": true
+        },
+        {
+          "actual": "佐藤葵",
+          "confidence": 0.8933983639635085,
+          "fallback": false,
+          "error": null,
+          "seconds": 0.577291959,
+          "calls": [
+            {
+              "seconds": 0.577291959,
+              "previous_lines": 7,
+              "previous_chars": 131,
+              "following_lines": 0,
+              "error": null
+            }
+          ],
+          "line": 8,
+          "expected": "佐藤葵",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "three_way",
+      "category": "三人の会話",
+      "round": 1,
+      "source": null,
+      "characters": [
+        {
+          "name": "佐藤葵",
+          "aliases": [
+            "葵",
+            "委員長"
+          ],
+          "portrait": "高校の図書委員。落ち着いた口調で話す女子。"
+        },
+        {
+          "name": "鈴木蓮",
+          "aliases": [
+            "蓮",
+            "レン"
+          ],
+          "portrait": "葵の同級生。写真部に所属する男子。"
+        },
+        {
+          "name": "高橋澪",
+          "aliases": [
+            "澪先生",
+            "先生"
+          ],
+          "portrait": "二人の担任である女性教師。"
+        }
+      ],
+      "extraction": null,
+      "seconds": 2.701352375,
+      "fatal_error": null,
+      "events": [
+        {
+          "actual": "高橋澪",
+          "confidence": 0.9431852701039184,
+          "fallback": false,
+          "error": null,
+          "seconds": 0.493481625,
+          "calls": [
+            {
+              "seconds": 0.493481625,
+              "previous_lines": 1,
+              "previous_chars": 19,
+              "following_lines": 0,
+              "error": null
+            }
+          ],
+          "line": 2,
+          "expected": "高橋澪",
+          "correct": true
+        },
+        {
+          "actual": "鈴木蓮",
+          "confidence": 0.929839294014191,
+          "fallback": false,
+          "error": null,
+          "seconds": 0.491620375,
+          "calls": [
+            {
+              "seconds": 0.491620375,
+              "previous_lines": 2,
+              "previous_chars": 37,
+              "following_lines": 0,
+              "error": null
+            }
+          ],
+          "line": 3,
+          "expected": "鈴木蓮",
+          "correct": true
+        },
+        {
+          "actual": "佐藤葵",
+          "confidence": 0.8735244996435316,
+          "fallback": false,
+          "error": null,
+          "seconds": 0.548224417,
+          "calls": [
+            {
+              "seconds": 0.548224417,
+              "previous_lines": 4,
+              "previous_chars": 63,
+              "following_lines": 0,
+              "error": null
+            }
+          ],
+          "line": 5,
+          "expected": "佐藤葵",
+          "correct": true
+        },
+        {
+          "actual": "高橋澪",
+          "confidence": 0.9443786885992989,
+          "fallback": false,
+          "error": null,
+          "seconds": 0.581912917,
+          "calls": [
+            {
+              "seconds": 0.581912917,
+              "previous_lines": 6,
+              "previous_chars": 98,
+              "following_lines": 0,
+              "error": null
+            }
+          ],
+          "line": 7,
+          "expected": "高橋澪",
+          "correct": true
+        },
+        {
+          "actual": "鈴木蓮",
+          "confidence": 0.9447970201758136,
+          "fallback": false,
+          "error": null,
+          "seconds": 0.585774,
+          "calls": [
+            {
+              "seconds": 0.585774,
+              "previous_lines": 7,
+              "previous_chars": 120,
+              "following_lines": 0,
+              "error": null
+            }
+          ],
+          "line": 8,
+          "expected": "鈴木蓮",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "quoted_speech",
+      "category": "セリフ内の引用",
+      "round": 1,
+      "source": null,
+      "characters": [
+        {
+          "name": "佐藤葵",
+          "aliases": [
+            "葵",
+            "委員長"
+          ],
+          "portrait": "高校の図書委員。落ち着いた口調で話す女子。"
+        },
+        {
+          "name": "鈴木蓮",
+          "aliases": [
+            "蓮",
+            "レン"
+          ],
+          "portrait": "葵の同級生。写真部に所属する男子。"
+        },
+        {
+          "name": "高橋澪",
+          "aliases": [
+            "澪先生",
+            "先生"
+          ],
+          "portrait": "二人の担任である女性教師。"
+        }
+      ],
+      "extraction": null,
+      "seconds": 1.595377375,
+      "fatal_error": null,
+      "events": [
+        {
+          "actual": "鈴木蓮",
+          "confidence": 0.8642994059786376,
+          "fallback": false,
+          "error": null,
+          "seconds": 0.499493375,
+          "calls": [
+            {
+              "seconds": 0.499493375,
+              "previous_lines": 1,
+              "previous_chars": 19,
+              "following_lines": 0,
+              "error": null
+            }
+          ],
+          "line": 2,
+          "expected": "鈴木蓮",
+          "correct": true
+        },
+        {
+          "actual": "佐藤葵",
+          "confidence": 0.658165960103623,
+          "fallback": false,
+          "error": null,
+          "seconds": 0.548375083,
+          "calls": [
+            {
+              "seconds": 0.548375083,
+              "previous_lines": 3,
+              "previous_chars": 58,
+              "following_lines": 0,
+              "error": null
+            }
+          ],
+          "line": 4,
+          "expected": "佐藤葵",
+          "correct": true
+        },
+        {
+          "actual": "高橋澪",
+          "confidence": 0.9366997668630188,
+          "fallback": false,
+          "error": null,
+          "seconds": 0.54734725,
+          "calls": [
+            {
+              "seconds": 0.54734725,
+              "previous_lines": 5,
+              "previous_chars": 102,
+              "following_lines": 0,
+              "error": null
+            }
+          ],
+          "line": 6,
+          "expected": "高橋澪",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "unknown",
+      "category": "候補にいない話者",
+      "round": 1,
+      "source": null,
+      "characters": [
+        {
+          "name": "佐藤葵",
+          "aliases": [
+            "葵",
+            "委員長"
+          ],
+          "portrait": "高校の図書委員。落ち着いた口調で話す女子。"
+        },
+        {
+          "name": "鈴木蓮",
+          "aliases": [
+            "蓮",
+            "レン"
+          ],
+          "portrait": "葵の同級生。写真部に所属する男子。"
+        },
+        {
+          "name": "高橋澪",
+          "aliases": [
+            "澪先生",
+            "先生"
+          ],
+          "portrait": "二人の担任である女性教師。"
+        }
+      ],
+      "extraction": null,
+      "seconds": 1.047913667,
+      "fatal_error": null,
+      "events": [
+        {
+          "actual": "ナレーター",
+          "confidence": 0.8958199770212874,
+          "fallback": false,
+          "error": null,
+          "seconds": 0.503414791,
+          "calls": [
+            {
+              "seconds": 0.503414791,
+              "previous_lines": 1,
+              "previous_chars": 32,
+              "following_lines": 0,
+              "error": null
+            }
+          ],
+          "line": 2,
+          "expected": "ナレーター",
+          "correct": true
+        },
+        {
+          "actual": "ナレーター",
+          "confidence": 0.3609060568841662,
+          "fallback": false,
+          "error": null,
+          "seconds": 0.544301542,
+          "calls": [
+            {
+              "seconds": 0.544301542,
+              "previous_lines": 3,
+              "previous_chars": 84,
+              "following_lines": 0,
+              "error": null
+            }
+          ],
+          "line": 4,
+          "expected": "ナレーター",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "post_attribution",
+      "category": "後ろで明かされる話者",
+      "round": 1,
+      "source": null,
+      "characters": [
+        {
+          "name": "佐藤葵",
+          "aliases": [
+            "葵",
+            "委員長"
+          ],
+          "portrait": "高校の図書委員。落ち着いた口調で話す女子。"
+        },
+        {
+          "name": "鈴木蓮",
+          "aliases": [
+            "蓮",
+            "レン"
+          ],
+          "portrait": "葵の同級生。写真部に所属する男子。"
+        },
+        {
+          "name": "高橋澪",
+          "aliases": [
+            "澪先生",
+            "先生"
+          ],
+          "portrait": "二人の担任である女性教師。"
+        }
+      ],
+      "extraction": null,
+      "seconds": 2.15563675,
+      "fatal_error": null,
+      "events": [
+        {
+          "actual": "高橋澪",
+          "confidence": 0.8511199788186886,
+          "fallback": false,
+          "error": null,
+          "seconds": 0.496026917,
+          "calls": [
+            {
+              "seconds": 0.496026917,
+              "previous_lines": 1,
+              "previous_chars": 23,
+              "following_lines": 0,
+              "error": null
+            }
+          ],
+          "line": 2,
+          "expected": "高橋澪",
+          "correct": true
+        },
+        {
+          "actual": "佐藤葵",
+          "confidence": 0.487591149016632,
+          "fallback": false,
+          "error": null,
+          "seconds": 0.539575042,
+          "calls": [
+            {
+              "seconds": 0.539575042,
+              "previous_lines": 3,
+              "previous_chars": 52,
+              "following_lines": 0,
+              "error": null
+            }
+          ],
+          "line": 4,
+          "expected": "鈴木蓮",
+          "correct": false
+        },
+        {
+          "actual": "鈴木蓮",
+          "confidence": 0.41100677030188226,
+          "fallback": false,
+          "error": null,
+          "seconds": 0.542450208,
+          "calls": [
+            {
+              "seconds": 0.542450208,
+              "previous_lines": 5,
+              "previous_chars": 88,
+              "following_lines": 0,
+              "error": null
+            }
+          ],
+          "line": 6,
+          "expected": "佐藤葵",
+          "correct": false
+        },
+        {
+          "actual": "高橋澪",
+          "confidence": 0.8949476732437506,
+          "fallback": false,
+          "error": null,
+          "seconds": 0.577229833,
+          "calls": [
+            {
+              "seconds": 0.577229833,
+              "previous_lines": 7,
+              "previous_chars": 110,
+              "following_lines": 0,
+              "error": null
+            }
+          ],
+          "line": 8,
+          "expected": "高橋澪",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "style",
+      "category": "口調と役割",
+      "round": 1,
+      "source": null,
+      "characters": [
+        {
+          "name": "千代",
+          "aliases": [],
+          "portrait": "老齢の女性。武家育ちで一人称はわし、語尾はじゃ。"
+        },
+        {
+          "name": "ユイ",
+          "aliases": [],
+          "portrait": "六歳の女の子。一人称はユイで、祖母の千代と暮らしている。"
+        },
+        {
+          "name": "白石先生",
+          "aliases": [],
+          "portrait": "ユイの主治医。丁寧な敬語で説明する男性医師。"
+        }
+      ],
+      "extraction": null,
+      "seconds": 2.206816167,
+      "fatal_error": null,
+      "events": [
+        {
+          "actual": "ユイ",
+          "confidence": 0.7455598095568371,
+          "fallback": false,
+          "error": null,
+          "seconds": 0.50106325,
+          "calls": [
+            {
+              "seconds": 0.50106325,
+              "previous_lines": 1,
+              "previous_chars": 39,
+              "following_lines": 0,
+              "error": null
+            }
+          ],
+          "line": 2,
+          "expected": "ユイ",
+          "correct": true
+        },
+        {
+          "actual": "千代",
+          "confidence": 0.8870208228656429,
+          "fallback": false,
+          "error": null,
+          "seconds": 0.540810209,
+          "calls": [
+            {
+              "seconds": 0.540810209,
+              "previous_lines": 2,
+              "previous_chars": 55,
+              "following_lines": 0,
+              "error": null
+            }
+          ],
+          "line": 3,
+          "expected": "千代",
+          "correct": true
+        },
+        {
+          "actual": "白石先生",
+          "confidence": 0.9637096625438244,
+          "fallback": false,
+          "error": null,
+          "seconds": 0.542905084,
+          "calls": [
+            {
+              "seconds": 0.542905084,
+              "previous_lines": 3,
+              "previous_chars": 76,
+              "following_lines": 0,
+              "error": null
+            }
+          ],
+          "line": 4,
+          "expected": "白石先生",
+          "correct": true
+        },
+        {
+          "actual": "ユイ",
+          "confidence": 0.9082745452510051,
+          "fallback": false,
+          "error": null,
+          "seconds": 0.621605875,
+          "calls": [
+            {
+              "seconds": 0.621605875,
+              "previous_lines": 4,
+              "previous_chars": 103,
+              "following_lines": 0,
+              "error": null
+            }
+          ],
+          "line": 5,
+          "expected": "ユイ",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "distractors",
+      "category": "多数の候補と主語の取り違え",
+      "round": 1,
+      "source": null,
+      "characters": [
+        {
+          "name": "佐藤葵",
+          "aliases": [
+            "葵",
+            "委員長"
+          ],
+          "portrait": "高校の図書委員。落ち着いた口調で話す女子。"
+        },
+        {
+          "name": "鈴木蓮",
+          "aliases": [
+            "蓮",
+            "レン"
+          ],
+          "portrait": "葵の同級生。写真部に所属する男子。"
+        },
+        {
+          "name": "高橋澪",
+          "aliases": [
+            "澪先生",
+            "先生"
+          ],
+          "portrait": "二人の担任である女性教師。"
+        },
+        {
+          "name": "山本悠",
+          "aliases": [],
+          "portrait": "隣のクラスの男子生徒。"
+        },
+        {
+          "name": "田中凛",
+          "aliases": [],
+          "portrait": "陸上部の女子生徒。"
+        },
+        {
+          "name": "小林大地",
+          "aliases": [],
+          "portrait": "野球部の男子生徒。"
+        },
+        {
+          "name": "森優花",
+          "aliases": [],
+          "portrait": "生徒会の女子生徒。"
+        },
+        {
+          "name": "加藤修",
+          "aliases": [],
+          "portrait": "校長先生。"
+        },
+        {
+          "name": "吉田栞",
+          "aliases": [],
+          "portrait": "図書館司書。"
+        },
+        {
+          "name": "石井誠",
+          "aliases": [],
+          "portrait": "数学教師。"
+        },
+        {
+          "name": "岡田陽菜",
+          "aliases": [],
+          "portrait": "写真部の女子生徒。"
+        },
+        {
+          "name": "斎藤恵",
+          "aliases": [],
+          "portrait": "養護教諭。"
+        }
+      ],
+      "extraction": null,
+      "seconds": 2.324482,
+      "fatal_error": null,
+      "events": [
+        {
+          "actual": "佐藤葵",
+          "confidence": 0.72157755110464,
+          "fallback": false,
+          "error": null,
+          "seconds": 0.778879667,
+          "calls": [
+            {
+              "seconds": 0.778879667,
+              "previous_lines": 1,
+              "previous_chars": 34,
+              "following_lines": 0,
+              "error": null
+            }
+          ],
+          "line": 2,
+          "expected": "佐藤葵",
+          "correct": true
+        },
+        {
+          "actual": "鈴木蓮",
+          "confidence": 0.8313800952491226,
+          "fallback": false,
+          "error": null,
+          "seconds": 0.763992667,
+          "calls": [
+            {
+              "seconds": 0.763992667,
+              "previous_lines": 3,
+              "previous_chars": 66,
+              "following_lines": 0,
+              "error": null
+            }
+          ],
+          "line": 4,
+          "expected": "鈴木蓮",
+          "correct": true
+        },
+        {
+          "actual": "高橋澪",
+          "confidence": 0.8789095959175445,
+          "fallback": false,
+          "error": null,
+          "seconds": 0.781242542,
+          "calls": [
+            {
+              "seconds": 0.781242542,
+              "previous_lines": 5,
+              "previous_chars": 119,
+              "following_lines": 0,
+              "error": null
+            }
+          ],
+          "line": 6,
+          "expected": "高橋澪",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "explicit",
+      "category": "明示された話者",
+      "round": 2,
+      "source": null,
+      "characters": [
+        {
+          "name": "佐藤葵",
+          "aliases": [
+            "葵",
+            "委員長"
+          ],
+          "portrait": "高校の図書委員。落ち着いた口調で話す女子。"
+        },
+        {
+          "name": "鈴木蓮",
+          "aliases": [
+            "蓮",
+            "レン"
+          ],
+          "portrait": "葵の同級生。写真部に所属する男子。"
+        },
+        {
+          "name": "高橋澪",
+          "aliases": [
+            "澪先生",
+            "先生"
+          ],
+          "portrait": "二人の担任である女性教師。"
+        }
+      ],
+      "extraction": null,
+      "seconds": 2.11199975,
+      "fatal_error": null,
+      "events": [
+        {
+          "actual": "佐藤葵",
+          "confidence": 0.830729758675195,
+          "fallback": false,
+          "error": null,
+          "seconds": 0.49840625,
+          "calls": [
+            {
+              "seconds": 0.49840625,
+              "previous_lines": 1,
+              "previous_chars": 14,
+              "following_lines": 0,
+              "error": null
+            }
+          ],
+          "line": 2,
+          "expected": "佐藤葵",
+          "correct": true
+        },
+        {
+          "actual": "鈴木蓮",
+          "confidence": 0.925882628973247,
+          "fallback": false,
+          "error": null,
+          "seconds": 0.493145167,
+          "calls": [
+            {
+              "seconds": 0.493145167,
+              "previous_lines": 3,
+              "previous_chars": 47,
+              "following_lines": 0,
+              "error": null
+            }
+          ],
+          "line": 4,
+          "expected": "鈴木蓮",
+          "correct": true
+        },
+        {
+          "actual": "高橋澪",
+          "confidence": 0.8314105538897759,
+          "fallback": false,
+          "error": null,
+          "seconds": 0.543744625,
+          "calls": [
+            {
+              "seconds": 0.543744625,
+              "previous_lines": 5,
+              "previous_chars": 79,
+              "following_lines": 0,
+              "error": null
+            }
+          ],
+          "line": 6,
+          "expected": "高橋澪",
+          "correct": true
+        },
+        {
+          "actual": "佐藤葵",
+          "confidence": 0.9414188812637132,
+          "fallback": false,
+          "error": null,
+          "seconds": 0.576210667,
+          "calls": [
+            {
+              "seconds": 0.576210667,
+              "previous_lines": 7,
+              "previous_chars": 117,
+              "following_lines": 0,
+              "error": null
+            }
+          ],
+          "line": 8,
+          "expected": "佐藤葵",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "alternating",
+      "category": "交互の短い応答",
+      "round": 2,
+      "source": null,
+      "characters": [
+        {
+          "name": "佐藤葵",
+          "aliases": [
+            "葵",
+            "委員長"
+          ],
+          "portrait": "高校の図書委員。落ち着いた口調で話す女子。"
+        },
+        {
+          "name": "鈴木蓮",
+          "aliases": [
+            "蓮",
+            "レン"
+          ],
+          "portrait": "葵の同級生。写真部に所属する男子。"
+        },
+        {
+          "name": "高橋澪",
+          "aliases": [
+            "澪先生",
+            "先生"
+          ],
+          "portrait": "二人の担任である女性教師。"
+        }
+      ],
+      "extraction": null,
+      "seconds": 3.254381709,
+      "fatal_error": null,
+      "events": [
+        {
+          "actual": "佐藤葵",
+          "confidence": 0.882366953643294,
+          "fallback": false,
+          "error": null,
+          "seconds": 0.502760375,
+          "calls": [
+            {
+              "seconds": 0.502760375,
+              "previous_lines": 1,
+              "previous_chars": 30,
+              "following_lines": 0,
+              "error": null
+            }
+          ],
+          "line": 2,
+          "expected": "佐藤葵",
+          "correct": true
+        },
+        {
+          "actual": "鈴木蓮",
+          "confidence": 0.9621434861172076,
+          "fallback": false,
+          "error": null,
+          "seconds": 0.505127,
+          "calls": [
+            {
+              "seconds": 0.505127,
+              "previous_lines": 2,
+              "previous_chars": 47,
+              "following_lines": 0,
+              "error": null
+            }
+          ],
+          "line": 3,
+          "expected": "鈴木蓮",
+          "correct": true
+        },
+        {
+          "actual": "佐藤葵",
+          "confidence": 0.8487331175386229,
+          "fallback": false,
+          "error": null,
+          "seconds": 0.558626167,
+          "calls": [
+            {
+              "seconds": 0.558626167,
+              "previous_lines": 3,
+              "previous_chars": 64,
+              "following_lines": 0,
+              "error": null
+            }
+          ],
+          "line": 4,
+          "expected": "佐藤葵",
+          "correct": true
+        },
+        {
+          "actual": "鈴木蓮",
+          "confidence": 0.8787012533309163,
+          "fallback": false,
+          "error": null,
+          "seconds": 0.547717,
+          "calls": [
+            {
+              "seconds": 0.547717,
+              "previous_lines": 4,
+              "previous_chars": 83,
+              "following_lines": 0,
+              "error": null
+            }
+          ],
+          "line": 5,
+          "expected": "鈴木蓮",
+          "correct": true
+        },
+        {
+          "actual": "佐藤葵",
+          "confidence": 0.904249223772302,
+          "fallback": false,
+          "error": null,
+          "seconds": 0.555775834,
+          "calls": [
+            {
+              "seconds": 0.555775834,
+              "previous_lines": 5,
+              "previous_chars": 99,
+              "following_lines": 0,
+              "error": null
+            }
+          ],
+          "line": 6,
+          "expected": "佐藤葵",
+          "correct": true
+        },
+        {
+          "actual": "鈴木蓮",
+          "confidence": 0.8012523818499097,
+          "fallback": false,
+          "error": null,
+          "seconds": 0.583857375,
+          "calls": [
+            {
+              "seconds": 0.583857375,
+              "previous_lines": 6,
+              "previous_chars": 109,
+              "following_lines": 0,
+              "error": null
+            }
+          ],
+          "line": 7,
+          "expected": "鈴木蓮",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "aliases",
+      "category": "別名と呼びかけ",
+      "round": 2,
+      "source": null,
+      "characters": [
+        {
+          "name": "佐藤葵",
+          "aliases": [
+            "葵",
+            "委員長"
+          ],
+          "portrait": "高校の図書委員。落ち着いた口調で話す女子。"
+        },
+        {
+          "name": "鈴木蓮",
+          "aliases": [
+            "蓮",
+            "レン"
+          ],
+          "portrait": "葵の同級生。写真部に所属する男子。"
+        },
+        {
+          "name": "高橋澪",
+          "aliases": [
+            "澪先生",
+            "先生"
+          ],
+          "portrait": "二人の担任である女性教師。"
+        }
+      ],
+      "extraction": null,
+      "seconds": 2.224307666,
+      "fatal_error": null,
+      "events": [
+        {
+          "actual": "佐藤葵",
+          "confidence": 0.9049166846843626,
+          "fallback": false,
+          "error": null,
+          "seconds": 0.504749125,
+          "calls": [
+            {
+              "seconds": 0.504749125,
+              "previous_lines": 1,
+              "previous_chars": 33,
+              "following_lines": 0,
+              "error": null
+            }
+          ],
+          "line": 2,
+          "expected": "佐藤葵",
+          "correct": true
+        },
+        {
+          "actual": "鈴木蓮",
+          "confidence": 0.8853684889841681,
+          "fallback": false,
+          "error": null,
+          "seconds": 0.548142333,
+          "calls": [
+            {
+              "seconds": 0.548142333,
+              "previous_lines": 3,
+              "previous_chars": 62,
+              "following_lines": 0,
+              "error": null
+            }
+          ],
+          "line": 4,
+          "expected": "鈴木蓮",
+          "correct": true
+        },
+        {
+          "actual": "高橋澪",
+          "confidence": 0.9379916936557134,
+          "fallback": false,
+          "error": null,
+          "seconds": 0.551762875,
+          "calls": [
+            {
+              "seconds": 0.551762875,
+              "previous_lines": 5,
+              "previous_chars": 94,
+              "following_lines": 0,
+              "error": null
+            }
+          ],
+          "line": 6,
+          "expected": "高橋澪",
+          "correct": true
+        },
+        {
+          "actual": "佐藤葵",
+          "confidence": 0.8933983639635085,
+          "fallback": false,
+          "error": null,
+          "seconds": 0.619437208,
+          "calls": [
+            {
+              "seconds": 0.619437208,
+              "previous_lines": 7,
+              "previous_chars": 131,
+              "following_lines": 0,
+              "error": null
+            }
+          ],
+          "line": 8,
+          "expected": "佐藤葵",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "three_way",
+      "category": "三人の会話",
+      "round": 2,
+      "source": null,
+      "characters": [
+        {
+          "name": "佐藤葵",
+          "aliases": [
+            "葵",
+            "委員長"
+          ],
+          "portrait": "高校の図書委員。落ち着いた口調で話す女子。"
+        },
+        {
+          "name": "鈴木蓮",
+          "aliases": [
+            "蓮",
+            "レン"
+          ],
+          "portrait": "葵の同級生。写真部に所属する男子。"
+        },
+        {
+          "name": "高橋澪",
+          "aliases": [
+            "澪先生",
+            "先生"
+          ],
+          "portrait": "二人の担任である女性教師。"
+        }
+      ],
+      "extraction": null,
+      "seconds": 2.726477875,
+      "fatal_error": null,
+      "events": [
+        {
+          "actual": "高橋澪",
+          "confidence": 0.9431852701039184,
+          "fallback": false,
+          "error": null,
+          "seconds": 0.500161084,
+          "calls": [
+            {
+              "seconds": 0.500161084,
+              "previous_lines": 1,
+              "previous_chars": 19,
+              "following_lines": 0,
+              "error": null
+            }
+          ],
+          "line": 2,
+          "expected": "高橋澪",
+          "correct": true
+        },
+        {
+          "actual": "鈴木蓮",
+          "confidence": 0.929839294014191,
+          "fallback": false,
+          "error": null,
+          "seconds": 0.508288708,
+          "calls": [
+            {
+              "seconds": 0.508288708,
+              "previous_lines": 2,
+              "previous_chars": 37,
+              "following_lines": 0,
+              "error": null
+            }
+          ],
+          "line": 3,
+          "expected": "鈴木蓮",
+          "correct": true
+        },
+        {
+          "actual": "佐藤葵",
+          "confidence": 0.8735244996435316,
+          "fallback": false,
+          "error": null,
+          "seconds": 0.551774917,
+          "calls": [
+            {
+              "seconds": 0.551774917,
+              "previous_lines": 4,
+              "previous_chars": 63,
+              "following_lines": 0,
+              "error": null
+            }
+          ],
+          "line": 5,
+          "expected": "佐藤葵",
+          "correct": true
+        },
+        {
+          "actual": "高橋澪",
+          "confidence": 0.9443786885992989,
+          "fallback": false,
+          "error": null,
+          "seconds": 0.5819155,
+          "calls": [
+            {
+              "seconds": 0.5819155,
+              "previous_lines": 6,
+              "previous_chars": 98,
+              "following_lines": 0,
+              "error": null
+            }
+          ],
+          "line": 7,
+          "expected": "高橋澪",
+          "correct": true
+        },
+        {
+          "actual": "鈴木蓮",
+          "confidence": 0.9447970201758136,
+          "fallback": false,
+          "error": null,
+          "seconds": 0.583903333,
+          "calls": [
+            {
+              "seconds": 0.583903333,
+              "previous_lines": 7,
+              "previous_chars": 120,
+              "following_lines": 0,
+              "error": null
+            }
+          ],
+          "line": 8,
+          "expected": "鈴木蓮",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "quoted_speech",
+      "category": "セリフ内の引用",
+      "round": 2,
+      "source": null,
+      "characters": [
+        {
+          "name": "佐藤葵",
+          "aliases": [
+            "葵",
+            "委員長"
+          ],
+          "portrait": "高校の図書委員。落ち着いた口調で話す女子。"
+        },
+        {
+          "name": "鈴木蓮",
+          "aliases": [
+            "蓮",
+            "レン"
+          ],
+          "portrait": "葵の同級生。写真部に所属する男子。"
+        },
+        {
+          "name": "高橋澪",
+          "aliases": [
+            "澪先生",
+            "先生"
+          ],
+          "portrait": "二人の担任である女性教師。"
+        }
+      ],
+      "extraction": null,
+      "seconds": 1.5903340419999998,
+      "fatal_error": null,
+      "events": [
+        {
+          "actual": "鈴木蓮",
+          "confidence": 0.8642994059786376,
+          "fallback": false,
+          "error": null,
+          "seconds": 0.494758375,
+          "calls": [
+            {
+              "seconds": 0.494758375,
+              "previous_lines": 1,
+              "previous_chars": 19,
+              "following_lines": 0,
+              "error": null
+            }
+          ],
+          "line": 2,
+          "expected": "鈴木蓮",
+          "correct": true
+        },
+        {
+          "actual": "佐藤葵",
+          "confidence": 0.658165960103623,
+          "fallback": false,
+          "error": null,
+          "seconds": 0.541579625,
+          "calls": [
+            {
+              "seconds": 0.541579625,
+              "previous_lines": 3,
+              "previous_chars": 58,
+              "following_lines": 0,
+              "error": null
+            }
+          ],
+          "line": 4,
+          "expected": "佐藤葵",
+          "correct": true
+        },
+        {
+          "actual": "高橋澪",
+          "confidence": 0.9366997668630188,
+          "fallback": false,
+          "error": null,
+          "seconds": 0.553633916,
+          "calls": [
+            {
+              "seconds": 0.553633916,
+              "previous_lines": 5,
+              "previous_chars": 102,
+              "following_lines": 0,
+              "error": null
+            }
+          ],
+          "line": 6,
+          "expected": "高橋澪",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "unknown",
+      "category": "候補にいない話者",
+      "round": 2,
+      "source": null,
+      "characters": [
+        {
+          "name": "佐藤葵",
+          "aliases": [
+            "葵",
+            "委員長"
+          ],
+          "portrait": "高校の図書委員。落ち着いた口調で話す女子。"
+        },
+        {
+          "name": "鈴木蓮",
+          "aliases": [
+            "蓮",
+            "レン"
+          ],
+          "portrait": "葵の同級生。写真部に所属する男子。"
+        },
+        {
+          "name": "高橋澪",
+          "aliases": [
+            "澪先生",
+            "先生"
+          ],
+          "portrait": "二人の担任である女性教師。"
+        }
+      ],
+      "extraction": null,
+      "seconds": 1.0439734999999999,
+      "fatal_error": null,
+      "events": [
+        {
+          "actual": "ナレーター",
+          "confidence": 0.8958199770212874,
+          "fallback": false,
+          "error": null,
+          "seconds": 0.496667,
+          "calls": [
+            {
+              "seconds": 0.496667,
+              "previous_lines": 1,
+              "previous_chars": 32,
+              "following_lines": 0,
+              "error": null
+            }
+          ],
+          "line": 2,
+          "expected": "ナレーター",
+          "correct": true
+        },
+        {
+          "actual": "ナレーター",
+          "confidence": 0.3609060568841662,
+          "fallback": false,
+          "error": null,
+          "seconds": 0.547139834,
+          "calls": [
+            {
+              "seconds": 0.547139834,
+              "previous_lines": 3,
+              "previous_chars": 84,
+              "following_lines": 0,
+              "error": null
+            }
+          ],
+          "line": 4,
+          "expected": "ナレーター",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "post_attribution",
+      "category": "後ろで明かされる話者",
+      "round": 2,
+      "source": null,
+      "characters": [
+        {
+          "name": "佐藤葵",
+          "aliases": [
+            "葵",
+            "委員長"
+          ],
+          "portrait": "高校の図書委員。落ち着いた口調で話す女子。"
+        },
+        {
+          "name": "鈴木蓮",
+          "aliases": [
+            "蓮",
+            "レン"
+          ],
+          "portrait": "葵の同級生。写真部に所属する男子。"
+        },
+        {
+          "name": "高橋澪",
+          "aliases": [
+            "澪先生",
+            "先生"
+          ],
+          "portrait": "二人の担任である女性教師。"
+        }
+      ],
+      "extraction": null,
+      "seconds": 2.179088875,
+      "fatal_error": null,
+      "events": [
+        {
+          "actual": "高橋澪",
+          "confidence": 0.8511199788186886,
+          "fallback": false,
+          "error": null,
+          "seconds": 0.495481166,
+          "calls": [
+            {
+              "seconds": 0.495481166,
+              "previous_lines": 1,
+              "previous_chars": 23,
+              "following_lines": 0,
+              "error": null
+            }
+          ],
+          "line": 2,
+          "expected": "高橋澪",
+          "correct": true
+        },
+        {
+          "actual": "佐藤葵",
+          "confidence": 0.487591149016632,
+          "fallback": false,
+          "error": null,
+          "seconds": 0.545232458,
+          "calls": [
+            {
+              "seconds": 0.545232458,
+              "previous_lines": 3,
+              "previous_chars": 52,
+              "following_lines": 0,
+              "error": null
+            }
+          ],
+          "line": 4,
+          "expected": "鈴木蓮",
+          "correct": false
+        },
+        {
+          "actual": "鈴木蓮",
+          "confidence": 0.41100677030188226,
+          "fallback": false,
+          "error": null,
+          "seconds": 0.556443416,
+          "calls": [
+            {
+              "seconds": 0.556443416,
+              "previous_lines": 5,
+              "previous_chars": 88,
+              "following_lines": 0,
+              "error": null
+            }
+          ],
+          "line": 6,
+          "expected": "佐藤葵",
+          "correct": false
+        },
+        {
+          "actual": "高橋澪",
+          "confidence": 0.8949476732437506,
+          "fallback": false,
+          "error": null,
+          "seconds": 0.581591958,
+          "calls": [
+            {
+              "seconds": 0.581591958,
+              "previous_lines": 7,
+              "previous_chars": 110,
+              "following_lines": 0,
+              "error": null
+            }
+          ],
+          "line": 8,
+          "expected": "高橋澪",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "style",
+      "category": "口調と役割",
+      "round": 2,
+      "source": null,
+      "characters": [
+        {
+          "name": "千代",
+          "aliases": [],
+          "portrait": "老齢の女性。武家育ちで一人称はわし、語尾はじゃ。"
+        },
+        {
+          "name": "ユイ",
+          "aliases": [],
+          "portrait": "六歳の女の子。一人称はユイで、祖母の千代と暮らしている。"
+        },
+        {
+          "name": "白石先生",
+          "aliases": [],
+          "portrait": "ユイの主治医。丁寧な敬語で説明する男性医師。"
+        }
+      ],
+      "extraction": null,
+      "seconds": 2.206489625,
+      "fatal_error": null,
+      "events": [
+        {
+          "actual": "ユイ",
+          "confidence": 0.7455598095568371,
+          "fallback": false,
+          "error": null,
+          "seconds": 0.523437459,
+          "calls": [
+            {
+              "seconds": 0.523437459,
+              "previous_lines": 1,
+              "previous_chars": 39,
+              "following_lines": 0,
+              "error": null
+            }
+          ],
+          "line": 2,
+          "expected": "ユイ",
+          "correct": true
+        },
+        {
+          "actual": "千代",
+          "confidence": 0.8870208228656429,
+          "fallback": false,
+          "error": null,
+          "seconds": 0.550287042,
+          "calls": [
+            {
+              "seconds": 0.550287042,
+              "previous_lines": 2,
+              "previous_chars": 55,
+              "following_lines": 0,
+              "error": null
+            }
+          ],
+          "line": 3,
+          "expected": "千代",
+          "correct": true
+        },
+        {
+          "actual": "白石先生",
+          "confidence": 0.9637096625438244,
+          "fallback": false,
+          "error": null,
+          "seconds": 0.550854125,
+          "calls": [
+            {
+              "seconds": 0.550854125,
+              "previous_lines": 3,
+              "previous_chars": 76,
+              "following_lines": 0,
+              "error": null
+            }
+          ],
+          "line": 4,
+          "expected": "白石先生",
+          "correct": true
+        },
+        {
+          "actual": "ユイ",
+          "confidence": 0.9082745452510051,
+          "fallback": false,
+          "error": null,
+          "seconds": 0.581631,
+          "calls": [
+            {
+              "seconds": 0.581631,
+              "previous_lines": 4,
+              "previous_chars": 103,
+              "following_lines": 0,
+              "error": null
+            }
+          ],
+          "line": 5,
+          "expected": "ユイ",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": "distractors",
+      "category": "多数の候補と主語の取り違え",
+      "round": 2,
+      "source": null,
+      "characters": [
+        {
+          "name": "佐藤葵",
+          "aliases": [
+            "葵",
+            "委員長"
+          ],
+          "portrait": "高校の図書委員。落ち着いた口調で話す女子。"
+        },
+        {
+          "name": "鈴木蓮",
+          "aliases": [
+            "蓮",
+            "レン"
+          ],
+          "portrait": "葵の同級生。写真部に所属する男子。"
+        },
+        {
+          "name": "高橋澪",
+          "aliases": [
+            "澪先生",
+            "先生"
+          ],
+          "portrait": "二人の担任である女性教師。"
+        },
+        {
+          "name": "山本悠",
+          "aliases": [],
+          "portrait": "隣のクラスの男子生徒。"
+        },
+        {
+          "name": "田中凛",
+          "aliases": [],
+          "portrait": "陸上部の女子生徒。"
+        },
+        {
+          "name": "小林大地",
+          "aliases": [],
+          "portrait": "野球部の男子生徒。"
+        },
+        {
+          "name": "森優花",
+          "aliases": [],
+          "portrait": "生徒会の女子生徒。"
+        },
+        {
+          "name": "加藤修",
+          "aliases": [],
+          "portrait": "校長先生。"
+        },
+        {
+          "name": "吉田栞",
+          "aliases": [],
+          "portrait": "図書館司書。"
+        },
+        {
+          "name": "石井誠",
+          "aliases": [],
+          "portrait": "数学教師。"
+        },
+        {
+          "name": "岡田陽菜",
+          "aliases": [],
+          "portrait": "写真部の女子生徒。"
+        },
+        {
+          "name": "斎藤恵",
+          "aliases": [],
+          "portrait": "養護教諭。"
+        }
+      ],
+      "extraction": null,
+      "seconds": 2.291917208,
+      "fatal_error": null,
+      "events": [
+        {
+          "actual": "佐藤葵",
+          "confidence": 0.72157755110464,
+          "fallback": false,
+          "error": null,
+          "seconds": 0.729869375,
+          "calls": [
+            {
+              "seconds": 0.729869375,
+              "previous_lines": 1,
+              "previous_chars": 34,
+              "following_lines": 0,
+              "error": null
+            }
+          ],
+          "line": 2,
+          "expected": "佐藤葵",
+          "correct": true
+        },
+        {
+          "actual": "鈴木蓮",
+          "confidence": 0.8313800952491226,
+          "fallback": false,
+          "error": null,
+          "seconds": 0.787257,
+          "calls": [
+            {
+              "seconds": 0.787257,
+              "previous_lines": 3,
+              "previous_chars": 66,
+              "following_lines": 0,
+              "error": null
+            }
+          ],
+          "line": 4,
+          "expected": "鈴木蓮",
+          "correct": true
+        },
+        {
+          "actual": "高橋澪",
+          "confidence": 0.8789095959175445,
+          "fallback": false,
+          "error": null,
+          "seconds": 0.774343542,
+          "calls": [
+            {
+              "seconds": 0.774343542,
+              "previous_lines": 5,
+              "previous_chars": 119,
+              "following_lines": 0,
+              "error": null
+            }
+          ],
+          "line": 6,
+          "expected": "高橋澪",
+          "correct": true
+        }
+      ]
+    }
+  ],
+  "elapsed_seconds": 39.270839375,
+  "scored": 70,
+  "correct": 66
+}

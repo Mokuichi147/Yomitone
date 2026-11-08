@@ -1,0 +1,31 @@
+{
+  "type": "decision",
+  "publisher": "turintech",
+  "key": "clef-artemis",
+  "display_name": "Clef Artemis",
+  "architecture": "clef",
+  "quantization": {
+    "name": "IQ4_XS",
+    "bits_per_weight": 4
+  },
+  "size_bytes": 14820180032,
+  "params_string": "27B",
+  "max_context_length": 262144,
+  "format": "gguf",
+  "decision_type": "clef",
+  "has_vision_adapter": false,
+  "loaded_instances": [
+    {
+      "id": "clef-artemis",
+      "config": {
+        "context_length": 262144,
+        "eval_batch_size": 2048,
+        "physical_batch_size": 8192,
+        "parallel": 4,
+        "flash_attention": true,
+        "offload_kv_cache_to_gpu": true
+      },
+      "remaining_ttl_seconds": 510
+    }
+  ]
+}
